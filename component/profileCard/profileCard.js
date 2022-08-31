@@ -1,10 +1,14 @@
-// component/fillCard/fillCard.js
+// component/profileCard/profileCard.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    currentIndex:0,
+    cardData:{
+      type:Object,
+      value:null
+    }
   },
 
   /**
@@ -12,6 +16,8 @@ Component({
    */
   data: {
     cardMargin:0.02 * wx.getSystemInfoSync().screenWidth,
+    seperateMargin:0.07 * wx.getSystemInfoSync().screenWidth,
+    labelMargin: 0.93 * 0.05 * wx.getSystemInfoSync().screenWidth
   },
 
   /**
@@ -20,6 +26,6 @@ Component({
   methods: {
     clickFillHandle(){
       this.triggerEvent('clickFillHandle');
-    }
+    },
   }
 })

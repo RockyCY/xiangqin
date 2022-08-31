@@ -1,1 +1,20 @@
 /* component/fillCard/fillCard.wxss */
+.fillCardBG {
+  width: 96%;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 10px;
+  border-width: 0.5px;
+  border-color: transparent;
+  border-style: solid;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fillCardDesc {
+  font-size: 20px;
+  color: #ff3b43;
+  text-align: center;
+  margin-top: 21px;
+}
