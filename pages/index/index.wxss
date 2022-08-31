@@ -1,0 +1,30 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.normalbutton {
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  border-radius:25px;
+  text-align:center;
+  padding: 0px;
+  background:-webkit-linear-gradient(left,#E852A4,#FF313A);
+  color: #fff;
+  font-size: 18pt;
+}

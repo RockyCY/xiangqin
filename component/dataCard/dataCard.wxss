@@ -1,0 +1,139 @@
+.dataCardBG {
+  margin-top: 17px;
+  background-color:#ffffff;
+  border-radius: 4px;
+  width: 96%;
+}
+.dataCardTopBG {
+  height: 230px;
+  margin-top: 17px;
+  background-color: transparent;
+}
+.dataCardTopBG1 {
+  height: 150px;
+  margin-top: 17px;
+  display: flex;
+  background-color:#ffffff;
+}
+
+.dataCardPic {
+  border-radius: 4px;
+  width: 86px;
+  height: 116px;
+  background: #ff313b;
+  margin-top: 27px;
+  margin-left: 23.5px;
+}
+
+.dataCardTextContainer {
+  margin-top: 27px;
+  width: 80%;
+  height: 128px;
+}
+
+.dataCardTitleArea {
+  height: 30px;
+  margin-top: 0px;
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.dataCardTitle {
+  margin-top: 0px;
+  margin-left: 0px;
+  font-size: 29px;
+  font-weight: bold;
+  color: #383838;
+}
+
+.dataCardTitle1 {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #383838;
+}
+
+.dataCardSubtitle {
+  font-size: 16px;
+  color: #383838;
+  margin-top: 4px;
+  margin-left: 12px;
+}
+
+
+.seperateLine {
+  background-color: #D4D3D3;
+  width: 86%;
+  height: 1px;
+}
+
+.dataCardLabelArea {
+  height: 55px;
+  width: 90%;
+  display: flex;
+  background:#ffffff;
+  flex-wrap: wrap;
+}
+.dataCardLabel {
+  width: fit-content;
+  font-size: 16px;
+  color: #1c1c1d;
+  background:#efefef;
+  height: 21px;
+  border-radius: 10.5px;
+  margin-left: 12px;
+  margin-top: 6px;
+  text-align: center;
+  padding: 0px 12px 0px 12px;
+}
+
+.dataCardMainDesBG {
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 23.5px;
+  display: flex;
+  align-items: center;
+}
+.dataCardMainDescDot {
+  width: 9px;
+  height: 9px;
+  background:#ff3B43;
+  border-radius: 4.5px;
+}
+
+.dataCardMainDesc {
+  font-size: 16px;
+  color: #ff3b43;
+  margin-left: 6px;
+}
+
+.dataCardMainDesc1 {
+  width: 90%;
+  font-size: 16px;
+  color: #1c1c1d;
+  margin-left: 23.5px;
+}
+
+
+.dataCardBottomButtonArea {
+  height: 35px;
+  width: 85%;
+  margin-top: 25px;
+  margin-left: 23.5px;
+  display: flex;
+  align-items: center;
+}
+.dataCardCollectionButton {
+  background-color: #ffffff;
+  height: 35px;
+  width: 76px;
+  color: #ff3b43;
+  padding: 4px 0px 0 0px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 17.5px;
+  border-width: 2px;
+  border-style: double;
+  border-color: #ff3b43;
+  
+}

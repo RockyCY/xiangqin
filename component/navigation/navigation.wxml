@@ -1,0 +1,4 @@
+<!--component/navigation/navigation.wxml-->
+<view class="navBar" style="padding-top:{{bar_height}}px ;">
+  <text class="navBarText">{{title}}</text>
+</view>

@@ -1,0 +1,20 @@
+/* component/shareBtn/shareBtn.wxss */
+.normalbutton {
+  background:#05e06d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0px 0px 0px;
+}
+
+.buttonImage {
+  width: 19.5px;
+  height: 16.5px;
+}
+.buttonText {
+  color: #fff;
+  background:transparent;
+  padding: 0px;
+  text-align:center;
+  width: fit-content;
+}

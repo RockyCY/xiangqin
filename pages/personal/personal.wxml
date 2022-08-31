@@ -1,0 +1,4 @@
+<!--pages/personal/personal.wxml-->
+<view class="container">
+  <text>个人资料填写</text>
+</view>

@@ -1,0 +1,41 @@
+<!--component/dataCard/dataCard.wxml-->
+<view class="dataCardBG" style="margin-left: {{cardMargin}}px; ">
+  <view class="dataCardTopBG">
+    <view class="dataCardTopBG1">
+      <image class="dataCardPic"></image>
+      <view class="dataCardTextContainer">
+        <view class="dataCardTitleArea">
+          <view class="dataCardTitle">88年</view>
+          <view class="dataCardTitle1">未婚</view>
+        </view>
+        <view class="dataCardSubtitle">现居乌鲁木齐市</view>
+        <view class="dataCardSubtitle">家乡哈尔滨市</view>
+        <view class="dataCardSubtitle">博士'167cm'55kg</view>
+      </view>
+    </view>
+    <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
+      <view class="dataCardLabel">1-2年内结婚</view>
+      <view class="dataCardLabel">已购房</view>
+      <view class="dataCardLabel">已购车</view>
+      <view class="dataCardLabel">40-50w/年</view>
+      <view class="dataCardLabel">北京联合大学</view>
+    </view>
+  </view>
+  <view class="seperateLine" style="margin-left: {{seperateMargin}}px;"> </view>
+  <view class="dataCardMainDesBG">
+    <view class="dataCardMainDescDot"></view>
+    <view class="dataCardMainDesc">个人情况补充</view>
+  </view>
+  <view class="dataCardMainDesc1" style="width: {{}}px;">独生女，92年11月生，名校，福田国企会计，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。</view>
+  <view class="dataCardMainDesBG">
+    <view class="dataCardMainDescDot"></view>
+    <view class="dataCardMainDesc">择偶标准</view>
+  </view>
+  <view class="dataCardMainDesc1" style="width: {{}}px;">要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。</view>
+  <view class="dataCardBottomButtonArea">
+    <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16" bind:clickHandle="clickShareHandle"></shareBtn>
+    <button class="dataCardCollectionButton" bind:tap="clickCollectHandle">收藏</button>
+    <customBtn btnWidth="124" btnHeigh="35" btnText="联系对方家长" btnFontSize="16" bind:clickHandle="clickCallHandle"></customBtn>
+  </view>
+  <view style="height: 20px;"></view>
+</view>

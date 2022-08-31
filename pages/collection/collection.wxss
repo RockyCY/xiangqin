@@ -1,0 +1,6 @@
+/* pages/collection/collection.wxss */
+.collectionScrollView {
+  width: 100%;
+  margin: 0px;
+  background-color: #ff313b;
+}

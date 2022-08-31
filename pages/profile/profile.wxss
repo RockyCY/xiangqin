@@ -1,0 +1,33 @@
+/* pages/profile/profile.wxss */
+.userinfoBG {
+  margin-top: -12px;
+  width: 100%;
+  height: 208px;
+  background:-webkit-linear-gradient(left,#E852A4,#FF313A);
+  display: flex;
+  align-items: center;
+}
+.userinfoDescBG{
+   width: 50%;
+   margin-left: 36px;
+   height: 208px;
+   background:transparent;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   color: #fff;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}

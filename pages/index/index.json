@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "今日推荐",
+  "usingComponents": {
+      "navigation":"../../component/navigation/navigation",
+      "dataCard":"../../component/dataCard/dataCard"
+  }
+}
