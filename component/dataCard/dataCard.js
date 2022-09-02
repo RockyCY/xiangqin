@@ -32,6 +32,9 @@ Component({
     },
     clickCallHandle(){
       this.triggerEvent('clickCallHandle');
+    },
+    longTapHandle(){
+      this.triggerEvent('longTapHandle');
     }
   }
 })

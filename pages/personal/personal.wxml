@@ -1,4 +1,10 @@
-<!--pages/personal/personal.wxml-->
-<view class="container">
-  <text>个人资料填写</text>
+<view class="container" style="background: #efefef;">
+  <navigation title="我的资料" hideBackBtn="{{false}}"></navigation>
+  <scroll-view scroll-y="true" style="background: #efefef;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="personalHeadBG">
+      <image class="personalImage"></image>
+      <text class="personalImageText">相亲者照片</text>
+    </view>
+   
+  </scroll-view>
 </view>

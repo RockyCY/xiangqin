@@ -7,6 +7,10 @@ Component({
       title:{
         type:String,
         value:''
+      },
+      hideBackBtn:{
+        type:Boolean,
+        value:true
       }
   },
 
@@ -22,6 +26,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    clickBackHandle(){
+      wx.navigateBack({
+        delta: 0,
+      })
+    }
   }
 })

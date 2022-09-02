@@ -96,5 +96,10 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  clickFill(){
+    wx.navigateTo({
+      url: '../personal/personal'
+    })
+  },
 })

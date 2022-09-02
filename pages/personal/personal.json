@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "我的资料",
   "usingComponents": {
-   
+    "navigation":"../../component/navigation/navigation",
+    "personalBar":"../../component/personalBar/personalBar"
   }
 }

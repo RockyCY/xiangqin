@@ -1,4 +1,5 @@
 <!--component/navigation/navigation.wxml-->
 <view class="navBar" style="padding-top:{{bar_height}}px ;">
+  <image class="navBarBackBtn" src="../../images/return.png" hidden="{{hideBackBtn}}" bindtap="clickBackHandle"></image>
   <text class="navBarText">{{title}}</text>
 </view>

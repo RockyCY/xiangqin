@@ -9,6 +9,14 @@
   background:-webkit-linear-gradient(left,#E852A4,#FF313A);
 }
 
+.navBarBackBtn {
+   position: fixed;
+   top:54px;
+   left:16px;
+   width: 12px;
+   height: 20px;
+}
+
 .navBarText {
   width: 100%;
   height: 44px;
