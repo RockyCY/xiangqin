@@ -1,5 +1,6 @@
 .personalHeadBG {
   width: 100%;
+  margin-top: 12px;
   height: 199px;
   background:transparent;
   display: flex;
@@ -8,13 +9,22 @@
 }
 
 .personalImage {
-  margin-top: 5px;
+   margin-top: 5px;
    width: 143px;
    height: 143px;
    border-radius: 71.5px;
    border-style: none;
    border-width: 0cm;
-   background-color: #ff3a3b;
+   background-color: greenyellow;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.personalImage1 {
+  width: 40px;
+  height: 40px;
 }
 
 .personalImageText {
@@ -33,4 +43,5 @@
   margin-left: 18.5px;
   font-size: 20px;
   color: #9c9c9c;
+  font-weight: bold;
 }

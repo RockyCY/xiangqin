@@ -31,5 +31,10 @@ Page({
     wx.showToast({
       title: 'clickCall',
     })
+  },
+  clickFill(){
+    wx.navigateTo({
+      url: '../personal/personal',
+    })
   }
 })

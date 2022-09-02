@@ -1,4 +1,9 @@
 <!--component/personalBar/personalBar.wxml-->
-<view class="personalBarBG">
-  
+<view class="container">
+  <view class="personalBarBG">
+    <text class="personalBarMainTitle">{{mainTitle}}</text>
+    <text class="personalBarSubTitle" style="right: {{hideArrow==true?'20px':'45px'}};">{{subTitle}}</text>
+    <image class="personalBarArrow" src="../../images/left.png" hidden="{{hideArrow}}"></image>
+  </view>
+  <view class="bottomLine" style="left:{{bottomLineMargin}}px"hidden="{{hideBottomLine}}"></view>
 </view>

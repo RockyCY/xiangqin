@@ -1,10 +1,18 @@
 <view class="container" style="background: #efefef;">
   <navigation title="我的资料" hideBackBtn="{{false}}"></navigation>
-  <scroll-view scroll-y="true" style="background: #efefef;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <scroll-view scroll-y="true" style="margin-top: -12px; background: #efefef;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="personalHeadBG">
-      <image class="personalImage"></image>
+      <view class="personalImage">
+          <image class="personalImage1" src="../../images/camera.png">
+
+          </image>
+      </view>
       <text class="personalImageText">相亲者照片</text>
     </view>
-   
+    <view class="personalMainTitleBG">
+      <text class="personalMainTitle">基础信息</text>
+    </view>
+    <personalBar mainTitle="性别" subTitle="女" hideArrow="{{true}}" hideBottomLine="{{false}}"></personalBar>
+    <personalBar mainTitle="年龄" subTitle="1996年" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
   </scroll-view>
 </view>

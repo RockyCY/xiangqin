@@ -3,6 +3,6 @@
   <navigation title="今日推荐"></navigation>
   <scroll-view scroll-y="true" style="margin-top: -12px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <dataCard bind:clickShareHandle="clickShare"bind:clickCollectHandle="clickCollect"bind:clickCallHandle="clickCall"></dataCard>
-    <fillCard bind:clickFillHandle="clickShare"></fillCard>
+    <fillCard bind:clickFillHandle="clickFill"></fillCard>
   </scroll-view>
 </view>
