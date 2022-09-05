@@ -1,5 +1,5 @@
 <!--component/dataCard/dataCard.wxml-->
-<view class="dataCardBG" style="margin-left: {{cardMargin}}px; ">
+<view class="dataCardBG" style="margin-left: {{cardMargin}}px; "bindlongpress="longPressHandle">
   <view class="dataCardTopBG">
     <view class="dataCardTopBG1">
       <image class="dataCardPic"></image>

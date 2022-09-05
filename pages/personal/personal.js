@@ -6,6 +6,10 @@ Page({
    */
   data: {
     currentIndex: 2,
+    userData:{
+       heigh:'163cm',
+       revenue:'10-15W'
+    }
   },
 
   /**

@@ -3,6 +3,7 @@
   "usingComponents": {
       "navigation":"../../component/navigation/navigation",
       "dataCard":"../../component/dataCard/dataCard",
-      "fillCard":"../../component/fillCard/fillCard"
+      "fillCard":"../../component/fillCard/fillCard",
+      "customBtn":"../../component/customBtn/customBtn"
   }
 }

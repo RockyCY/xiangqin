@@ -1,10 +1,9 @@
 <view class="container" style="background: #efefef;">
   <navigation title="我的资料" hideBackBtn="{{false}}"></navigation>
-  <scroll-view scroll-y="true" style="margin-top: -12px; background: #efefef;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <scroll-view scroll-y="true" style="margin-top: -12px; background: efefef;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="personalHeadBG">
       <view class="personalImage">
           <image class="personalImage1" src="../../images/camera.png">
-
           </image>
       </view>
       <text class="personalImageText">相亲者照片</text>
@@ -14,5 +13,20 @@
     </view>
     <personalBar mainTitle="性别" subTitle="女" hideArrow="{{true}}" hideBottomLine="{{false}}"></personalBar>
     <personalBar mainTitle="年龄" subTitle="1996年" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <personalBar mainTitle="身高" subTitle="163cm" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <personalBar mainTitle="现居住地" subTitle="广东-深圳-宝安" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <personalBar mainTitle="家乡" subTitle="广东-深圳-宝安" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <personalBar mainTitle="婚姻状态" subTitle="丧偶" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
+    <view class="personalMainTitleBG otherMainTitleBG">
+      <text class="personalMainTitle otherMainTitle">教育及工作资料</text>
+    </view>
+    <personalBar mainTitle="最高学历" subTitle="本科" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <personalBar mainTitle="年收入" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
+    <view class="personalMainTitleBG otherMainTitleBG">
+      <text class="personalMainTitle otherMainTitle">联系方式</text>
+      <text class="personalMainTitle otherMainTitle1">其他用户将根据您预留的手机号与您联系</text>
+    </view>
+    <personalBar mainTitle="您与相亲者的关系" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
+    <personalBar mainTitle="年收入" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
   </scroll-view>
 </view>

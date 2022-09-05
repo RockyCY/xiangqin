@@ -1,4 +1,4 @@
-const HOST = 'https://applet.loveshangce.com';
+const HOST = 'https://springboot-cc0m-1610-4-1313078534.sh.run.tcloudbase.com';
 
 const app = getApp()
 
@@ -20,7 +20,7 @@ export function http(uri, options = {}) {
   method = method && method.toUpperCase();
   method == 'POST' &&
     (options.header = Object.assign({'X-Token':wx.getStorageSync('token')}, options.header, {
-      // 'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded'
     }));
   // let params = Object.assign({}, publicParams,data);
   let params = Object.assign({}, {}, data);

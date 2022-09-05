@@ -37,6 +37,11 @@
   height: 45px;
   background:transparent;
   display: flex;
+  flex-direction: column;
+}
+
+.otherMainTitleBG {
+  height: 60px;
 }
 
 .personalMainTitle {
@@ -44,4 +49,13 @@
   font-size: 20px;
   color: #9c9c9c;
   font-weight: bold;
+}
+
+.otherMainTitle {
+  margin-top: 25px;
+}
+
+.otherMainTitle1 {
+  font-size: 18px;
+  font-weight: normal;
 }
