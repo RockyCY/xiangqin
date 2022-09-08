@@ -1,7 +1,8 @@
 <!--index.wxml-->
 <view class="container" style="background: #efefef;">
   <navigation title="今日推荐"></navigation>
-  <view class="floatViewBG" bindtap="closeMask" hidden="{{hideDislikeMask}}" catchtouchmove="preventTouchMove">
+  <view class="floatViewBG"hidden="{{hideDislikeMask}}" catchtouchmove="preventTouchMove">
+    <view class="coverViewBG" bindtap="closeMask" ></view>
     <view class="dislikeViewBG">
       <customBtn btnWidth="300" btnHeigh="52" btnText="选好了" btnFontSize="22"
         bind:clickHandle="clickShare"></customBtn>

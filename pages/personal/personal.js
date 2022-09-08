@@ -9,7 +9,8 @@ Page({
     userData:{
        heigh:'163cm',
        revenue:'10-15W'
-    }
+    },
+    hideMask:true
   },
 
   /**
@@ -65,5 +66,18 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  showMask(){
+    this.setData({
+      hideMask:false
+    })
+  },
+  closeMask(){
+    this.setData({
+      hideMask:true
+    })
+  },
+  preventTouchMove(){
+    return
   }
 })

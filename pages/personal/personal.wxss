@@ -44,6 +44,10 @@
   height: 60px;
 }
 
+.otherMainTitleBG1 {
+  height: 80px;
+}
+
 .personalMainTitle {
   margin-left: 18.5px;
   font-size: 20px;
@@ -58,4 +62,36 @@
 .otherMainTitle1 {
   font-size: 18px;
   font-weight: normal;
+}
+
+
+
+.floatViewBG{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 999;
+}
+.coverViewBG{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:#000000;
+  opacity: 0.75;
+}
+
+.dislikeViewBG {
+  position: absolute;
+  height: 500px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  opacity: 1;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 22px 22px 0px 0px;
+
 }

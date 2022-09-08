@@ -1,5 +1,10 @@
 <view class="container" style="background: #efefef;">
   <navigation title="我的资料" hideBackBtn="{{false}}"></navigation>
+  <view class="floatViewBG"hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
+    <view class="coverViewBG" bindtap="closeMask" ></view>
+    <view class="dislikeViewBG">
+    </view>
+  </view>
   <scroll-view scroll-y="true" style="margin-top: -12px; background: efefef;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="personalHeadBG">
       <view class="personalImage">
@@ -22,11 +27,14 @@
     </view>
     <personalBar mainTitle="最高学历" subTitle="本科" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     <personalBar mainTitle="年收入" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
-    <view class="personalMainTitleBG otherMainTitleBG">
+    <view class="personalMainTitleBG otherMainTitleBG1">
       <text class="personalMainTitle otherMainTitle">联系方式</text>
       <text class="personalMainTitle otherMainTitle1">其他用户将根据您预留的手机号与您联系</text>
     </view>
     <personalBar mainTitle="您与相亲者的关系" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
     <personalBar mainTitle="年收入" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
+    <view class="personalMainTitleBG otherMainTitleBG">
+      <text class="personalMainTitle otherMainTitle">其他信息</text>
+    </view>
   </scroll-view>
 </view>

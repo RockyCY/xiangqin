@@ -19,6 +19,10 @@ Component({
      hideArrow:{
         type:Boolean,
         value:false
+     },
+     isEditType:{
+       type:Boolean,
+       value:false
      }
   },
 
