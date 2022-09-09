@@ -9,6 +9,8 @@ const app = getApp()
 Page({
   data: {
     currentIndex: 0,
+    reasons:["年龄偏大","年龄偏小","收入偏高","收入偏低","学历偏大","学历偏小","身高偏大","身高偏小","居住地不匹配","对方信息不全"],
+    buttonMargin:(wx.getSystemInfoSync().screenWidth - 300)/2,
     userInfo: {},
     hideDislikeMask:true,
     hasUserInfo: false,

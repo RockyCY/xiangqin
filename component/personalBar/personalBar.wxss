@@ -29,6 +29,13 @@
   color: #868b8f;
 }
 
+.personalBarEdit {
+  position: absolute;
+  right: 80px;
+  width: 20px;
+  height: 20px;
+}
+
 .personalBarArrow {
   position: absolute;
   right: 20px;

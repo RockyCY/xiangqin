@@ -20,7 +20,7 @@ export function http(uri, options = {}) {
   method = method && method.toUpperCase();
   method == 'POST' &&
     (options.header = Object.assign({'X-Token':wx.getStorageSync('token')}, options.header, {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/json'
     }));
   // let params = Object.assign({}, publicParams,data);
   let params = Object.assign({}, {}, data);

@@ -10,7 +10,9 @@ Page({
        heigh:'163cm',
        revenue:'10-15W'
     },
-    hideMask:true
+    hideMask:true,
+    descTitleWidth:wx.getSystemInfoSync().screenWidth - 18.5 * 2
+    // bottomLineMargin:wx.getSystemInfoSync().screenWidth * 0.05
   },
 
   /**

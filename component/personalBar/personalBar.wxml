@@ -2,8 +2,14 @@
 <view class="container">
   <view class="personalBarBG">
     <text class="personalBarMainTitle">{{mainTitle}}</text>
-    <text class="personalBarSubTitle" style="right: {{hideArrow==true?'20px':'45px'}};">{{subTitle}}</text>
-    <image class="personalBarArrow" src="../../images/left.png" hidden="{{hideArrow}}"></image>
+    <block wx:if="{{isEditType}}">
+      <image class="personalBarEdit" src="../../images/edit.png" bindtap="clickBar"></image>
+      <text class="personalBarSubTitle" style="right: 36px;"bindtap="clickBar">编辑</text>
+    </block>
+    <block wx:else>
+      <text class="personalBarSubTitle" style="right: {{hideArrow==true?'20px':'45px'}};"bindtap="clickBar">{{subTitle}}</text>
+      <image class="personalBarArrow" src="../../images/left.png" hidden="{{hideArrow}}"bindtap="clickBar"></image>
+    </block>
   </view>
-  <view class="bottomLine" style="left:{{bottomLineMargin}}px"hidden="{{hideBottomLine}}"></view>
+  <view class="bottomLine" style="left:{{bottomLineMargin}}px" hidden="{{hideBottomLine}}"></view>
 </view>

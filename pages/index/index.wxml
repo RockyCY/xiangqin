@@ -1,14 +1,19 @@
 <!--index.wxml-->
 <view class="container" style="background: #efefef;">
   <navigation title="今日推荐"></navigation>
-  <view class="floatViewBG"hidden="{{hideDislikeMask}}" catchtouchmove="preventTouchMove">
-    <view class="coverViewBG" bindtap="closeMask" ></view>
+  <view class="floatViewBG" hidden="{{hideDislikeMask}}" catchtouchmove="preventTouchMove">
+    <view class="coverViewBG" bindtap="closeMask"></view>
     <view class="dislikeViewBG">
-      <customBtn btnWidth="300" btnHeigh="52" btnText="选好了" btnFontSize="22"
-        bind:clickHandle="clickShare"></customBtn>
+      <view class="dislikeViewTopTitle">请选择原因</view>
+      <view class="reasonViewBG" style="left: {{buttonMargin}}px;">
+        <block wx:for="{{reasons}}" wx:for-item="reason">
+          <selectedBtn btnWidth="137.5" btnHeigh="37.5" btnText="{{reason}}" btnFontSize="20" selectedable="{{true}}" selected="{{false}}"bind:clickHandle="closeMask"></selectedBtn>
+        </block>
+      </view>
+      <customBtn btnWidth="300" btnHeigh="52" btnText="选好了" btnFontSize="22" style="position:absolute;bottom:11px;left: {{buttonMargin}}px;" bind:clickHandle="clickShare"></customBtn>
     </view>
   </view>
-  <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px;"bindscrolltoupper="upper"bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="showMask"></dataCard>
     <fillCard bind:clickFillHandle="clickFill"></fillCard>
   </scroll-view>
