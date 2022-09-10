@@ -1,50 +1,57 @@
 <view class="container" style="background: #efefef;">
   <navigation title="我的资料" hideBackBtn="{{false}}"></navigation>
-  <view class="floatViewBG"hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
-    <view class="coverViewBG" bindtap="closeMask" ></view>
-    <view class="dislikeViewBG">
+  <view class="floatViewBG" hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
+    <view class="coverViewBG" bindtap="closeMask"></view>
+    <view class="personalFillBG">
+
     </view>
   </view>
   <scroll-view scroll-y="true" style="margin-top: -12px; background: efefef;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="personalHeadBG">
       <view class="personalImage">
-          <image class="personalImage1" src="../../images/camera.png">
-          </image>
+        <image class="personalImage1" src="../../images/camera.png">
+        </image>
       </view>
       <text class="personalImageText">相亲者照片</text>
     </view>
     <view class="personalMainTitleBG">
       <text class="personalMainTitle">基础信息</text>
     </view>
-    <personalBar mainTitle="性别" subTitle="女" hideArrow="{{true}}" hideBottomLine="{{false}}" bind:clickBar="showMask"></personalBar>
-    <personalBar mainTitle="年龄" subTitle="1996年" hideArrow="{{false}}" hideBottomLine="{{false}}"bind:clickBar="showMask"></personalBar>
-    <personalBar mainTitle="身高" subTitle="163cm" hideArrow="{{false}}" hideBottomLine="{{false}}"bind:clickBar="showMask"></personalBar>
-    <personalBar mainTitle="现居住地" subTitle="广东-深圳-宝安" hideArrow="{{false}}" hideBottomLine="{{false}}"bind:clickBar="showMask"></personalBar>
-    <personalBar mainTitle="家乡" subTitle="广东-深圳-宝安" hideArrow="{{false}}" hideBottomLine="{{false}}"bind:clickBar="showMask"></personalBar>
-    <personalBar mainTitle="婚姻状态" subTitle="丧偶" hideArrow="{{false}}" hideBottomLine="{{true}}"bind:clickBar="showMask"></personalBar>
+    <picker bindchange="bindGenderChange" value="{{index}}" range="{{genderList}}">
+      <personalBar mainTitle="性别" subTitle="{{userData.gender}}" hideArrow="{{true}}" hideBottomLine="{{false}}"></personalBar>
+    </picker>
+    <picker mode="date" value="{{date}}" start="1970-01-01" end="2022-01-01" bindchange="bindDateChange">
+      <personalBar mainTitle="年龄" subTitle="{{userData.birthday}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    </picker>
+    <picker bindchange="bindHeighChange" value="{{index}}" range="{{bodyHeighList}}">
+      <personalBar mainTitle="身高" subTitle="{{userData.heigh}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    </picker>
+    <personalBar mainTitle="现居住地" subTitle="广东-深圳-宝安" hideArrow="{{false}}" hideBottomLine="{{false}}" bind:clickBar="clickBar"></personalBar>
+    <personalBar mainTitle="家乡" subTitle="广东-深圳-宝安" hideArrow="{{false}}" hideBottomLine="{{false}}" bind:clickBar="clickBar"></personalBar>
+    <personalBar mainTitle="婚姻状态" subTitle="丧偶" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar>
     <view class="personalMainTitleBG otherMainTitleBG">
       <text class="personalMainTitle otherMainTitle">教育及工作资料</text>
     </view>
-    <personalBar mainTitle="最高学历" subTitle="本科" hideArrow="{{false}}" hideBottomLine="{{false}}"bind:clickBar="showMask"></personalBar>
-    <personalBar mainTitle="年收入" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"bind:clickBar="showMask"></personalBar>
+    <personalBar mainTitle="最高学历" subTitle="本科" hideArrow="{{false}}" hideBottomLine="{{false}}" bind:clickBar="clickBar"></personalBar>
+    <personalBar mainTitle="年收入" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar>
     <view class="personalMainTitleBG otherMainTitleBG1">
       <text class="personalMainTitle otherMainTitle">联系方式</text>
       <text class="personalMainTitle otherMainTitle1">其他用户将根据您预留的手机号与您联系</text>
     </view>
-    <personalBar mainTitle="您与相亲者的关系" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{false}}"bind:clickBar="showMask"></personalBar>
-    <personalBar mainTitle="年收入" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"bind:clickBar="showMask"></personalBar>
+    <personalBar mainTitle="您与相亲者的关系" subTitle="母子" hideArrow="{{false}}" hideBottomLine="{{false}}" bind:clickBar="clickBar"></personalBar>
+    <personalBar mainTitle="电话" subTitle="138****1234" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar>
     <view class="personalMainTitleBG otherMainTitleBG">
       <text class="personalMainTitle otherMainTitle">其他信息</text>
     </view>
-    <personalBar mainTitle="个人信息" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}" isEditType="{{true}}"bind:clickBar="showMask"></personalBar>
-    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">独生女，92年11月生，未婚,身高165，名校毕业，深圳福田国企会计，家住福田，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。
+    <personalBar mainTitle="个人信息" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}" isEditType="{{true}}" bind:clickBar="clickBar"></personalBar>
+    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userData.personalDesc}}
     </view>
     <view class="bottomBar">
       <view class="bottomLine">
       </view>
     </view>
-    <personalBar mainTitle="择偶标准" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}"isEditType="{{true}}"bind:clickBar="showMask"></personalBar>
-    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。
+    <personalBar mainTitle="择偶标准" subTitle="10-15W" hideArrow="{{false}}" hideBottomLine="{{true}}" isEditType="{{true}}" bind:clickBar="clickBar"></personalBar>
+    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userData.spouceDesc}}
     </view>
     <view class="bottomBar"></view>
   </scroll-view>

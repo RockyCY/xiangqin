@@ -58,6 +58,11 @@ Page({
       url: '../personal/personal',
     })
   },
+  clickSubmit(){
+    wx.showToast({
+      title: 'clickSubmit',
+    })
+  },
   showMask(){
     this.setData({
       hideDislikeMask:false

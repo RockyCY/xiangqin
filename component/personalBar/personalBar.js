@@ -38,7 +38,7 @@ Component({
    */
   methods: {
     clickBar(){
-      this.triggerEvent('clickBar');
+      this.triggerEvent('clickBar',this.properties.mainTitle);
     }
   }
 })

@@ -10,7 +10,7 @@
           <selectedBtn btnWidth="137.5" btnHeigh="37.5" btnText="{{reason}}" btnFontSize="20" selectedable="{{true}}" selected="{{selectedReasons[reason]}}" buttonNum="{{index}}" bind:clickHandle="clickReasonButton"></selectedBtn>
         </block>
       </view>
-      <customBtn btnWidth="300" btnHeigh="52" btnText="选好了" btnFontSize="22" style="position:absolute;bottom:11px;left: {{buttonMargin}}px;" bind:clickHandle="clickShare"></customBtn>
+      <customBtn btnWidth="300" btnHeigh="52" btnText="选好了" btnFontSize="22" style="position:absolute;bottom:11px;left: {{buttonMargin}}px;" bind:clickHandle="clickSubmit"></customBtn>
     </view>
   </view>
   <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">

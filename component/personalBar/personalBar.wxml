@@ -1,14 +1,14 @@
 <!--component/personalBar/personalBar.wxml-->
 <view class="container">
-  <view class="personalBarBG">
+  <view class="personalBarBG" bindtap="clickBar">
     <text class="personalBarMainTitle">{{mainTitle}}</text>
     <block wx:if="{{isEditType}}">
-      <image class="personalBarEdit" src="../../images/edit.png" bindtap="clickBar"></image>
-      <text class="personalBarSubTitle" style="right: 36px;"bindtap="clickBar">编辑</text>
+      <image class="personalBarEdit" src="../../images/edit.png"></image>
+      <text class="personalBarSubTitle" style="right: 36px;">编辑</text>
     </block>
     <block wx:else>
-      <text class="personalBarSubTitle" style="right: {{hideArrow==true?'20px':'45px'}};"bindtap="clickBar">{{subTitle}}</text>
-      <image class="personalBarArrow" src="../../images/left.png" hidden="{{hideArrow}}"bindtap="clickBar"></image>
+      <text class="personalBarSubTitle" style="right: {{hideArrow==true?'20px':'45px'}};">{{subTitle}}</text>
+      <image class="personalBarArrow" src="../../images/left.png" hidden="{{hideArrow}}"></image>
     </block>
   </view>
   <view class="bottomLine" style="left:{{bottomLineMargin}}px" hidden="{{hideBottomLine}}"></view>

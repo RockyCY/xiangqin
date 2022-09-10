@@ -91,9 +91,9 @@
   opacity: 0.75;
 }
 
-.dislikeViewBG {
+.personalFillBG {
   position: absolute;
-  height: 500px;
+  height: 355px;
   left: 0px;
   right: 0px;
   bottom: 0px;
