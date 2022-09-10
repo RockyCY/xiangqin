@@ -6,8 +6,8 @@
     <view class="dislikeViewBG">
       <view class="dislikeViewTopTitle">请选择原因</view>
       <view class="reasonViewBG" style="left: {{buttonMargin}}px;">
-        <block wx:for="{{reasons}}" wx:for-item="reason">
-          <selectedBtn btnWidth="137.5" btnHeigh="37.5" btnText="{{reason}}" btnFontSize="20" selectedable="{{true}}" selected="{{false}}"bind:clickHandle="closeMask"></selectedBtn>
+        <block wx:for="{{reasons}}" wx:for-item="reason" wx:key="index" wx:data-index="{{index}}">
+          <selectedBtn btnWidth="137.5" btnHeigh="37.5" btnText="{{reason}}" btnFontSize="20" selectedable="{{true}}" selected="{{selectedReasons[reason]}}" buttonNum="{{index}}" bind:clickHandle="clickReasonButton"></selectedBtn>
         </block>
       </view>
       <customBtn btnWidth="300" btnHeigh="52" btnText="选好了" btnFontSize="22" style="position:absolute;bottom:11px;left: {{buttonMargin}}px;" bind:clickHandle="clickShare"></customBtn>

@@ -27,6 +27,10 @@ Component({
     selected:{
       type:Boolean,
       value:false
+    },
+    buttonNum:{
+      type:Number,
+      value:0
     }
   },
 
@@ -34,7 +38,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+     
   },
 
   /**
@@ -42,7 +46,7 @@ Component({
    */
   methods: {
     clickHandle(){
-      this.triggerEvent('clickHandle');
+      this.triggerEvent('clickHandle',this.properties.buttonNum);
     }
   }
 })

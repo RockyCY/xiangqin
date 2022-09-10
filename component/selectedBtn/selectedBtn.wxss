@@ -7,10 +7,20 @@
   border: 1px solid #ff3b43;
 }
 
-.selectdbutton {
+.selectedbutton {
   text-align:center;
   background:-webkit-linear-gradient(left,#E852A4,#FF313A);
   color:#ffffff;
   padding: 0px;
   border: 1px solid #ff3b43;
+  font-weight: normal;
+}
+
+.unselectdbutton {
+  text-align:center;
+  background: #ffffff;
+  color:#464646;
+  padding: 0px;
+  border: 1px solid #ff3b43;
+  font-weight: normal;
 }

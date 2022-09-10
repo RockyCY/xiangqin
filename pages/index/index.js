@@ -10,6 +10,7 @@ Page({
   data: {
     currentIndex: 0,
     reasons:["年龄偏大","年龄偏小","收入偏高","收入偏低","学历偏大","学历偏小","身高偏大","身高偏小","居住地不匹配","对方信息不全"],
+    selectedReasons:{"年龄偏大":false,"年龄偏小":false,"收入偏高":false,"收入偏低":false,"学历偏大":false,"学历偏小":false,"身高偏大":false,"身高偏小":false,"居住地不匹配":false,"对方信息不全":false},
     buttonMargin:(wx.getSystemInfoSync().screenWidth - 300)/2,
     userInfo: {},
     hideDislikeMask:true,
@@ -65,6 +66,20 @@ Page({
   closeMask(){
     this.setData({
       hideDislikeMask:true
+    })
+  },
+  clickReasonButton(e){
+    let num = e.detail;
+    var reason = this.data.reasons[num];
+    console.log(reason);
+    var selectedStatus = this.data.selectedReasons[reason];
+    if(selectedStatus == false){
+      this.data.selectedReasons[reason] = true;
+    }else {
+      this.data.selectedReasons[reason] = false;
+    }
+    this.setData({
+      selectedReasons:this.data.selectedReasons
     })
   },
   preventTouchMove(){
