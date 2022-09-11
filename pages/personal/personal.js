@@ -11,8 +11,8 @@ Page({
        birthday:'1991-01-01',
        heigh:'170cm',
        revenue:'10-15W',
-       residentPlace:'广东省-广州市-海珠区',
-       hometown:'广东省-广州市-海珠区',
+       residentPlace:['广东省', '广州市', '海珠区'],
+       hometown:['广东省', '广州市', '海珠区'],
        marriage:'未婚',
        education:'本科',
        revenue:'10-15W',
@@ -104,6 +104,46 @@ Page({
   bindHeighChange: function (e) {
     let num = e.detail.value;
     this.data.userData.heigh = this.data.bodyHeighList[num];
+    this.setData({
+      userData: this.data.userData
+    })
+  },
+  bindRegion1Change: function (e) {
+    this.data.userData.residentPlace = e.detail.value;
+    this.setData({
+      userData: this.data.userData
+    })
+  },
+  bindRegion2Change: function (e) {
+    this.data.userData.hometown = e.detail.value;
+    this.setData({
+      userData: this.data.userData
+    })
+  },
+  bindMarriageChange: function (e) {
+    let num = e.detail.value;
+    this.data.userData.marriage = this.data.marriageList[num];
+    this.setData({
+      userData: this.data.userData
+    })
+  },
+  bindEducationChange: function (e) {
+    let num = e.detail.value;
+    this.data.userData.education = this.data.educationList[num];
+    this.setData({
+      userData: this.data.userData
+    })
+  },
+  bindRevenueChange: function (e) {
+    let num = e.detail.value;
+    this.data.userData.revenue = this.data.revenueList[num];
+    this.setData({
+      userData: this.data.userData
+    })
+  },
+  bindRelationChange: function (e) {
+    let num = e.detail.value;
+    this.data.userData.relation = this.data.relationList[num];
     this.setData({
       userData: this.data.userData
     })
