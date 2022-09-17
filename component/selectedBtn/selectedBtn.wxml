@@ -1,3 +1,3 @@
 <!--component/selectedBtn/selectedBtn.wxml-->
-<button class="{{selectedable==true?(selected==true?'selectedbutton':'unselectdbutton'):'normalbutton'}}" style="width:{{btnWidth}}px;height: {{btnHeigh}}px;line-height: {{btnHeigh}}px;border-radius:{{btnHeigh/2}}px; font-size: {{btnFontSize}}px; margin-top: {{buttonNum>1?'0':'0'}}px;margin-left:{{buttonNum%2==1?'25':'0'}}px;" bindtap="clickHandle">{{btnText}}
+<button class="{{selectedable==true?(selected==true?'selectedbutton':'unselectdbutton'):'normalbutton'}}" style="width:{{btnWidth}}px;height: {{btnHeigh}}px;line-height: {{btnHeigh}}px;border-radius:{{btnHeigh/2}}px; font-size: {{btnFontSize}}px; margin-top: {{buttonNum>1?'0':'0'}}px;margin-left:{{buttonNum%2==1?'25':'0'}}px;border: {{borderWidth}}px solid #ff3b43;" bindtap="clickHandle">{{btnText}}
 </button>

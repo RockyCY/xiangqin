@@ -28,6 +28,76 @@
   opacity: 0.75;
 }
 
+.contactViewBG {
+  position: absolute;
+  height: 441px; 
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  opacity: 1;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 22px 22px 0px 0px;
+}
+
+.contactViewBG{
+  height: 505px; 
+}
+
+.contactViewTopTitle{
+  position: absolute;
+  top: 48px;
+  width: 100%;
+  overflow-wrap: break-word;
+  color: #464646;
+  font-size: 30px;
+  font-family: PingFangSC-Semibold;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 30px;
+  align-self: center;
+}
+
+.contactViewTopTitle1{
+  top: 39px;
+}
+
+.contactViewSubTitle {
+  position: absolute;
+  top: 93.5px;
+  width: 100%;
+  overflow-wrap: break-word;
+  color: #9E9E9E;
+  font-size: 20px;
+  font-family: PingFangSC-Semibold;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 20px;
+  align-self: center;
+}
+
+.contactViewSubTitle1 {
+  top: 84.5px;
+}
+
+.contactViewPhoneNumber {
+  position: absolute;
+  top: 133.5px;
+  width: 100%;
+  overflow-wrap: break-word;
+  color: #474747;
+  font-size: 30px;
+  font-family: PingFangSC-Semibold;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 30px;
+  align-self: center;
+}
+
+.contactViewPhoneNumber1 {
+  top: 124.5px;
+}
+
 .dislikeViewBG {
   position: absolute;
   height: 480px;

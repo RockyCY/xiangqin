@@ -31,7 +31,11 @@ Component({
     buttonNum:{
       type:Number,
       value:0
-    }
+    },
+    borderWidth:{
+      type:String,
+      value:'1'
+    },
   },
 
   /**

@@ -4,14 +4,15 @@
     "pages/logs/logs",
     "pages/personal/personal",
     "pages/collection/collection",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/datafill/datafill"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
     "navigationBarTextStyle": "black",
-    "navigationStyle":"custom"
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "list": [

@@ -5,12 +5,12 @@
       <image class="dataCardPic"></image>
       <view class="dataCardTextContainer">
         <view class="dataCardTitleArea">
-          <view class="dataCardTitle">88年</view>
-          <view class="dataCardTitle1">未婚</view>
+          <view class="dataCardTitle">{{userData.birthday}}</view>
+          <view class="dataCardTitle1">{{userData.marriage}}</view>
         </view>
-        <view class="dataCardSubtitle">现居乌鲁木齐市</view>
-        <view class="dataCardSubtitle">家乡哈尔滨市</view>
-        <view class="dataCardSubtitle">博士'167cm'55kg</view>
+        <view class="dataCardSubtitle">现居{{userData.residentPlace[1]}}</view>
+        <view class="dataCardSubtitle">家乡{{userData.hometown[1]}}</view>
+        <view class="dataCardSubtitle">{{userData.education}} {{userData.heigh}} {{userData.weigh}}</view>
       </view>
     </view>
     <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
