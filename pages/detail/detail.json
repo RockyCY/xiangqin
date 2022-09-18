@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "navigation":"../../component/navigation/navigation",
+    "dataCard":"../../component/dataCard/dataCard",
+    "customBtn":"../../component/customBtn/customBtn",
+    "selectedBtn":"../../component/selectedBtn/selectedBtn"
+  }
+}

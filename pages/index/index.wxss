@@ -40,7 +40,7 @@
   border-radius: 22px 22px 0px 0px;
 }
 
-.contactViewBG{
+.contactViewBG1{
   height: 505px; 
 }
 
@@ -96,6 +96,71 @@
 
 .contactViewPhoneNumber1 {
   top: 124.5px;
+}
+
+.redlineNumBG {
+  position: absolute;
+  top: 182px;
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.redlineNumBG1 {
+  top: 173px;
+}
+.redlineImg {
+  width: 31.5px;
+  height: 22.5px;
+}
+
+.redlineImageLeftMargin {
+  margin-left: 6px;
+}
+
+.redlineText {
+  margin-left: 5.5px;
+  font-size: 18px;
+  color: #969696;
+}
+
+.contactViewButtonBG {
+  position: absolute;
+  top:239.5px;
+  width: 100%;
+  height: 134px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactViewButtonBG1 {
+  top:230.5px;
+  height: 216px;
+}
+
+.inviteFriendsFillDataButton {
+  width: 300px;
+  height: 52px;
+  border-radius: 26px;
+  border: 2px solid #ff3b43;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inviteMainTitle {
+  font-size: 24px;
+  color: #ff3b43;
+}
+
+.inviteSubTitle {
+  margin-left: 3px;
+  font-size: 18px;
+  color: #969696;
 }
 
 .dislikeViewBG {

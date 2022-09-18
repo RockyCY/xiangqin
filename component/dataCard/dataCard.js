@@ -46,6 +46,9 @@ Component({
     clickCallHandle(){
       this.triggerEvent('clickCallHandle');
     },
+    clickMore(){
+      this.triggerEvent('clickMore');
+    },
     longPressHandle(){
       this.triggerEvent('longPressHandle');
     }

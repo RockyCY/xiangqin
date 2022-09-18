@@ -3,7 +3,7 @@
   <navigation title="我的资料"></navigation>
   <view class="userinfoBG">
     <view class="userinfoDescBG">
-      <open-data type="userNickName"></open-data>
+      <!-- <open-data type="userNickName"></open-data> -->
         <view class="userinfo-nickname">{{userInfo.nickName}}</view>
     </view>
     <view class="userinfo">
@@ -11,7 +11,6 @@
         <view class="userinfo-avatar" bindtap="bindViewTap">
           <open-data type="userAvatarUrl"></open-data>
         </view>
-        <open-data type="userNickName"></open-data>
       </block>
       <block wx:elif="{{!hasUserInfo}}">
         <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
@@ -20,7 +19,6 @@
       </block>
       <block wx:else>
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       </block>
     </view>
   </view>

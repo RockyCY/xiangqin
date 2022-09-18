@@ -64,8 +64,8 @@ Page({
 
   },
   clickData(){
-    wx.showToast({
-      title: 'clickData',
+    wx.navigateTo({
+      url: '../detail/detail',
     })
   },
   clickShare(){

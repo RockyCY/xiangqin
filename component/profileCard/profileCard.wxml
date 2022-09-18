@@ -10,20 +10,20 @@
       <image class="profileCardPic"></image>
       <view class="profileCardTextContainer">
         <view class="profileCardTitleArea">
-          <view class="profileCardTitle">88年</view>
-          <view class="profileCardTitle1">未婚</view>
+          <view class="profileCardTitle">{{userData.birthday}}</view>
+          <view class="profileCardTitle1">{{userData.marriage}}</view>
         </view>
-        <view class="profileCardSubtitle">现居乌鲁木齐市</view>
-        <view class="profileCardSubtitle">家乡哈尔滨市</view>
-        <view class="profileCardSubtitle">博士'167cm'55kg</view>
+        <view class="profileCardSubtitle">现居{{userData.residentPlace[1]}}</view>
+        <view class="profileCardSubtitle">家乡{{userData.hometown[1]}}</view>
+        <view class="profileCardSubtitle">{{userData.education}} {{userData.heigh}} {{userData.weigh}}</view>
       </view>
     </view>
     <view class="profileCardLabelArea" style="margin-left: {{labelMargin}}px;">
-      <view class="profileCardLabel">1-2年内结婚</view>
-      <view class="profileCardLabel">已购房</view>
-      <view class="profileCardLabel">已购车</view>
-      <view class="profileCardLabel">40-50w/年</view>
-      <view class="profileCardLabel">北京联合大学</view>
+      <view class="profileCardLabel">{{userData.personalLabel[0]}}</view>
+      <view class="profileCardLabel">{{userData.personalLabel[1]}}</view>
+      <view class="profileCardLabel">{{userData.personalLabel[2]}}</view>
+      <view class="profileCardLabel">{{userData.personalLabel[3]}}</view>
+      <view class="profileCardLabel">{{userData.personalLabel[4]}}</view>
     </view>
   </view>
   <view class="seperateLine" style="margin-left: {{seperateMargin}}px;"> </view>
@@ -31,11 +31,11 @@
     <view class="profileCardMainDescDot"></view>
     <view class="profileCardMainDesc">个人情况补充</view>
   </view>
-  <view class="profileCardMainDesc1">独生女，92年11月生，名校，福田国企会计，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。</view>
+  <view class="profileCardMainDesc1">{{userData.personalDesc}}</view>
   <view class="profileCardMainDesBG">
     <view class="profileCardMainDescDot"></view>
     <view class="profileCardMainDesc">择偶标准</view>
   </view>
-  <view class="profileCardMainDesc1">要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。</view>
+  <view class="profileCardMainDesc1">{{userData.spouceDesc}}</view>
   <view style="height: 20px;"></view>
 </view>

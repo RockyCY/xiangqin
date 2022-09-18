@@ -15,7 +15,7 @@
    border-radius: 71.5px;
    border-style: none;
    border-width: 0cm;
-   background-color: greenyellow;
+   background-color: #fff;
    display: flex;
    flex-direction: column;
    align-items: center;

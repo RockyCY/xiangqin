@@ -24,12 +24,12 @@
   width: 86px;
   height: 116px;
   background: #ff313b;
-  margin-top: 27px;
+  margin-top: 10px;
   margin-left: 23.5px;
 }
 
 .dataCardTextContainer {
-  margin-top: 27px;
+  margin-top: 10px;
   width: 80%;
   height: 128px;
 }
@@ -68,9 +68,11 @@
   background-color: #D4D3D3;
   width: 86%;
   height: 1px;
+  margin-top: -17px;
 }
 
 .dataCardLabelArea {
+  margin-top: -17px;
   height: 55px;
   width: 90%;
   display: flex;
@@ -138,5 +140,29 @@
   border-width: 2px;
   border-style: double;
   border-color: #ff3b43;
-  
+}
+
+.moreBG {
+  position: absolute;
+  top:36px;
+  right: 21px;
+  width: 42px;
+  height: 38.5px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.moreImg {
+  width: 20px;
+  height: 20px;
+}
+.moreText {
+  width: 42px;
+  height: 18.5px;
+  color: #7d7d7d;
+  font-size: 13px;
+  font-family: PingFangSC-Semibold;
+  text-align: center;
 }

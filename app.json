@@ -5,7 +5,8 @@
     "pages/personal/personal",
     "pages/collection/collection",
     "pages/profile/profile",
-    "pages/datafill/datafill"
+    "pages/datafill/datafill",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

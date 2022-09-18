@@ -9,12 +9,12 @@
 }
 .userinfoDescBG{
    width: 50%;
-   margin-left: 36px;
+   margin-left: 35.5px;
    height: 208px;
-   background:transparent;
+   background:green;
    display: flex;
    flex-direction: column;
-   align-items: center;
+   align-items: left;
    color: #fff;
 }
 
@@ -26,8 +26,11 @@
 }
 .userinfo-avatar {
   overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
+}
+.userinfo-nickname {
+  font-size: 26px;
+  color: #fff;
 }
