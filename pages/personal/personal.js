@@ -7,6 +7,7 @@ Page({
   data: {
     currentIndex: 2,
     userData:{
+      id:123456,
       gender:'男',
       birthday:'1991-01-01',
       heigh:'170cm',
@@ -21,7 +22,8 @@ Page({
       phone:'138*****1234',
       personalDesc:'独生女，92年11月生，未婚,身高165，名校毕业，深圳福田国企会计，家住福田，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。',
       spouceDesc:'要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。',
-      personalLabel:['1-2年内结婚','已购房','已购车','40-50w/年','北京联合大学']
+      personalLabel:['1-2年内结婚','已购房','已购车','40-50w/年','北京联合大学'],
+      redlineNum:99
    },
     hideMask:true,
     descTitleWidth:wx.getSystemInfoSync().screenWidth - 18.5 * 2,
@@ -164,5 +166,18 @@ Page({
   },
   preventTouchMove(){
     return
+  },
+  chooseImage(){
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['image'],
+      sourceType: ['album', 'camera'],
+      maxDuration: 30,
+      camera: 'back',
+      success(res) {
+        console.log(res.tempFiles.tempFilePath)
+        console.log(res.tempFiles.size)
+      }
+    })
   }
 })

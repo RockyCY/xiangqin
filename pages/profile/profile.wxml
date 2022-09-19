@@ -1,10 +1,15 @@
 <!--pages/profile/profile.wxml-->
-<view class="container" style="background: #efefef;">
+<view class="container" style="padding-top: {{navigationBarHeight}}px; background: #efefef;">
   <navigation title="我的资料"></navigation>
   <view class="userinfoBG">
     <view class="userinfoDescBG">
-      <!-- <open-data type="userNickName"></open-data> -->
-        <view class="userinfo-nickname">{{userInfo.nickName}}</view>
+        <view class="userinfo-nickname"><open-data type="userNickName"></open-data></view>
+        <view class="userinfo-id">缘分号{{userData.id}}</view>
+        <view class="redlineNumBG" bindtap="clickGetMoreRedline">
+          <image class="redlineImg" src="../../images/redCard.png"></image>
+          <view class="redlineText">x{{userData.redlineNum}}</view>
+          <view class="redlineMore">获取更多></view>
+        </view>
     </view>
     <view class="userinfo">
       <block wx:if="{{canIUseOpenData}}">

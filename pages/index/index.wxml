@@ -4,14 +4,14 @@
   <view class="floatViewBG" hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
     <view class="coverViewBG" bindtap="closeMask"></view>
     <block wx:if="{{isContactMask}}">
-      <block wx:if="{{redlineNum>2}}">
+      <block wx:if="{{userData.redlineNum>2}}">
         <view class="contactViewBG contactViewBG1">
           <view class="contactViewTopTitle contactViewTopTitle1">对方手机号</view>
           <view class="contactViewSubTitle contactViewSubTitle1">联系对方时请保护个人信息</view>
           <view class="contactViewPhoneNumber contactViewPhoneNumber1">{{userData.phone}}</view>
           <view class="redlineNumBG redlineNumBG1">
             <image class="redlineImg" src="../../images/redCard.png"></image>
-            <view class="redlineText">x{{redlineNum}}</view>
+            <view class="redlineText">x{{userData.redlineNum}}</view>
           </view>
           <view class="contactViewButtonBG contactViewButtonBG1">
             <selectedBtn btnWidth="300" btnHeigh="52" btnText="复制号码" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="clickCopyNumber"></selectedBtn>
@@ -53,7 +53,7 @@
     </block>
   </view>
   <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="showMask" data-type="dislike"></dataCard>
+    <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="showMask" data-type="dislike" bind:clickMore=""></dataCard>
     <fillCard bind:clickFillHandle="clickFill"></fillCard>
   </scroll-view>
 
