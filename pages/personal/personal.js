@@ -6,6 +6,7 @@ Page({
    */
   data: {
     currentIndex: 2,
+    scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight - 44,
     userData:{
       id:123456,
       gender:'男',

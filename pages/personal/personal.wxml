@@ -3,10 +3,10 @@
   <view class="floatViewBG" hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
     <view class="coverViewBG" bindtap="closeMask"></view>
     <view class="personalFillBG">
-
+      <textarea auto-focus="true" value="{{userData.personalDesc}}"/>
     </view>
   </view>
-  <scroll-view scroll-y="true" style="margin-top: -12px; background: efefef;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <scroll-view scroll-y="true" style="margin-top: -12px; background: efefef; height: {{scrollHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="personalHeadBG">
       <view class="personalImage" bindtap="chooseImage">
         <view class="personalImageMask"></view>
