@@ -3,7 +3,28 @@
   <view class="floatViewBG" hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
     <view class="coverViewBG" bindtap="closeMask"></view>
     <view class="personalFillBG">
-      <textarea auto-focus="true" value="{{userData.personalDesc}}"/>
+      <block wx:if="{{isPhoneMask}}">
+        <view class="personalPhoneClose" bindtap="closeMask">关闭</view>
+        <view class="personalPhoneTopTitle">联系电话</view>
+        <view class="personalPhoneTopSubTitle">其他相亲者将通过该号码联系你</view>
+        <input class="personalPhoneInput" type="number" maxlength="11" bindinput="bindKeyInput" placeholder="这输入手机号" placeholder-style="text-align:center;font-size:20px;color:#585858"/>
+        <customBtn btnWidth="300" btnHeigh="52" btnText="获取验证码" btnFontSize="22" style="margin-top: 42px;"
+        bind:clickHandle="requestVerticalCode"></customBtn>
+      </block>
+      <block wx:elif="{{isVertifiCodeMask}}">
+        <view class="personalPhoneClose" bindtap="closeMask">关闭</view>
+        <view class="personalPhoneTopTitle">输入验证码</view>
+        <view class="personalPhoneTopSubTitle">验证码已发送</view>
+        <input class="personalPhoneInput" type="number" maxlength="20" placeholder="请输入验证码" placeholder-style="text-align:center;font-size:20px;color:#585858"/>
+        <customBtn btnWidth="300" btnHeigh="52" btnText="完成" btnFontSize="22" style="margin-top: 42px;"
+        bind:clickHandle="closeMask"></customBtn>
+      </block>
+      <block wx:elif="{{isSchoolMask}}">
+
+      </block>
+      <!-- <textarea auto-focus="true" style="height: 3em" value="{{userData.personalDesc}}"/>
+      <input class="weui-input"  maxlength="11" bindinput="bindKeyInput" placeholder="输入同步到view中"/> -->
+
     </view>
   </view>
   <scroll-view scroll-y="true" style="margin-top: -12px; background: efefef; height: {{scrollHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">

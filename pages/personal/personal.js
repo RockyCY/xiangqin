@@ -30,6 +30,12 @@ Page({
       redlineNum:99
    },
     hideMask:true,
+    isPhoneMask:false,
+    isVertifiCodeMask:false,
+    isSchoolMask:false,
+    isPersonalDescMask:false,
+    isSpouseDescMask:false,
+    inputPhone:'',
     descTitleWidth:wx.getSystemInfoSync().screenWidth - 18.5 * 2,
     genderList:['男','女'],
     bodyHeighList:['140cm','141cm','142cm','143cm','144cm','145cm','146cm','147cm','148cm','149cm','150cm','151cm','152cm','153cm','154cm','155cm','156cm','157cm','158cm','159cm','160cm','161cm','162cm','163cm','164cm','165cm','166cm','167cm','168cm','169cm','170cm','171cm','172cm','173cm','174cm','175cm','176cm','177cm','178cm','179cm','180cm','181cm','182cm','183cm','184cm','185cm','186cm','187cm','188cm','189cm','190cm','191cm','192cm','193cm','194cm','195cm','196cm','197cm','198cm','199cm','200cm'],
@@ -204,9 +210,27 @@ Page({
   },
   clickBar(e){
     let title = e.detail;
-    console.log(title);
+    var phoneMask = false;
+    var vertifiCodeMask = false;
+    var schoolMask = false;
+    var personalDescMask = false;
+    var spouseDescMask = false;
+    if(title =='电话'){
+      phoneMask = true;
+    }else if(title == '学校'){
+      vertifiCodeMask = true;
+    }else if(title == '个人信息'){
+      personalDescMask = true;
+    }else if(title == '择偶标准'){
+      spouseDescMask = true;
+    }
     this.setData({
-      hideMask:false
+      hideMask:false,
+      isPhoneMask:phoneMask,
+      isVertifiCodeMask:vertifiCodeMask,
+      isSchoolMask:schoolMask,
+      isPersonalDescMask:personalDescMask,
+      isSpouseDescMask:spouseDescMask
     })
   },
   closeMask(){
@@ -229,5 +253,31 @@ Page({
         console.log(res.tempFiles.size)
       }
     })
-  }
+  },
+  requestVerticalCode(e){
+    //verifi number
+    console.log(this.data.inputPhone);
+    if(this.data.inputPhone.length<11){
+      wx.showToast({
+        title: '长度不足',
+        icon: 'none',
+        mask: 'true'
+      })
+      return;
+    }
+    this.setData({
+      hideMask:false,
+      isPhoneMask:false,
+      isVertifiCodeMask:true,
+      isSchoolMask:false,
+      isPersonalDescMask:false,
+      isSpouseDescMask:false
+    })
+  },
+  bindKeyInput: function (e) {
+    console.log(e.detail.value);
+    this.setData({
+      inputPhone: e.detail.value
+    })
+  },
 })
