@@ -36,6 +36,10 @@ Page({
     isPersonalDescMask:false,
     isSpouseDescMask:false,
     inputPhone:'',
+    verifiCode:'',
+    inputSchool:'',
+    inputPersonalDesc:'',
+    inputSpouseDesc:'',
     descTitleWidth:wx.getSystemInfoSync().screenWidth - 18.5 * 2,
     genderList:['男','女'],
     bodyHeighList:['140cm','141cm','142cm','143cm','144cm','145cm','146cm','147cm','148cm','149cm','150cm','151cm','152cm','153cm','154cm','155cm','156cm','157cm','158cm','159cm','160cm','161cm','162cm','163cm','164cm','165cm','166cm','167cm','168cm','169cm','170cm','171cm','172cm','173cm','174cm','175cm','176cm','177cm','178cm','179cm','180cm','181cm','182cm','183cm','184cm','185cm','186cm','187cm','188cm','189cm','190cm','191cm','192cm','193cm','194cm','195cm','196cm','197cm','198cm','199cm','200cm'],
@@ -215,10 +219,11 @@ Page({
     var schoolMask = false;
     var personalDescMask = false;
     var spouseDescMask = false;
+    console.log(title);
     if(title =='电话'){
       phoneMask = true;
     }else if(title == '学校'){
-      vertifiCodeMask = true;
+      schoolMask = true;
     }else if(title == '个人信息'){
       personalDescMask = true;
     }else if(title == '择偶标准'){
@@ -257,9 +262,9 @@ Page({
   requestVerticalCode(e){
     //verifi number
     console.log(this.data.inputPhone);
-    if(this.data.inputPhone.length<11){
+    if(!(/^((13[0-9])|(14[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\d{8}$/.test(this.data.inputPhone))){
       wx.showToast({
-        title: '长度不足',
+        title: '请输入正确电话号码',
         icon: 'none',
         mask: 'true'
       })
@@ -275,9 +280,49 @@ Page({
     })
   },
   bindKeyInput: function (e) {
-    console.log(e.detail.value);
-    this.setData({
-      inputPhone: e.detail.value
-    })
+    let id = e.currentTarget.dataset.id;
+    if(id == 'phone'){
+      this.setData({
+        inputPhone: e.detail.value
+      })
+    }else if(id == 'code'){
+      this.setData({
+        verifiCode: e.detail.value
+      })
+    }else if(id == 'school'){
+      this.setData({
+        inputSchool: e.detail.value
+      })
+    }else if(id == 'personalDesc'){
+      this.setData({
+        inputPersonalDesc: e.detail.value
+      })
+    }else if(id == 'spouceDesc'){
+      this.setData({
+        inputSpouseDesc: e.detail.value
+      })
+    }
+
   },
+  finishChange: function (e) {
+    let id = e.currentTarget.dataset.id;
+    if(id == 'code'){
+      this.data.userData.phone = this.data.inputPhone;
+    }else if(id == 'school'){
+      this.data.userData.school = this.data.inputSchool;
+    }else if(id == 'personalDesc'){
+      this.data.userData.personalDesc = this.data.inputPersonalDesc;
+    }else if(id == 'spouceDesc'){
+      this.data.userData.spouceDesc = this.data.inputSpouseDesc;
+    }
+    this.setData({
+      hideMask:true,
+      inputSchool:'',
+      inputPhone:'',
+      verifiCode:'',
+      inputPersonalDesc:'',
+      inputSpouseDesc:'',
+      userData: this.data.userData
+    })
+  }
 })
