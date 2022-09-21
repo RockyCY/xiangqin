@@ -28,6 +28,47 @@
   opacity: 0.75;
 }
 
+.coverViewBGActionSheet{
+  background:transparent;
+  opacity: 1;
+}
+
+.actionSheetBG {
+  position: absolute;
+  height: 181px; 
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  opacity: 1;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 22px 22px 0px 0px;
+}
+
+.actionSheetButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 57px;
+  line-height: 57px;
+  color: #575757;
+  font-size: 26px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.actionSheetButton1 {
+  top: 57px;
+}
+
+.actionSheetButtonCancel {
+  top: 121px;
+  height: 60px;
+  line-height: 60px;
+}
+
 .contactViewBG {
   position: absolute;
   height: 441px; 

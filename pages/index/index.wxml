@@ -1,6 +1,16 @@
 <!--index.wxml-->
 <view class="container" style="background: #efefef;">
   <navigation title="今日推荐"></navigation>
+  <view class="floatViewBG" hidden="{{hideActionSheet}}" catchtouchmove="preventTouchMove">
+    <view class="coverViewBG coverViewBGActionSheet" bindtap="closeMask"></view>
+    <view class="actionSheetBG">
+      <view class="actionSheetButton" bindtap="showMask">不喜欢</view>
+      <view style="position: absolute;top: 57px;left: 31px;right: 31px;height: 1px;background: #979797;"></view>
+      <view class="actionSheetButton actionSheetButton1" bindtap="report">举报</view>
+      <view style="position: absolute;top: 114px;left: 0;right: 0;height: 7px;background: #efefef;"></view>
+      <view class="actionSheetButton actionSheetButtonCancel" bindtap="closeMask">取消</view>
+    </view>
+  </view>
   <view class="floatViewBG" hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
     <view class="coverViewBG" bindtap="closeMask"></view>
     <block wx:if="{{isContactMask}}">
@@ -53,7 +63,7 @@
     </block>
   </view>
   <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="showMask" data-type="dislike" bind:clickMore=""></dataCard>
+    <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
     <fillCard bind:clickFillHandle="clickFill"></fillCard>
   </scroll-view>
 

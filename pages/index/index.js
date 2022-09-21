@@ -82,6 +82,7 @@ Page({
   clickCall(){
     this.setData({
       hideMask:false,
+      hideActionSheet:true,
       isDislikeMask:false,
       isContactMask:true
     })
@@ -91,6 +92,15 @@ Page({
       url: '../personal/personal',
     })
   },
+  clickMore(){
+    this.setData({
+      hideMask:true,
+      hideActionSheet:false,
+      isDislikeMask:false,
+      isContactMask:false
+    })
+  },
+
   clickSubmit(){
     wx.showToast({
       title: 'clickSubmit',
@@ -99,13 +109,15 @@ Page({
   showMask(e){
     this.setData({
       hideMask:false,
+      hideActionSheet:true,
       isDislikeMask:true,
       isContactMask:false
     })
   },
   closeMask(e){
     this.setData({
-      hideMask:true
+      hideMask:true,
+      hideActionSheet:true
     })
   },
   clickReasonButton(e){
@@ -136,6 +148,14 @@ Page({
         })
      }
     })
+  },
+
+  report(){
+    wx.showToast({
+      title: '点击举报',
+      icon: 'none',
+      mask: 'true'
+   })
   },
   callPhone(){
     wx.makePhoneCall({
