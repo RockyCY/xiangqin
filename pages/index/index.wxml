@@ -63,6 +63,10 @@
     </block>
   </view>
   <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="countDownBG">
+      <view class="countDownTopTitle">今日推荐</view>
+      <countDown countSecond="10000000"></countDown>
+    </view>
     <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
     <fillCard bind:clickFillHandle="clickFill"></fillCard>
   </scroll-view>

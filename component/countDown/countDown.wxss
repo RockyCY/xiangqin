@@ -1,0 +1,9 @@
+/* component/countDown/countDown.wxss */
+
+.countDown {
+  height: 24px;
+  color: #1c1c1d;
+  font-size: 18px;
+  font-family: PingFangSC-Semibold;
+  text-align: center;
+}

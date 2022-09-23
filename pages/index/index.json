@@ -5,6 +5,7 @@
       "dataCard":"../../component/dataCard/dataCard",
       "fillCard":"../../component/fillCard/fillCard",
       "customBtn":"../../component/customBtn/customBtn",
-      "selectedBtn":"../../component/selectedBtn/selectedBtn"
+      "selectedBtn":"../../component/selectedBtn/selectedBtn",
+      "countDown":"../../component/countDown/countDown"
   }
 }
