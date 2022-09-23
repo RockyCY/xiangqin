@@ -143,9 +143,7 @@
 }
 
 .moreBG {
-  position: absolute;
-  top:36px;
-  right: 21px;
+  margin-left: 95px;
   width: 42px;
   height: 38.5px;
   background-color: #fff;

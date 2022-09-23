@@ -1,5 +1,5 @@
 <!--component/dataCard/dataCard.wxml-->
-<view class="dataCardBG" style="margin-left: {{cardMargin}}px; "bindlongpress="longPressHandle">
+<view class="dataCardBG" style="margin-left: {{cardMargin}}px; " bindlongpress="longPressHandle">
   <view class="dataCardTopBG">
     <view class="dataCardTopBG1">
       <image class="dataCardPic"></image>
@@ -7,15 +7,15 @@
         <view class="dataCardTitleArea">
           <view class="dataCardTitle">{{userData.birthday}}</view>
           <view class="dataCardTitle1">{{userData.marriage}}</view>
+          <view class="moreBG" bindtap="clickMore">
+            <image class="moreImg" src="../../images/more.png"></image>
+            <view class="moreText">更多</view>
+          </view>
         </view>
         <view class="dataCardSubtitle">现居{{userData.residentPlace[1]}}</view>
         <view class="dataCardSubtitle">家乡{{userData.hometown[1]}}</view>
         <view class="dataCardSubtitle">{{userData.education}} {{userData.heigh}} {{userData.weigh}}</view>
       </view>
-    </view>
-    <view class="moreBG" bindtap="clickMore">
-      <image class="moreImg" src="../../images/more.png"></image>
-      <view class="moreText">更多</view>
     </view>
     <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
       <view class="dataCardLabel">{{userData.personalLabel[0]}}</view>

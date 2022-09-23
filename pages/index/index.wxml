@@ -68,6 +68,8 @@
       <countDown countSecond="10000000"></countDown>
     </view>
     <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
+    <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
+    <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
     <fillCard bind:clickFillHandle="clickFill"></fillCard>
   </scroll-view>
 
