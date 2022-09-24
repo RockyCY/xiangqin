@@ -69,10 +69,10 @@ Page({
     //   }
     // })
   },
-  clickShare(){
-    wx.showToast({
-      title: 'clickShare',
-    })
+  onShareAppMessage:function(res){
+    return {
+      title:'11111'
+    }
   },
   clickCollect(){
     wx.showToast({

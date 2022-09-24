@@ -1,5 +1,5 @@
 <!--component/shareBtn/shareBtn.wxml-->
-<button class="normalbutton" style="width:{{btnWidth}}px;height: {{btnHeigh}}px;border-radius:{{btnHeigh/2}}px;" bindtap="clickHandle">
+<button class="normalbutton" style="width:{{btnWidth}}px;height: {{btnHeigh}}px;border-radius:{{btnHeigh/2}}px;" open-type="share">
   <image class="buttonImage" src="../../images/share.png"></image>
   <view class="buttonText">分享到群</view>
 </button>

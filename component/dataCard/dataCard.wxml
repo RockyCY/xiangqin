@@ -37,7 +37,7 @@
   </view>
   <view class="dataCardMainDesc1">{{userData.spouceDesc}}</view>
   <view class="dataCardBottomButtonArea">
-    <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16" bind:clickHandle="clickShareHandle"></shareBtn>
+    <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16"></shareBtn>
     <button class="dataCardCollectionButton" bind:tap="clickCollectHandle">收藏</button>
     <customBtn btnWidth="124" btnHeigh="35" btnText="联系对方家长" btnFontSize="16" bind:clickHandle="clickCallHandle"></customBtn>
   </view>
