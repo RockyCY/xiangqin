@@ -8,7 +8,6 @@ const app = getApp()
 
 Page({
   data: {
-    currentIndex: 0,
     userDataArray:[],
     userData:{
       id:123456,
@@ -49,9 +48,9 @@ Page({
   
   onLoad() {
 
-    // wx.navigateTo({
-    //   url: '../datafill/datafill',
-    // })
+    wx.navigateTo({
+      url: '../datafill/datafill',
+    })
 
     // getRecommendData({
     //   data: {

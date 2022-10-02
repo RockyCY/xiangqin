@@ -4,8 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    currentIndex:0,
-    currentUserData:{},
+    currentUserData:{
+      type:Object,
+      value:null
+    },
   },
   /**
    * 组件的初始数据

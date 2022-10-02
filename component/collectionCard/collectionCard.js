@@ -4,7 +4,6 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    currentIndex:0,
     cardData:{
       type:Object,
       value:null

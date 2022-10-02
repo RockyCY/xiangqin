@@ -20,6 +20,13 @@
    overflow: hidden;
 }
 
+.avater {
+  width: 143px;
+  height: 143px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .personalImageMask {
   position: absolute;
   top: 0px;

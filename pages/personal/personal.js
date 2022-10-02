@@ -1,11 +1,13 @@
 // pages/personal/personal.js
+
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentIndex: 2,
     scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight - 44,
     userData:{
       id:123456,

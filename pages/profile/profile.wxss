@@ -32,6 +32,14 @@
   height: 82px;
   border-radius: 50%;
 }
+
+.avatar {
+  overflow: hidden;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+}
+
 .userinfo-nickname {
   font-size: 26px;
   color: #fff;
