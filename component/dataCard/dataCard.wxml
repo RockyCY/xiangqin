@@ -14,7 +14,7 @@
         </view>
         <view class="dataCardSubtitle">现居{{userData.residentPlace[1]}}</view>
         <view class="dataCardSubtitle">家乡{{userData.hometown[1]}}</view>
-        <view class="dataCardSubtitle">{{userData.education}} {{userData.heigh}} {{userData.weigh}}</view>
+        <view class="dataCardSubtitle">{{userData.education}} {{currentUserData.height+'cm'}} {{currentUserData.weight+'kg'}}</view>
       </view>
     </view>
     <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">

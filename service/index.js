@@ -19,3 +19,21 @@ export const getRecommendData = (params) => {
   params.method = "POST"
   return cloudRequest('/api/recommend/getRecommend', params)
 }
+
+// 获取收藏列表
+export const getFavoriteList = (params) => {
+  params.method = "POST"
+  return cloudRequest('/api/favorites/getFavorites', params)
+}
+
+// 收藏
+export const addFavorites = (params) => {
+  params.method = "POST"
+  return cloudRequest('/api/favorites/addFavorites', params)
+}
+// 取消收藏
+export const cancelFavorites = (params) => {
+  params.method = "POST"
+  return cloudRequest('/api/favorites/cancelFavorites', params)
+}
+

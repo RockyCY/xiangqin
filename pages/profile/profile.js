@@ -47,7 +47,9 @@ Page({
       data:''
     }).then(
       (res) => {
-        console.log(res.data.data)
+        
+        app.globalData.userData = res.data.data.fateUserInfo;
+        console.log(app.globalData.userData);
       }
     )
   },

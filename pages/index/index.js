@@ -1,14 +1,16 @@
 // index.js
 // 获取应用实例
 import{
-  getRecommendData
+  getRecommendData,
+  addFavorites,
+  cancelFavorites
 } from "../../service/index"
 
 const app = getApp()
 
 Page({
   data: {
-    userDataArray:[],
+    recommendDataArray:[],
     userData:{
       id:123456,
       gender:'男',
@@ -53,7 +55,9 @@ Page({
       }
     }).then(
       (res) => {
-        console.log(res)
+        this.setData({
+          recommendDataArray:res.data.data
+        })
       }
     )
   },
@@ -66,10 +70,17 @@ Page({
       title:'11111'
     }
   },
-  clickCollect(){
-    wx.showToast({
-      title: 'clickCollect',
-    })
+  clickCollect(e){
+    let user = e.detail;
+    addFavorites({
+      data:{
+        'fateUserInfoId':user.id
+      }
+    }).then(
+      (res) => {
+        console.log(res.data)
+      }
+    )
   },
   clickCall(){
     this.setData({

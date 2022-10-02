@@ -45,19 +45,19 @@ Component({
    */
   methods: {
     clickShareHandle(){
-      this.triggerEvent('clickShareHandle');
+      this.triggerEvent('clickShareHandle',this.properties.currentUserData);
     },
     clickCollectHandle(){
-      this.triggerEvent('clickCollectHandle');
+      this.triggerEvent('clickCollectHandle',this.properties.currentUserData);
     },
     clickCallHandle(){
-      this.triggerEvent('clickCallHandle');
+      this.triggerEvent('clickCallHandle',this.properties.currentUserData);
     },
     clickMore(){
-      this.triggerEvent('clickMore');
+      this.triggerEvent('clickMore',this.properties.currentUserData);
     },
     longPressHandle(){
-      this.triggerEvent('longPressHandle');
+      this.triggerEvent('longPressHandle',this.properties.currentUserData);
     }
   }
 })

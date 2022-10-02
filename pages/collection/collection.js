@@ -1,18 +1,35 @@
 // pages/collection/collection.js
+
+import{
+  getFavoriteList
+} from "../../service/index"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight
+    scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight,
+    collectionList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    getFavoriteList({
+      data:{
 
+      }
+    }).then(
+      (res) => { 
+        console.log(res.data);
+        this.setData({
+          collectionList:res.data.data
+        })
+      }
+    )
   },
 
   /**

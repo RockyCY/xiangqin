@@ -68,9 +68,9 @@
       <countDown countSecond="10000000"></countDown>
     </view>
     <block wx:if="{{userInfo}}">
-      <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
-      <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
-      <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
+      <block wx:for="{{recommendDataArray}}" wx:for-item="userRecommendData" wx:key="index" wx:data-index="{{index}}">
+        <dataCard currentUserData="{{userRecommendData}}" bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
+      </block>
     </block>
     <fillCard bind:clickFillHandle="clickFill"></fillCard>
   </scroll-view>

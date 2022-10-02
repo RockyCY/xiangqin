@@ -29,10 +29,9 @@ App({
             },
             // dataType:'text', // 默认不填是以 JSON 形式解析返回结果，若不想让 SDK 自己解析，可以填text
           })
-          console.log('登录成功！')
-          console.log(result)
+          console.log('登录成功')
         } else {
-          console.log('登录失败！' + res.errMsg)
+          console.log('登录失败' + res.errMsg)
         }
       }
     })
@@ -60,6 +59,7 @@ App({
   globalData: {
     loginData: null,
     userInfoRes: null,
+    userData:null,
     nickName: '微信用户',
     avaterUrl: ''
   }

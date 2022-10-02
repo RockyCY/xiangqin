@@ -73,7 +73,8 @@ Page({
     })
     updateUserData({
       data:{
-        'address':'测试测试'
+        'id':app.globalData.userData.id,
+        'address':'cececece'
       }
     }).then(
       (res) => {
