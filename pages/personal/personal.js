@@ -1,5 +1,9 @@
 // pages/personal/personal.js
 
+import{
+  updateUserData
+} from "../../service/index"
+
 const app = getApp();
 
 Page({
@@ -8,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo:{},
     scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight - 44,
     userData:{
       id:123456,
@@ -63,7 +68,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.setData({
+      userInfo:app.globalData.userInfoRes.userInfo
+    })
+    updateUserData({
+      data:{
+        'address':'测试测试'
+      }
+    }).then(
+      (res) => {
+        console.log(res)
+      }
+    )
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

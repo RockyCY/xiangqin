@@ -62,12 +62,12 @@
       </view>
     </block>
   </view>
-  <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="countDownBG">
-      <view class="countDownTopTitle">{{app.globalData.userInfo?'今日推荐':'暂无推荐'}}</view>
+      <view class="countDownTopTitle">{{userInfo?'今日推荐':'暂无推荐'}}</view>
       <countDown countSecond="10000000"></countDown>
     </view>
-    <block wx:if="{{app.globalData.userInfo}}">
+    <block wx:if="{{userInfo}}">
       <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
       <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
       <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>

@@ -47,8 +47,8 @@
     <view class="personalHeadBG">
       <view class="personalImage" bindtap="chooseImage">
         <view class="personalImageMask"></view>
-        <block wx:if="{{app.globalData.userInfo}}">
-          <image class="avater" src="{{app.globalData.userInfo.avatarUrl}}"></image>
+        <block wx:if="{{userInfo}}">
+          <image class="avater" src="{{userInfo.avatarUrl}}"></image>
         </block>
         <block wx:else>
           <open-data type="userAvatarUrl"></open-data>

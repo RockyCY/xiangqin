@@ -42,31 +42,24 @@ Page({
     hasUserInfo: false,
     scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight - 44,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
   
   onLoad() {
-
-    wx.navigateTo({
-      url: '../datafill/datafill',
-    })
-
-    // getRecommendData({
-    //   data: {
+    
+    getRecommendData({
+      data:{
         
-    //   }
-    // }).then(res => {
-    //   if(res && res.code === 0 && res.data) {
-    //     this.setData({
-    //       hideMask: false
-    //     })
-    //   }else {
-    //     this.setData({
-    //       hideMask: true
-    //     })
-    //   }
-    // })
+      }
+    }).then(
+      (res) => {
+        console.log(res)
+      }
+    )
+  },
+
+  onShow(){
+
   },
   onShareAppMessage:function(res){
     return {
