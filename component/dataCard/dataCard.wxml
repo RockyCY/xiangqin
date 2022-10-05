@@ -2,27 +2,27 @@
 <view class="dataCardBG" style="margin-left: {{cardMargin}}px; " bindlongpress="longPressHandle">
   <view class="dataCardTopBG">
     <view class="dataCardTopBG1">
-      <image class="dataCardPic"></image>
+      <image class="dataCardPic" src="{{currentUserData.photo}}"></image>
       <view class="dataCardTextContainer">
         <view class="dataCardTitleArea">
-          <view class="dataCardTitle">{{userData.birthday}}</view>
-          <view class="dataCardTitle1">{{userData.marriage}}</view>
+          <view class="dataCardTitle">{{currentUserData.birth}}年</view>
+          <view class="dataCardTitle1">{{currentUserData.maritalStatus}}</view>
           <view class="moreBG" bindtap="clickMore">
             <image class="moreImg" src="../../images/more.png"></image>
             <view class="moreText">更多</view>
           </view>
         </view>
-        <view class="dataCardSubtitle">现居{{userData.residentPlace[1]}}</view>
-        <view class="dataCardSubtitle">家乡{{userData.hometown[1]}}</view>
-        <view class="dataCardSubtitle">{{userData.education}} {{currentUserData.height+'cm'}} {{currentUserData.weight+'kg'}}</view>
+        <view class="dataCardSubtitle">现居{{currentUserData.residentPlace[1]}}</view>
+        <view class="dataCardSubtitle">家乡{{currentUserData.hometown[1]}}</view>
+        <view class="dataCardSubtitle">{{currentUserData.education}} {{currentUserData.height+'cm'}} {{currentUserData.weight+'kg'}}</view>
       </view>
     </view>
     <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
-      <view class="dataCardLabel">{{userData.personalLabel[0]}}</view>
-      <view class="dataCardLabel">{{userData.personalLabel[1]}}</view>
-      <view class="dataCardLabel">{{userData.personalLabel[2]}}</view>
-      <view class="dataCardLabel">{{userData.personalLabel[3]}}</view>
-      <view class="dataCardLabel">{{userData.personalLabel[4]}}</view>
+      <view class="dataCardLabel">{{currentUserData.marriagePlan}}</view>
+      <view class="dataCardLabel">{{currentUserData.car}}</view>
+      <view class="dataCardLabel">{{currentUserData.house}}</view>
+      <view class="dataCardLabel">{{currentUserData.income}}</view>
+      <view class="dataCardLabel">{{currentUserData.school}}</view>
     </view>
   </view>
   <view class="seperateLine" style="margin-left: {{seperateMargin}}px;"> </view>
@@ -30,12 +30,12 @@
     <view class="dataCardMainDescDot"></view>
     <view class="dataCardMainDesc">个人情况补充</view>
   </view>
-  <view class="dataCardMainDesc1">{{userData.personalDesc}}</view>
+  <view class="dataCardMainDesc1">{{currentUserData.personalInformation}}</view>
   <view class="dataCardMainDesBG">
     <view class="dataCardMainDescDot"></view>
     <view class="dataCardMainDesc">择偶标准</view>
   </view>
-  <view class="dataCardMainDesc1">{{userData.spouceDesc}}</view>
+  <view class="dataCardMainDesc1">{{currentUserData.mateSelectionCriteria}}</view>
   <view class="dataCardBottomButtonArea">
     <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16"></shareBtn>
     <button class="dataCardCollectionButton" bind:tap="clickCollectHandle">收藏</button>

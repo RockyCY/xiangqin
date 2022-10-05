@@ -59,6 +59,7 @@ App({
   globalData: {
     loginData: null,
     userInfoRes: null,
+    userPropDetail:null,
     userData:null,
     nickName: '微信用户',
     avaterUrl: ''

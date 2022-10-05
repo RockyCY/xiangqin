@@ -3,7 +3,10 @@
 import{
   getRecommendData,
   addFavorites,
-  cancelFavorites
+  cancelFavorites,
+  getNotLikeReason,
+  addNotLike,
+  getPhoneNumber
 } from "../../service/index"
 
 const app = getApp()
@@ -13,28 +16,27 @@ Page({
     recommendDataArray:[],
     userData:{
       id:123456,
-      gender:'男',
-      birthday:'1991-01-01',
-      heigh:'170cm',
-      weigh:'55kg',
-      residentPlace:['广东省', '广州市', '海珠区'],
+      photo:'',
+      sex:'男',
+      birth:'1991-01-01',
+      height:'170cm',
+      weight:'55kg',
+      address:['广东省', '广州市', '海珠区'],
       hometown:['广东省', '广州市', '海珠区'],
-      marriage:'未婚',
+      maritalStatus:'未婚',
       education:'本科',
       school:'清华大学',
-      revenue:'10-15W',
+      income:'10-15W',
       relation:'母子',
-      phone:'138*****1234',
+      phoneNumber:'138*****1234',
       marriagePlan:'',
       car:'',
       house:'',
-      personalDesc:'独生女，92年11月生，未婚,身高165，名校毕业，深圳福田国企会计，家住福田，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。',
-      spouceDesc:'要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。',
-      personalLabel:['1-2年内结婚','已购房','已购车','40-50w/年','北京联合大学'],
-      redlineNum:99
+      personalInformation:'独生女，92年11月生，未婚,身高165，名校毕业，深圳福田国企会计，家住福田，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。',
+      mateSelectionCriteria:'要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。'
    },
-    reasons:["年龄偏大","年龄偏小","收入偏高","收入偏低","学历偏大","学历偏小","身高偏大","身高偏小","居住地不匹配","对方信息不全"],
-    selectedReasons:{"年龄偏大":false,"年龄偏小":false,"收入偏高":false,"收入偏低":false,"学历偏大":false,"学历偏小":false,"身高偏大":false,"身高偏小":false,"居住地不匹配":false,"对方信息不全":false},
+    reasons:[],
+    selectedReasons:{},
     buttonMargin:(wx.getSystemInfoSync().screenWidth - 300)/2,
     userInfo: {},
     hideMask:true,
@@ -55,11 +57,51 @@ Page({
       }
     }).then(
       (res) => {
+        console.log(res.data);
         this.setData({
           recommendDataArray:res.data.data
         })
       }
     )
+    
+    getNotLikeReason({
+      data:{
+        
+      }
+    }).then(
+      (res) => {
+        var reasonsDict = {};
+        for(var reasonItem of res.data.data){
+          reasonsDict[reasonItem.name] = false;
+        }
+        this.setData({
+          reasons:res.data.data,
+          selectedReasons:reasonsDict
+        })
+      }
+    )
+    addNotLike({
+      data:{
+        'fateUserInfoId':3,
+        'notLIkeReasons':[201]
+      }
+    }).then(
+      (res) => {
+        console.log('addNotLike')
+        console.log(res.data)
+      }
+    )
+    getPhoneNumber({
+      data:{
+        'fateUserInfoId':3,
+      }
+    }).then(
+      (res) => {
+        console.log('getPhoneNumber')
+        console.log(res)
+      }
+    )
+    
   },
 
   onShow(){
@@ -81,6 +123,16 @@ Page({
         console.log(res.data)
       }
     )
+
+    // cancelFavorites({
+    //   data:{
+    //     'fateUserInfoId':user.id
+    //   }
+    // }).then(
+    //   (res) => {
+    //     console.log(res.data)
+    //   }
+    // )
   },
   clickCall(){
     this.setData({
@@ -126,12 +178,11 @@ Page({
   clickReasonButton(e){
     let num = e.detail;
     var reason = this.data.reasons[num];
-    console.log(reason);
-    var selectedStatus = this.data.selectedReasons[reason];
+    var selectedStatus = this.data.selectedReasons[reason.name];
     if(selectedStatus == false){
-      this.data.selectedReasons[reason] = true;
+      this.data.selectedReasons[reason.name] = true;
     }else {
-      this.data.selectedReasons[reason] = false;
+      this.data.selectedReasons[reason.name] = false;
     }
     this.setData({
       selectedReasons:this.data.selectedReasons
