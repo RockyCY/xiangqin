@@ -1,9 +1,9 @@
 <!--component/collectionCard/collectionCard.wxml-->
 <view class="cardBG" style="margin-left: {{cardMargin}}px; ">
-    <image class="cardPic"></image>
+    <image class="cardPic" src="{{userData.photo}}"></image>
     <view class="cardTextContainer">
-       <view class="cardTitle">88年/测试是谁测试谁测试时</view>
-       <view class="cardSubtitle">88年/</view>
+       <view class="cardTitle">{{userData.birth}}/{{userData.address}}/{{userData.height}}/{{userData.education}}</view>
+       <view class="cardSubtitle">{{userData.phoneNumber}}</view>
        <view class="cardBtnArea">
         <customBtn btnWidth="101" btnHeigh="30" btnText="查看资料" btnFontSize="18"
         bind:clickHandle="clickDataHandle"></customBtn>

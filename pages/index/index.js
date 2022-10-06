@@ -57,7 +57,9 @@ Page({
       }
     }).then(
       (res) => {
-        console.log(res.data);
+        for(var item of res.data.data){
+          item.birth = item.birth.substring(2,3);
+        }
         this.setData({
           recommendDataArray:res.data.data
         })
@@ -79,29 +81,7 @@ Page({
           selectedReasons:reasonsDict
         })
       }
-    )
-    addNotLike({
-      data:{
-        'fateUserInfoId':3,
-        'notLIkeReasons':[201]
-      }
-    }).then(
-      (res) => {
-        console.log('addNotLike')
-        console.log(res.data)
-      }
-    )
-    getPhoneNumber({
-      data:{
-        'fateUserInfoId':3,
-      }
-    }).then(
-      (res) => {
-        console.log('getPhoneNumber')
-        console.log(res)
-      }
-    )
-    
+    )    
   },
 
   onShow(){
@@ -135,12 +115,23 @@ Page({
     // )
   },
   clickCall(){
-    this.setData({
-      hideMask:false,
-      hideActionSheet:true,
-      isDislikeMask:false,
-      isContactMask:true
-    })
+
+    getPhoneNumber({
+      data:{
+        'fateUserInfoId':3,
+      }
+    }).then(
+      (res) => {
+        console.log('getPhoneNumber')
+        console.log(res)
+        this.setData({
+          hideMask:false,
+          hideActionSheet:true,
+          isDislikeMask:false,
+          isContactMask:true
+        })
+      }
+    )
   },
   clickFill(){
     wx.navigateTo({
@@ -157,9 +148,17 @@ Page({
   },
 
   clickSubmit(){
-    wx.showToast({
-      title: 'clickSubmit',
-    })
+    addNotLike({
+      data:{
+        'fateUserInfoId':3,
+        'notLIkeReasons':[201]
+      }
+    }).then(
+      (res) => {
+        console.log('addNotLike')
+        console.log(res.data)
+      }
+    )
   },
   showMask(e){
     this.setData({

@@ -31,6 +31,7 @@
   margin-left: 12px;
   font-size: 20px;
   font-weight: bold;
+  height: 54px;
   color: #383838;
 }
 

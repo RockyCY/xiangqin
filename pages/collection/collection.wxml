@@ -1,9 +1,9 @@
 <!--pages/collection/collection.wxml-->
 <view class="container" style="background: #efefef;">
   <navigation title="我的收藏"></navigation>
-  <scroll-view scroll-y="true" style="height: {{scrollHeight}}px; margin-top: -12px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-          <collectionCard bind:clickDataHandle="clickData"bind:clickShareHandle="clickShare"></collectionCard>
-          <collectionCard bind:clickDataHandle="clickData"bind:clickShareHandle="clickShare"></collectionCard>
-          <collectionCard bind:clickDataHandle="clickData"bind:clickShareHandle="clickShare"></collectionCard>
+  <scroll-view scroll-y="true" style="height: {{scrollHeight}}px; margin-top: -12px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <block wx:for="{{collectionList}}" wx:for-item="collectionItem" wx:key="index" wx:data-index="{{index}}">
+      <collectionCard userData="{{collectionItem}}" bind:clickDataHandle="clickData" bind:clickShareHandle="clickShare"></collectionCard>
+    </block>
   </scroll-view>
 </view>

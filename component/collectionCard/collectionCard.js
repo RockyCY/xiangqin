@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    cardData:{
+    userData:{
       type:Object,
       value:null
     }
@@ -22,10 +22,10 @@ Component({
    */
   methods: {
     clickDataHandle(){
-      this.triggerEvent('clickDataHandle');
+      this.triggerEvent('clickDataHandle',this.properties.userData);
     },
     clickShareHandle(){
-      this.triggerEvent('clickShareHandle');
+      this.triggerEvent('clickShareHandle',this.properties.userData);
     }
   }
 })
