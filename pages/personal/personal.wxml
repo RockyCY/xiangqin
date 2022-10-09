@@ -30,14 +30,14 @@
       <block wx:elif="{{isPersonalDescMask}}">
         <view class="personalPhoneClose" bindtap="closeMask">关闭</view>
         <view class="personalPhoneTopTitle">个人信息</view>
-        <textarea auto-focus="true" class="personalTextArea" value="{{userData.personalDesc}}"bindinput="bindKeyInput" data-id="personalDesc" maxlength="300"/>
+        <textarea auto-focus="true" class="personalTextArea" value="{{userInfo.personalDesc}}"bindinput="bindKeyInput" data-id="personalDesc" maxlength="300"/>
         <customBtn btnWidth="300" btnHeigh="52" btnText="完成" btnFontSize="22" style="margin-top: 42px;"
         bind:clickHandle="finishChange" data-id="personalDesc"></customBtn>
       </block>
       <block wx:elif="{{isSpouseDescMask}}">
         <view class="personalPhoneClose" bindtap="closeMask">关闭</view>
         <view class="personalPhoneTopTitle">择偶标准</view>
-        <textarea auto-focus="true" class="personalTextArea" value="{{userData.spouceDesc}}" bindinput="bindKeyInput" data-id="spouceDesc" maxlength="300"/>
+        <textarea auto-focus="true" class="personalTextArea" value="{{userInfo.spouceDesc}}" bindinput="bindKeyInput" data-id="spouceDesc" maxlength="300"/>
         <customBtn btnWidth="300" btnHeigh="52" btnText="完成" btnFontSize="22" style="margin-top: 42px;"
         bind:clickHandle="finishChange" data-id="spouceDesc"></customBtn>
       </block>
@@ -62,65 +62,65 @@
       <text class="personalMainTitle">基础信息</text>
     </view>
     <picker bindchange="bindGenderChange" value="{{index}}" range="{{genderList}}">
-      <personalBar mainTitle="性别" subTitle="{{userData.gender}}" hideArrow="{{true}}" hideBottomLine="{{false}}"></personalBar>
+      <personalBar mainTitle="性别" subTitle="{{userInfo.gender}}" hideArrow="{{true}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
     <picker mode="date" value="{{date}}" start="1970-01-01" end="2022-01-01" bindchange="bindDateChange">
-      <personalBar mainTitle="年龄" subTitle="{{userData.birthday}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+      <personalBar mainTitle="年龄" subTitle="{{userInfo.birthday}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
     <picker bindchange="bindHeighChange" value="{{index}}" range="{{bodyHeighList}}">
-      <personalBar mainTitle="身高" subTitle="{{userData.heigh}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+      <personalBar mainTitle="身高" subTitle="{{userInfo.heigh}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
     <picker bindchange="bindWeighChange" value="{{index}}" range="{{bodyWeighList}}">
-      <personalBar mainTitle="体重" subTitle="{{userData.weigh}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+      <personalBar mainTitle="体重" subTitle="{{userInfo.weigh}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
-    <picker mode="region" bindchange="bindRegion1Change" value="{{userData.residentPlace}}" custom-item="{{customItem}}">
-      <personalBar mainTitle="现居住地" subTitle="{{userData.residentPlace[0]}}-{{userData.residentPlace[1]}}-{{userData.residentPlace[2]}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <picker mode="region" bindchange="bindRegion1Change" value="{{userInfo.residentPlace}}" custom-item="{{customItem}}">
+      <personalBar mainTitle="现居住地" subTitle="{{userInfo.residentPlace[0]}}-{{userInfo.residentPlace[1]}}-{{userInfo.residentPlace[2]}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
-    <picker mode="region" bindchange="bindRegion2Change" value="{{userData.hometown}}" custom-item="{{customItem}}">
-      <personalBar mainTitle="家乡" subTitle="{{userData.hometown[0]}}-{{userData.hometown[1]}}-{{userData.hometown[2]}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <picker mode="region" bindchange="bindRegion2Change" value="{{userInfo.hometown}}" custom-item="{{customItem}}">
+      <personalBar mainTitle="家乡" subTitle="{{userInfo.hometown[0]}}-{{userInfo.hometown[1]}}-{{userInfo.hometown[2]}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
     <picker bindchange="bindMarriageChange" value="{{index}}" range="{{marriageList}}">
-      <personalBar mainTitle="婚姻状态" subTitle="{{userData.marriage}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+      <personalBar mainTitle="婚姻状态" subTitle="{{userInfo.marriage}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
     <picker bindchange="bindMarriagePlanChange" value="{{index}}" range="{{marriagePlan}}">
-      <personalBar mainTitle="结婚计划" subTitle="{{userData.marriagePlan}}" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
+      <personalBar mainTitle="结婚计划" subTitle="{{userInfo.marriagePlan}}" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
     </picker>
     <view class="personalMainTitleBG otherMainTitleBG">
       <text class="personalMainTitle otherMainTitle">教育及工作资料</text>
     </view>
     <picker bindchange="bindEducationChange" value="{{index}}" range="{{educationList}}">
-      <personalBar mainTitle="最高学历" subTitle="{{userData.education}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+      <personalBar mainTitle="最高学历" subTitle="{{userInfo.education}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
-    <personalBar mainTitle="学校" subTitle="{{userData.school}}" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar>
-    <picker bindchange="bindRevenueChange" value="{{index}}" range="{{revenueList}}">
-      <personalBar mainTitle="年收入" subTitle="{{userData.revenue}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <personalBar mainTitle="学校" subTitle="{{userInfo.school}}" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar>
+    <picker bindchange="bindIncomeChange" value="{{index}}" range="{{incomeList}}">
+      <personalBar mainTitle="年收入" subTitle="{{userInfo.income}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
     <picker bindchange="bindHousePlanChange" value="{{index}}" range="{{housePlan}}">
-      <personalBar mainTitle="是否购房" subTitle="{{userData.house}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+      <personalBar mainTitle="是否购房" subTitle="{{userInfo.house}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
     <picker bindchange="bindCarPlanChange" value="{{index}}" range="{{carPlan}}">
-      <personalBar mainTitle="是否购车" subTitle="{{userData.car}}" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
+      <personalBar mainTitle="是否购车" subTitle="{{userInfo.car}}" hideArrow="{{false}}" hideBottomLine="{{true}}"></personalBar>
     </picker>
     <view class="personalMainTitleBG otherMainTitleBG1">
       <text class="personalMainTitle otherMainTitle">联系方式</text>
       <text class="personalMainTitle otherMainTitle1">其他用户将根据您预留的手机号与您联系</text>
     </view>
-    <picker bindchange="bindRelationChange" value="{{index}}" range="{{userData.gender=='男'?relationListMan:relationListWoman}}">
-      <personalBar mainTitle="您与相亲者的关系" subTitle="{{userData.relation}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
+    <picker bindchange="bindRelationChange" value="{{index}}" range="{{userInfo.gender=='男'?relationListMan:relationListWoman}}">
+      <personalBar mainTitle="您与相亲者的关系" subTitle="{{userInfo.relation}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
-    <personalBar mainTitle="电话" subTitle="{{userData.phone}}" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar>
+    <personalBar mainTitle="电话" subTitle="{{userInfo.phone}}" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar>
     <view class="personalMainTitleBG otherMainTitleBG">
       <text class="personalMainTitle otherMainTitle">其他信息</text>
     </view>
     <personalBar mainTitle="个人信息" subTitle="" hideArrow="{{false}}" hideBottomLine="{{true}}" isEditType="{{true}}" bind:clickBar="clickBar"></personalBar>
-    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userData.personalDesc}}
+    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userInfo.personalDesc}}
     </view>
     <view class="bottomBar">
       <view class="bottomLine">
       </view>
     </view>
     <personalBar mainTitle="择偶标准" subTitle="" hideArrow="{{false}}" hideBottomLine="{{true}}" isEditType="{{true}}" bind:clickBar="clickBar"></personalBar>
-    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userData.spouceDesc}}
+    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userInfo.spouceDesc}}
     </view>
     <view class="bottomBar"></view>
   </scroll-view>

@@ -48,6 +48,8 @@ Page({
       (res) => {
         app.globalData.userData = res.data.data.fateUserInfo;
         app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
+        console.log('getCurrentUserData');
+        console.log(res);
       }
     )
   },
