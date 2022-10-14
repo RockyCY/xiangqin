@@ -76,3 +76,27 @@ export const getPhoneNumber = (params) => {
   params.method = "POST"
   return cloudRequest('/api/phone/getPhoneNumber',params)
 }
+
+//举报 
+/**
+被举报卡片信息id
+Number reportedInfoId;
+
+/**
+* 举报原因
+*/
+//String reason;
+
+/**
+* 举报描述
+*/
+//String content;
+
+/**
+* 举报图片地址
+*/
+//List<String> picUrl;
+export const report = (params) => {
+  params.method = "POST"
+  return cloudRequest('/api/report/addReport',params)
+}

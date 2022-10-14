@@ -204,11 +204,9 @@ Page({
   },
 
   report(){
-    wx.showToast({
-      title: '点击举报',
-      icon: 'none',
-      mask: 'true'
-   })
+    wx.navigateTo({
+      url: '../report/report',
+    })
   },
   callPhone(){
     wx.makePhoneCall({
