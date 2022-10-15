@@ -142,6 +142,11 @@
   border-color: #ff3b43;
 }
 
+.favorite {
+  color: #ffff;
+  background:-webkit-linear-gradient(left,#E852A4,#FF313A);
+}
+
 .moreBG {
   margin-left: 95px;
   width: 42px;

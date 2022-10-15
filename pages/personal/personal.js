@@ -30,16 +30,15 @@ Page({
     inputPersonalDesc: '',
     inputSpouseDesc: '',
     descTitleWidth: wx.getSystemInfoSync().screenWidth - 18.5 * 2,
-    genderList: ['男', '女'],
+    sexList: ['女', '男'],
     bodyHeighList: ['140cm', '141cm', '142cm', '143cm', '144cm', '145cm', '146cm', '147cm', '148cm', '149cm', '150cm', '151cm', '152cm', '153cm', '154cm', '155cm', '156cm', '157cm', '158cm', '159cm', '160cm', '161cm', '162cm', '163cm', '164cm', '165cm', '166cm', '167cm', '168cm', '169cm', '170cm', '171cm', '172cm', '173cm', '174cm', '175cm', '176cm', '177cm', '178cm', '179cm', '180cm', '181cm', '182cm', '183cm', '184cm', '185cm', '186cm', '187cm', '188cm', '189cm', '190cm', '191cm', '192cm', '193cm', '194cm', '195cm', '196cm', '197cm', '198cm', '199cm', '200cm'],
     bodyWeighList: ['40kg', '41kg', '42kg', '43kg', '44kg', '45kg', '46kg', '47kg', '48kg', '49kg', '50kg', '51kg', '52kg', '53kg', '54kg', '55kg', '56kg', '57kg', '58kg', '59kg', '60kg', '61kg', '62kg', '63kg', '64kg', '65kg', '66kg', '67kg', '68kg', '69kg', '70kg', '71kg', '72kg', '73kg', '74kg', '75kg', '76kg', '77kg', '78kg', '79kg', '80kg', '81kg', '82kg', '83kg', '84kg', '85kg', '86kg', '87kg', '88kg', '89kg', '90kg', '91kg', '92kg', '93kg', '94kg', '95kg', '96kg', '97kg', '98kg', '99kg', '100kg'],
     marriageList: [],
     educationList: [],
     incomeList: [],
-    relationListMan: ['父子', '母子', '本人'],
-    relationListWoman: ['父女', '母女', '本人'],
-    housePlan: ['已购房', '计划购房', '未购房'],
-    carPlan: ['已购车', '计划购车', '未购车'],
+    relationList: [],
+    housePlan: ['未购房','已购房', '计划购房'],
+    carPlan: ['未购车','计划购车','已购车', ],
     marriagePlan: ['半年内结婚', '1-2年结婚', '不着急结婚'],
     date: '1995-01-01',
     region: ['', '', '']
@@ -162,43 +161,72 @@ Page({
 
   },
 
-  bindGenderChange: function (e) {
+  bindSexChange: function (e) {
     let num = e.detail.value;
-    if (this.data.userInfo.sex != this.data.genderList[num]) {
-      if (this.data.genderList[num] == '男') {
-        this.data.userInfo.relationStr = '父子';
-      } else {
-        this.data.userInfo.relationStr = '父女';
+    this.data.userInfo.sexStr = this.data.userInfo.sexList[num];
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'sex': num
       }
-    }
-    this.data.userInfo.genderStr = this.data.genderList[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
-  bindDateChange: function (e) {
+  bindBirthChange: function (e) {
     this.data.userInfo.birth = e.detail.value;
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'birth': this.data.userInfo.birth
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
-  bindHeighChange: function (e) {
+  bindHeightChange: function (e) {
     let num = e.detail.value;
     this.data.userInfo.height = this.data.bodyHeighList[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'height': this.data.userInfo.height
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
-  bindWeighChange: function (e) {
+  bindWeightChange: function (e) {
     let num = e.detail.value;
-    this.data.userInfo.weigh = this.data.bodyWeighList[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    this.data.userInfo.weight = this.data.bodyWeighList[num];
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'weight': this.data.userInfo.weight
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
-  bindRegion1Change: function (e) {
-    this.data.userInfo.address = e.detail.value;
-
+  bindAddressChange: function (e) {
+    let address = e.detail.value;
+    this.data.userInfo.address = address[0] + '-' + address[1] + '-' + address[2];
     updateUserData({
       data: {
         'id': this.data.userInfo.id,
@@ -212,8 +240,9 @@ Page({
       }
     )
   },
-  bindRegion2Change: function (e) {
-    this.data.userInfo.hometown = e.detail.value;
+  bindHometownChange: function (e) {
+    let hometown = e.detail.value;
+    this.data.userInfo.hometown = hometown[0] + '-' + hometown[1] + '-' + hometown[2];
     updateUserData({
       data: {
         'id': this.data.userInfo.id,
@@ -227,34 +256,43 @@ Page({
       }
     )
   },
-  bindMarriageChange: function (e) {
+  bindMaritalStatusChange: function (e) {
     let num = e.detail.value;
-    this.data.userInfo.marriage = this.data.marriageList[num];
+    this.data.userInfo.maritalStatusStr = this.data.marriageList[num];
     this.setData({
       userInfo: this.data.userInfo
     })
   },
-  bindMarriagePlanChange: function (e) {
+  bindWeddingPlanChange: function (e) {
     let num = e.detail.value;
-    this.data.userInfo.marriagePlan = this.data.marriagePlan[num];
+    this.data.userInfo.WeddingPlanStr = this.data.marriagePlan[num];
     this.setData({
       userInfo: this.data.userInfo
     })
   },
   bindEducationChange: function (e) {
     let num = e.detail.value;
-    this.data.userInfo.education = this.data.educationList[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
-  },
-  bindIncomeChange: function (e) {
-    let num = e.detail.value;
-    this.data.userInfo.income = this.data.incomeList[num];
+    this.data.userInfo.educationStr = this.data.educationList[num];
     updateUserData({
       data: {
         'id': this.data.userInfo.id,
-        'income': num + 1
+        'education': num
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
+  },
+  bindIncomeChange: function (e) {
+    let num = e.detail.value;
+    this.data.userInfo.incomeStr = this.data.incomeList[num];
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'income': num
       }
     }).then(
       (res) => {
@@ -266,26 +304,21 @@ Page({
   },
   bindHousePlanChange: function (e) {
     let num = e.detail.value;
-    this.data.userInfo.house = this.data.housePlan[num];
+    this.data.userInfo.buyHouseStr = this.data.housePlan[num];
     this.setData({
       userInfo: this.data.userInfo
     })
   },
   bindCarPlanChange: function (e) {
     let num = e.detail.value;
-    this.data.userInfo.car = this.data.carPlan[num];
+    this.data.userInfo.buyCarStr = this.data.carPlan[num];
     this.setData({
       userInfo: this.data.userInfo
     })
   },
   bindRelationChange: function (e) {
     let num = e.detail.value;
-    if (this.data.userInfo.sex == '男') {
-      this.data.userInfo.relation = this.data.relationListMan[num];
-    } else {
-      this.data.userInfo.relation = this.data.relationListWoman[num];
-    }
-
+    this.data.userInfo.relationStr = this.data.relationList[num];
     this.setData({
       userInfo: this.data.userInfo
     })
@@ -337,7 +370,7 @@ Page({
         console.log(picId)
         console.log(res.tempFiles[0])
         wx.cloud.uploadFile({
-          cloudPath: 'avatar/'+picId+'.png', // 对象存储路径，根路径直接填文件名，文件夹例子 test/文件名，不要 / 开头
+          cloudPath: 'avatar/' + picId + '.png', // 对象存储路径，根路径直接填文件名，文件夹例子 test/文件名，不要 / 开头
           filePath: res.tempFiles[0].tempFilePath, // 微信本地文件，通过选择图片，聊天文件等接口获取
           config: {
             env: 'prod-9ggc7xkmfcc18237' // 需要替换成自己的微信云托管环境ID
@@ -413,11 +446,11 @@ Page({
     let id = e.currentTarget.dataset.id;
     if (id == 'code') {
       this.data.userInfo.phone = this.data.inputPhone;
-    } else if (id == 'school') {
+    } else if (id == 'college') {
       this.data.userInfo.school = this.data.inputSchool;
-    } else if (id == 'personalDesc') {
+    } else if (id == 'personalInformation') {
       this.data.userInfo.personalDesc = this.data.inputPersonalDesc;
-    } else if (id == 'spouceDesc') {
+    } else if (id == 'mateSelectionCriteria') {
       this.data.userInfo.spouceDesc = this.data.inputSpouseDesc;
     }
     this.setData({

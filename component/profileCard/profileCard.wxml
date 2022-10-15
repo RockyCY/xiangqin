@@ -1,29 +1,30 @@
 <!--component/profileCard/profileCard.wxml-->
-<!--component/profileCard/profileCard.wxml-->
 <view class="profileCardBG" style="margin-left: {{cardMargin}}px; background: #ffffff;">
-<view class="profileCardTopButtonBG">
-  <view class="profileCardTopButtonDesc">相亲资料卡</view>
-  <customBtn btnWidth="101" btnHeigh="33" btnText="修改资料" btnFontSize="20" style="margin-left: 120px; margin-top: 10px;" bind:clickHandle="clickFillHandle"></customBtn>
-</view>
+  <view class="profileCardTopButtonBG">
+    <view class="profileCardTopButtonDesc">相亲资料卡</view>
+    <customBtn btnWidth="101" btnHeigh="33" btnText="修改资料" btnFontSize="20" style="margin-left: 120px; margin-top: 10px;" bind:clickHandle="clickFillHandle"></customBtn>
+  </view>
   <view class="profileCardTopBG">
     <view class="profileCardTopBG1">
-      <image class="profileCardPic"></image>
+      <image class="profileCardPic" src="{{userData.photo}}"></image>
       <view class="profileCardTextContainer">
         <view class="profileCardTitleArea">
-          <view class="profileCardTitle">{{userData.birthday}}</view>
-          <view class="profileCardTitle1">{{userData.marriage}}</view>
+          <view class="profileCardTitle">{{userData.birth}}</view>
+          <view class="profileCardTitle1">{{userData.maritalStatusStr}}</view>
         </view>
-        <view class="profileCardSubtitle">现居{{userData.residentPlace[1]}}</view>
-        <view class="profileCardSubtitle">家乡{{userData.hometown[1]}}</view>
-        <view class="profileCardSubtitle">{{userData.education}} {{userData.heigh}} {{userData.weigh}}</view>
+        <view class="profileCardSubtitle">现居{{userData.address}}</view>
+        <view class="profileCardSubtitle">家乡{{userData.hometown}}</view>
+        <view class="profileCardSubtitle">{{userData.educationStr}} {{userData.height + 'cm'}} {{userData.weight + 'kg'}}</view>
       </view>
     </view>
     <view class="profileCardLabelArea" style="margin-left: {{labelMargin}}px;">
-      <view class="profileCardLabel">{{userData.personalLabel[0]}}</view>
-      <view class="profileCardLabel">{{userData.personalLabel[1]}}</view>
-      <view class="profileCardLabel">{{userData.personalLabel[2]}}</view>
-      <view class="profileCardLabel">{{userData.personalLabel[3]}}</view>
-      <view class="profileCardLabel">{{userData.personalLabel[4]}}</view>
+      <view class="profileCardLabel">{{userData.weddingPlanStr}}</view>
+      <view class="profileCardLabel">{{userData.buyCarStr}}</view>
+      <view class="profileCardLabel">{{userData.buyHouseStr}}</view>
+      <view class="profileCardLabel">{{userData.incomeStr}}</view>
+      <block wx:if="{{userData.college}}">
+        <view class="profileCardLabel">{{userData.college}}</view>
+      </block>
     </view>
   </view>
   <view class="seperateLine" style="margin-left: {{seperateMargin}}px;"> </view>
@@ -31,11 +32,11 @@
     <view class="profileCardMainDescDot"></view>
     <view class="profileCardMainDesc">个人情况补充</view>
   </view>
-  <view class="profileCardMainDesc1">{{userData.personalDesc}}</view>
+  <view class="profileCardMainDesc1">{{userData.personalInformation}}</view>
   <view class="profileCardMainDesBG">
     <view class="profileCardMainDescDot"></view>
     <view class="profileCardMainDesc">择偶标准</view>
   </view>
-  <view class="profileCardMainDesc1">{{userData.spouceDesc}}</view>
+  <view class="profileCardMainDesc1">{{userData.mateSelectionCriteria}}</view>
   <view style="height: 20px;"></view>
 </view>

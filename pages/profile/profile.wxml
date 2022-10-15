@@ -33,6 +33,6 @@
     </view>
   </view>
   <scroll-view scroll-y="true"bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <profileCard bind:clickFillHandle="clickFill"></profileCard>
+    <profileCard userData="{{userInfo}}" bind:clickFillHandle="clickFill"></profileCard>
   </scroll-view>
 </view>
