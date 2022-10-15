@@ -116,8 +116,10 @@ Page({
             env: 'prod-9ggc7xkmfcc18237' // 需要替换成自己的微信云托管环境ID
           }
         }).then(res => {
+          console.log('uploadSuccessed')
           console.log(res.fileID)
         }).catch(error => {
+          console.log('uploadFailed')
           console.error(err)
         })
       }

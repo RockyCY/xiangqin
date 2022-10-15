@@ -6,7 +6,8 @@ import{
   cancelFavorites,
   getNotLikeReason,
   addNotLike,
-  getPhoneNumber
+  getPhoneNumber,
+  getShareInfo
 } from "../../service/index"
 
 const app = getApp()
@@ -14,27 +15,7 @@ const app = getApp()
 Page({
   data: {
     recommendDataArray:[],
-    userData:{
-      id:123456,
-      photo:'',
-      sex:'男',
-      birth:'1991-01-01',
-      height:'170cm',
-      weight:'55kg',
-      address:['广东省', '广州市', '海珠区'],
-      hometown:['广东省', '广州市', '海珠区'],
-      maritalStatus:'未婚',
-      education:'本科',
-      school:'清华大学',
-      income:'10-15W',
-      relation:'母子',
-      phoneNumber:'138*****1234',
-      marriagePlan:'',
-      car:'',
-      house:'',
-      personalInformation:'独生女，92年11月生，未婚,身高165，名校毕业，深圳福田国企会计，家住福田，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。',
-      mateSelectionCriteria:'要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。'
-   },
+    currentUserData:{},
     reasons:[],
     selectedReasons:{},
     buttonMargin:(wx.getSystemInfoSync().screenWidth - 300)/2,
@@ -57,8 +38,13 @@ Page({
       }
     }).then(
       (res) => {
+        console.log('recommendData')
+        console.log(res.data)
         for(var item of res.data.data){
-          item.birth = item.birth.substring(2,3);
+          if(item.birth.length>0){
+            item.birth = item.birth.substring(2,3);
+          }
+          
         }
         this.setData({
           recommendDataArray:res.data.data
@@ -88,8 +74,23 @@ Page({
 
   },
   onShareAppMessage:function(res){
+    const promise = getShareInfo({
+      data:{
+        'fateUserInfoId':this.data.currentUserData.id
+      }
+    }).then(
+      (res) => {
+        return {
+          title:res.data.data.title
+        }
+        // console.log('res.data')
+        // console.log(res.data.data.title)
+        // shareInfo = res;
+      }
+    )
+
     return {
-      title:'11111'
+      promise
     }
   },
   clickCollect(e){
@@ -114,11 +115,11 @@ Page({
     //   }
     // )
   },
-  clickCall(){
-
+  clickCall(e){
+    let detail = e.detail;
     getPhoneNumber({
       data:{
-        'fateUserInfoId':3,
+        'fateUserInfoId':detail.id,
       }
     }).then(
       (res) => {
@@ -138,7 +139,10 @@ Page({
       url: '../personal/personal',
     })
   },
-  clickMore(){
+  clickMore(e){
+    this.setData({
+      currentUserData:e.detail
+    })
     this.setData({
       hideMask:true,
       hideActionSheet:false,
@@ -147,11 +151,11 @@ Page({
     })
   },
 
-  clickSubmit(){
+  clickSubmit(e){
     addNotLike({
       data:{
-        'fateUserInfoId':3,
-        'notLIkeReasons':[201]
+        'fateUserInfoId':this.data.currentUserData.id,
+        'notLIkeReasons':[]
       }
     }).then(
       (res) => {
@@ -212,8 +216,5 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.userData.phone,
     })
-  },
-  platformHelp(){
-
   }
 })

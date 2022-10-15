@@ -18,27 +18,6 @@ Page({
   data: {
     userInfo: {},
     scrollHeight: wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight - 44,
-    userInfo: {
-      id: 123456,
-      photo: '',
-      sex: '男',
-      birth: '1991-01-01',
-      height: '170cm',
-      weight: '55kg',
-      address: ['广东省', '广州市', '海珠区'],
-      hometown: ['广东省', '广州市', '海珠区'],
-      maritalStatus: '未婚',
-      education: '本科',
-      school: '清华大学',
-      income: '10-15W',
-      relation: '母子',
-      phoneNumber: '138*****1234',
-      marriagePlan: '',
-      car: '',
-      house: '',
-      personalInformation: '独生女，92年11月生，未婚,身高165，名校毕业，深圳福田国企会计，家住福田，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。',
-      mateSelectionCriteria: '要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。'
-    },
     hideMask: true,
     isPhoneMask: false,
     isVertifiCodeMask: false,
@@ -54,9 +33,8 @@ Page({
     genderList: ['男', '女'],
     bodyHeighList: ['140cm', '141cm', '142cm', '143cm', '144cm', '145cm', '146cm', '147cm', '148cm', '149cm', '150cm', '151cm', '152cm', '153cm', '154cm', '155cm', '156cm', '157cm', '158cm', '159cm', '160cm', '161cm', '162cm', '163cm', '164cm', '165cm', '166cm', '167cm', '168cm', '169cm', '170cm', '171cm', '172cm', '173cm', '174cm', '175cm', '176cm', '177cm', '178cm', '179cm', '180cm', '181cm', '182cm', '183cm', '184cm', '185cm', '186cm', '187cm', '188cm', '189cm', '190cm', '191cm', '192cm', '193cm', '194cm', '195cm', '196cm', '197cm', '198cm', '199cm', '200cm'],
     bodyWeighList: ['40kg', '41kg', '42kg', '43kg', '44kg', '45kg', '46kg', '47kg', '48kg', '49kg', '50kg', '51kg', '52kg', '53kg', '54kg', '55kg', '56kg', '57kg', '58kg', '59kg', '60kg', '61kg', '62kg', '63kg', '64kg', '65kg', '66kg', '67kg', '68kg', '69kg', '70kg', '71kg', '72kg', '73kg', '74kg', '75kg', '76kg', '77kg', '78kg', '79kg', '80kg', '81kg', '82kg', '83kg', '84kg', '85kg', '86kg', '87kg', '88kg', '89kg', '90kg', '91kg', '92kg', '93kg', '94kg', '95kg', '96kg', '97kg', '98kg', '99kg', '100kg'],
-    marriageList: ['未婚', '离异', '丧偶'],
-    educationList: ['初中', '高中', '中专', '大专', '本科', '研究生', '博士'],
-    revenueList: ['0-10W', '10-20W', '20-30W', '30-40W', '40-50W', '50-80W', '80-120W', '120W以上'],
+    marriageList: [],
+    educationList: [],
     incomeList: [],
     relationListMan: ['父子', '母子', '本人'],
     relationListWoman: ['父女', '母女', '本人'],
@@ -93,24 +71,45 @@ Page({
       data: {}
     }).then(
       (res) => {
-        console.log('getEducation')
-        console.log(res)
+        var itemArray = [];
+        var itemList = res.data.data;
+        for (var key in itemList) {
+          var item = itemList[key];
+          itemArray.push(item);
+        }
+        this.setData({
+          educationList: itemArray
+        })
       }
     )
     getMarriage({
       data: {}
     }).then(
       (res) => {
-        console.log('getMarriage')
-        console.log(res)
+        var itemArray = [];
+        var itemList = res.data.data;
+        for (var key in itemList) {
+          var item = itemList[key];
+          itemArray.push(item);
+        }
+        this.setData({
+          marriageList: itemArray
+        })
       }
     )
     getRelation({
       data: {}
     }).then(
       (res) => {
-        console.log('getRelation')
-        console.log(res)
+        var itemArray = [];
+        var itemList = res.data.data;
+        for (var key in itemList) {
+          var item = itemList[key];
+          itemArray.push(item);
+        }
+        this.setData({
+          relationListMan: itemArray
+        })
       }
     )
   },
@@ -167,25 +166,25 @@ Page({
     let num = e.detail.value;
     if (this.data.userInfo.sex != this.data.genderList[num]) {
       if (this.data.genderList[num] == '男') {
-        this.data.userInfo.relation = '父子';
+        this.data.userInfo.relationStr = '父子';
       } else {
-        this.data.userInfo.relation = '父女';
+        this.data.userInfo.relationStr = '父女';
       }
     }
-    this.data.userInfo.gender = this.data.genderList[num];
+    this.data.userInfo.genderStr = this.data.genderList[num];
     this.setData({
       userInfo: this.data.userInfo
     })
   },
   bindDateChange: function (e) {
-    this.data.userInfo.birthday = e.detail.value;
+    this.data.userInfo.birth = e.detail.value;
     this.setData({
       userInfo: this.data.userInfo
     })
   },
   bindHeighChange: function (e) {
     let num = e.detail.value;
-    this.data.userInfo.heigh = this.data.bodyHeighList[num];
+    this.data.userInfo.height = this.data.bodyHeighList[num];
     this.setData({
       userInfo: this.data.userInfo
     })
@@ -326,6 +325,7 @@ Page({
     return
   },
   chooseImage() {
+    let picId = this.data.userInfo.id;
     wx.chooseMedia({
       count: 1,
       mediaType: ['image'],
@@ -333,17 +333,32 @@ Page({
       maxDuration: 30,
       camera: 'back',
       success(res) {
-        console.log(res.tempFiles.tempFilePath)
-        console.log(res.tempFiles.size)
+        console.log('test')
+        console.log(picId)
+        console.log(res.tempFiles[0])
         wx.cloud.uploadFile({
-          cloudPath: '7072-prod-9ggc7xkmfcc18237-1313078534/avatar/'+this.data.userInfo.id+'.png', // 对象存储路径，根路径直接填文件名，文件夹例子 test/文件名，不要 / 开头
-          filePath: res.tempFiles.tempFilePath, // 微信本地文件，通过选择图片，聊天文件等接口获取
+          cloudPath: 'avatar/'+picId+'.png', // 对象存储路径，根路径直接填文件名，文件夹例子 test/文件名，不要 / 开头
+          filePath: res.tempFiles[0].tempFilePath, // 微信本地文件，通过选择图片，聊天文件等接口获取
           config: {
             env: 'prod-9ggc7xkmfcc18237' // 需要替换成自己的微信云托管环境ID
           }
         }).then(res => {
           console.log(res.fileID)
+          this.data.userInfo.avatarUrl = res.tempFiles[0].tempFilePath;
+          updateUserData({
+            data: {
+              'id': this.data.userInfo.id,
+              'photo': res.fileID
+            }
+          }).then(
+            (res) => {
+              this.setData({
+                userInfo: this.data.userInfo
+              })
+            }
+          )
         }).catch(error => {
+          console.log('testFailed')
           console.error(err)
         })
       }

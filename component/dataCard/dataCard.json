@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "customBtn":"../../component/customBtn/customBtn",
+    "selectedBtn":"../../component/selectedBtn/selectedBtn",
     "shareBtn":"../../component/shareBtn/shareBtn"
   }
 }

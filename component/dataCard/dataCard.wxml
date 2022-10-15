@@ -38,7 +38,7 @@
   <view class="dataCardMainDesc1">{{currentUserData.mateSelectionCriteria}}</view>
   <view class="dataCardBottomButtonArea">
     <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16"></shareBtn>
-    <button class="dataCardCollectionButton" bind:tap="clickCollectHandle">收藏</button>
+    <button class="dataCardCollectionButton" bind:tap="clickCollectHandle">{{currentUserData.favorite?'已收藏':'收藏'}}</button>
     <customBtn btnWidth="124" btnHeigh="35" btnText="联系对方家长" btnFontSize="16" bind:clickHandle="clickCallHandle"></customBtn>
   </view>
   <view style="height: 20px;"></view>

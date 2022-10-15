@@ -100,3 +100,9 @@ export const report = (params) => {
   params.method = "POST"
   return cloudRequest('/api/report/addReport',params)
 }
+
+//获取分享信息 参数：fateUserInfoId
+export const getShareInfo = (params) => {
+  params.method = "POST"
+  return cloudRequest('/api/share/getShareInfo',params)
+}
