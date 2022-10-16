@@ -45,7 +45,7 @@
               <image class="redlineImg redlineImageLeftMargin" src="../../images/redCard.png"></image>
               <view class="inviteSubTitle">x3</view>
             </view>
-            <button open-type="contact" bindcontact="handleContact">联系客服</button>
+            <button class="contactPlatformButton" style="width: 300px; height: 52px; line-height: 52px;" open-type="contact" bindcontact="handleContact">联系客服</button>
             <!-- <selectedBtn btnWidth="300" btnHeigh="52" btnText="联系客服" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="platformHelp" style="margin-top: 29.5px;"></selectedBtn> -->
           </view>
         </view>

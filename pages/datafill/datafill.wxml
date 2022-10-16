@@ -4,30 +4,30 @@
   <view class="datafillTopTitle">请填写资料</view>
   <view class="datafillSubTitle">相亲者性别(选定后不可修改)</view>
   <view class="datafillGenderBG">
-    <view class="datafillGenderImageBG imageLeftMargin" bindtap="clickGender" data-gender="1">
+    <view class="datafillGenderImageBG imageLeftMargin" bindtap="clickSex" data-gender="1">
       <image class="datafillGenderImage" src="{{userBasicInfo.gender==1?'../../images/man_selected.png':'../../images/man_unselected.png'}}"></image>
       <view class="datafillGenderTitle">男</view>
     </view>
-    <view class="datafillGenderImageBG imageRightMargin" bindtap="clickGender" data-gender="0">
-      <image class="datafillGenderImage" src="{{userBasicInfo.gender==0?'../../images/woman_selected.png':'../../images/woman_unselected.png'}}"></image>
+    <view class="datafillGenderImageBG imageRightMargin" bindtap="clickSex" data-gender="0">
+      <image class="datafillGenderImage" src="{{userBasicInfo.sex==0?'../../images/woman_selected.png':'../../images/woman_unselected.png'}}"></image>
       <view class="datafillGenderTitle">女</view>
     </view>
   </view>
   <view class="datafillSubTitle">相亲者年龄</view>
   <view class="datafillSubTitleSelectedBG">
-    <picker mode="date" value="{{date}}" start="1970-01-01" end="2022-01-01" bindchange="bindDateChange">
+    <picker mode="date" value="{{date}}" start="1970-01-01" end="2022-01-01" bindchange="bindBirthChange">
       <selectedBtn btnWidth="285" btnHeigh="51" btnText="{{userBasicInfo.birth}}" btnFontSize="20" selectedable="{{true}}" selected="{{false}}" buttonNum="{{index}}" borderWidth="2"></selectedBtn>
     </picker>
   </view>
   <view class="datafillSubTitle">相亲者居住地</view>
   <view class="datafillSubTitleSelectedBG">
-    <picker mode="region" bindchange="bindRegionChange" value="{{userBasicInfo.resident}}" custom-item="{{customItem}}">
-      <selectedBtn btnWidth="285" btnHeigh="51" btnText="{{userBasicInfo.resident.length>0?userBasicInfo.resident[0]+userBasicInfo.resident[1]+userBasicInfo.resident[2]:'选择居住地'}}" btnFontSize="20" selectedable="{{true}}" selected="{{false}}" buttonNum="{{index}}"borderWidth="2"></selectedBtn>
+    <picker mode="region" bindchange="bindAddressChange" value="{{userBasicInfo.address}}" custom-item="{{customItem}}">
+      <selectedBtn btnWidth="285" btnHeigh="51" btnText="{{userBasicInfo.address.length>0?userBasicInfo.address:'选择居住地'}}" btnFontSize="20" selectedable="{{true}}" selected="{{false}}" buttonNum="{{index}}"borderWidth="2"></selectedBtn>
     </picker>
   </view>
   <view class="datafillSubTitle">相亲者状态</view>
   <view class="datafillStatusBG">
-    <selectedBtn btnWidth="95" btnHeigh="43" btnText="未婚" btnFontSize="20" selectedable="{{true}}" selected="{{userBasicInfo.status==0?true:false}}" buttonNum="0" bind:clickHandle="clickStatus" borderWidth="2"></selectedBtn>
+    <selectedBtn btnWidth="95" btnHeigh="43" btnText="未婚" btnFontSize="20" selectedable="{{true}}" selected="{{userBasicInfo.status==0?true:false}}" buttonNum="0" bind:clickHandle="clickMaritalStatus" borderWidth="2"></selectedBtn>
     <selectedBtn btnWidth="95" btnHeigh="43" btnText="离异" btnFontSize="20" selectedable="{{true}}" selected="{{userBasicInfo.status==2?true:false}}" buttonNum="2" bind:clickHandle="clickStatus" borderWidth="2"></selectedBtn>
     <selectedBtn btnWidth="95" btnHeigh="43" btnText="丧偶" btnFontSize="20" selectedable="{{true}}" selected="{{userBasicInfo.status==4?true:false}}" buttonNum="4" bind:clickHandle="clickStatus" borderWidth="2"></selectedBtn>
   </view>

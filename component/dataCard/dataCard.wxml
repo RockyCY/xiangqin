@@ -6,22 +6,22 @@
       <view class="dataCardTextContainer">
         <view class="dataCardTitleArea">
           <view class="dataCardTitle">{{currentUserData.birthYear}}</view>
-          <view class="dataCardTitle1">{{currentUserData.maritalStatus}}</view>
+          <view class="dataCardTitle1">{{currentUserData.maritalStatusStr}}</view>
           <view class="moreBG" bindtap="clickMore">
             <image class="moreImg" src="../../images/more.png"></image>
             <view class="moreText">更多</view>
           </view>
         </view>
-        <view class="dataCardSubtitle">现居{{currentUserData.residentPlace[1]}}</view>
-        <view class="dataCardSubtitle">家乡{{currentUserData.hometown[1]}}</view>
-        <view class="dataCardSubtitle">{{currentUserData.education}} {{currentUserData.height+'cm'}} {{currentUserData.weight+'kg'}}</view>
+        <view class="dataCardSubtitle">现居{{currentUserData.addressShort}}</view>
+        <view class="dataCardSubtitle">家乡{{currentUserData.hometownShort}}</view>
+        <view class="dataCardSubtitle">{{currentUserData.educationStr}} {{currentUserData.height+'cm'}} {{currentUserData.weight}}</view>
       </view>
     </view>
     <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
-      <view class="dataCardLabel">{{currentUserData.marriagePlan}}</view>
+      <view class="dataCardLabel">{{currentUserData.weddingPlanStr}}</view>
       <view class="dataCardLabel">{{currentUserData.buyCarStr}}</view>
       <view class="dataCardLabel">{{currentUserData.buyHouseStr}}</view>
-      <view class="dataCardLabel">{{currentUserData.income}}</view>
+      <view class="dataCardLabel">{{currentUserData.incomeStr}}</view>
       <block wx:if="{{userData.college}}">
         <view class="dataCardLabel">{{currentUserData.college}}</view>
       </block>

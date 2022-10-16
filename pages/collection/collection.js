@@ -24,7 +24,20 @@ Page({
       }
     }).then(
       (res) => { 
-        console.log(res.data);
+        console.log(res.data.data)
+        for(var item of res.data.data){
+          if(item.birth&&item.birth.length>0){
+            item.birthYear = item.birth.substring(2,4) + '年';
+          }
+          if(item.address&&item.address.length>0){
+            var addressArray = item.address.split('-');
+            item.addressShort = addressArray[1];
+          }
+          if(item.hometown&&item.hometown.length>0){
+            var hometownArray = item.hometown.split('-');
+            item.hometownShort = hometownArray[1];
+          }
+        }
         this.setData({
           collectionList:res.data.data
         })
@@ -80,7 +93,7 @@ Page({
   onShareAppMessage() {
 
   },
-  clickData(){
+  clickData(e){
     wx.navigateTo({
       url: '../detail/detail',
     })

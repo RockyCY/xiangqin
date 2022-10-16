@@ -29,6 +29,14 @@ Page({
         if(app.globalData.userInfoRes.userInfo.birth&&app.globalData.userInfoRes.userInfo.birth.length>0){
           app.globalData.userInfoRes.userInfo.birthYear = app.globalData.userInfoRes.userInfo.birth.substring(2,4) + '年';
         }
+        if(app.globalData.userInfoRes.userInfo.address&&app.globalData.userInfoRes.userInfo.address.length>0){
+          var addressArray = app.globalData.userInfoRes.userInfo.address.split('-');
+          app.globalData.userInfoRes.userInfo.addressShort = addressArray[1];
+        }
+        if(app.globalData.userInfoRes.userInfo.hometown&&app.globalData.userInfoRes.userInfo.hometown.length>0){
+          var hometownArray = app.globalData.userInfoRes.userInfo.hometown.split('-');
+          app.globalData.userInfoRes.userInfo.hometownShort = hometownArray[1];
+        }
         app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
         this.setData({
           userInfo:res.data.data.fateUserInfoResponse

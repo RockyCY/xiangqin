@@ -23,7 +23,6 @@
   border-radius: 4px;
   width: 86px;
   height: 116px;
-  background: #ff313b;
   margin-top: 10px;
   margin-left: 23.5px;
 }

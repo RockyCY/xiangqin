@@ -1,4 +1,7 @@
 // pages/datafill/datafill.js
+import {
+  updateUserData
+} from "../../service/index"
 Page({
 
   /**
@@ -6,10 +9,10 @@ Page({
    */
   data: {
     userBasicInfo:{
-      gender:-1, //-1 未选择 0 女 1 男
-      birthday:'选择出生日期',
-      resident:[],
-      status:-1 // 0 未婚 2 离异 4 丧偶
+      sex:-1, //-1 未选择 0 女 1 男
+      birth:'选择出生日期',
+      address:'',
+      maritalStatus:-1 // 0 未婚 1 离异 2 丧偶
     },
   },
 
@@ -70,13 +73,14 @@ Page({
   },
 
   clickFillOver(){
+
     wx.navigateBack({
       delta: 0,
     })
   },
-  clickGender(e){
+  clickSex(e){
      let currentGender = e.currentTarget.dataset.gender;
-     if(currentGender == this.data.userBasicInfo.gender){
+     if(currentGender == this.data.userBasicInfo.sex){
       this.data.userBasicInfo.gender = -1;
      }else {
       this.data.userBasicInfo.gender = currentGender;
@@ -86,24 +90,24 @@ Page({
     })
   },
 
-  bindDateChange: function (e) {
-    this.data.userBasicInfo.birthday = e.detail.value;
+  bindBirthChange: function (e) {
+    this.data.userBasicInfo.birth = e.detail.value;
     this.setData({
       userBasicInfo: this.data.userBasicInfo
     })
   },
-  bindRegionChange: function (e) {
-    this.data.userBasicInfo.resident = e.detail.value;
+  bindAddressChange: function (e) {
+    this.data.userBasicInfo.addres = e.detail.value;
     this.setData({
       userBasicInfo: this.data.userBasicInfo
     })
   },
-  clickStatus:function (e) {
+  clickMaritalStatus:function (e) {
     let num = e.detail;
-    if(this.data.userBasicInfo.status == num){
-      this.data.userBasicInfo.status = -1;
+    if(this.data.userBasicInfo.maritalStatus == num){
+      this.data.userBasicInfo.maritalStatus = -1;
     }else {
-      this.data.userBasicInfo.status = e.detail;
+      this.data.userBasicInfo.maritalStatus = e.detail;
     }
   
     this.setData({

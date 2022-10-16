@@ -2,7 +2,7 @@
 <view class="cardBG" style="margin-left: {{cardMargin}}px; ">
     <image class="cardPic" src="{{userData.photo}}"></image>
     <view class="cardTextContainer">
-       <view class="cardTitle">{{userData.birthYear}}/{{userData.address}}/{{userData.height}}/{{userData.education}}</view>
+       <view class="cardTitle">{{userData.birthYear}}/{{userData.addressShort}}/{{userData.height}}/{{userData.educationStr}}</view>
        <view class="cardSubtitle">{{userData.phoneNumber}}</view>
        <view class="cardBtnArea">
         <customBtn btnWidth="101" btnHeigh="30" btnText="查看资料" btnFontSize="18"

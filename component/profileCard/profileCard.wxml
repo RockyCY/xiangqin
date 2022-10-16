@@ -12,8 +12,8 @@
           <view class="profileCardTitle">{{userData.birthYear}}</view>
           <view class="profileCardTitle1">{{userData.maritalStatusStr}}</view>
         </view>
-        <view class="profileCardSubtitle">现居{{userData.address}}</view>
-        <view class="profileCardSubtitle">家乡{{userData.hometown}}</view>
+        <view class="profileCardSubtitle">现居{{userData.addressShort}}</view>
+        <view class="profileCardSubtitle">家乡{{userData.hometownShort}}</view>
         <view class="profileCardSubtitle">{{userData.educationStr}} {{userData.height + 'cm'}} {{userData.weight}}</view>
       </view>
     </view>

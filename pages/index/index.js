@@ -42,9 +42,16 @@ Page({
         console.log(res.data)
         for(var item of res.data.data){
           if(item.birth&&item.birth.length>0){
-            item.birthYear = item.birth.substring(2,4);
+            item.birthYear = item.birth.substring(2,4) + '年';
           }
-          
+          if(item.address&&item.address.length>0){
+            var addressArray = item.address.split('-');
+            item.addressShort = addressArray[1];
+          }
+          if(item.hometown&&item.hometown.length>0){
+            var hometownArray = item.hometown.split('-');
+            item.hometownShort = hometownArray[1];
+          }
         }
         this.setData({
           recommendDataArray:res.data.data
@@ -95,25 +102,63 @@ Page({
   },
   clickCollect(e){
     let user = e.detail;
-    addFavorites({
+    console.log(user);
+    if(user.favorite == false){
+      addFavorites({
+        data:{
+          'fateUserInfoId':user.id
+        }
+      }).then(
+        (res) => {
+          var toast = '收藏成功';
+          if(res && res.data.code == 0){
+              for (var item of this.data.recommendDataArray){
+                  if(item.id == user.id){
+                    item.favorite = true;
+                    break;
+                  }
+              }
+          }else{
+             toast = '收藏失败';
+          }
+          this.setData({
+            recommendDataArray:this.data.recommendDataArray
+          })
+          wx.showToast({
+            title: toast,
+            icon:'none'
+          })
+        }
+      )
+    }else {
+    cancelFavorites({
       data:{
         'fateUserInfoId':user.id
       }
     }).then(
       (res) => {
-        console.log(res.data)
+        var toast = '取消收藏成功';
+          if(res && res.data.code == 0){
+            for (var item of this.data.recommendDataArray){
+              if(item.id == user.id){
+                item.favorite = false;
+                break;
+              }
+          }
+          }else{
+             toast = '取消收藏失败';
+          }
+          this.setData({
+            recommendDataArray:this.data.recommendDataArray
+          })
+          wx.showToast({
+            title: toast,
+            icon:'none'
+          })
       }
     )
-
-    // cancelFavorites({
-    //   data:{
-    //     'fateUserInfoId':user.id
-    //   }
-    // }).then(
-    //   (res) => {
-    //     console.log(res.data)
-    //   }
-    // )
+    }
+  
   },
   clickCall(e){
     let detail = e.detail;
