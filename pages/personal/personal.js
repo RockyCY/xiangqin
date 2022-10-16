@@ -21,14 +21,16 @@ Page({
     hideMask: true,
     isPhoneMask: false,
     isVertifiCodeMask: false,
-    isSchoolMask: false,
-    isPersonalDescMask: false,
-    isSpouseDescMask: false,
+    isCollegeMask: false,
+    isNameMask: false,
+    isPersonalInformationMask: false,
+    isMateSelectionCriteriaMask: false,
     inputPhone: '',
     verifiCode: '',
-    inputSchool: '',
-    inputPersonalDesc: '',
-    inputSpouseDesc: '',
+    inputCollege: '',
+    inputName:'',
+    inputPersonalInformation: '',
+    inputMateSelectionCriteria: '',
     descTitleWidth: wx.getSystemInfoSync().screenWidth - 18.5 * 2,
     sexList: ['女', '男'],
     bodyHeighList: ['140cm', '141cm', '142cm', '143cm', '144cm', '145cm', '146cm', '147cm', '148cm', '149cm', '150cm', '151cm', '152cm', '153cm', '154cm', '155cm', '156cm', '157cm', '158cm', '159cm', '160cm', '161cm', '162cm', '163cm', '164cm', '165cm', '166cm', '167cm', '168cm', '169cm', '170cm', '171cm', '172cm', '173cm', '174cm', '175cm', '176cm', '177cm', '178cm', '179cm', '180cm', '181cm', '182cm', '183cm', '184cm', '185cm', '186cm', '187cm', '188cm', '189cm', '190cm', '191cm', '192cm', '193cm', '194cm', '195cm', '196cm', '197cm', '198cm', '199cm', '200cm'],
@@ -37,11 +39,10 @@ Page({
     educationList: [],
     incomeList: [],
     relationList: [],
-    housePlan: ['未购房','已购房', '计划购房'],
-    carPlan: ['未购车','计划购车','已购车', ],
+    housePlan: ['未购房','计划购房','已购房'],
+    carPlan: ['未购车','计划购车','已购车'],
     marriagePlan: ['半年内结婚', '1-2年结婚', '不着急结婚'],
     date: '1995-01-01',
-    region: ['', '', '']
   },
 
   /**
@@ -259,16 +260,34 @@ Page({
   bindMaritalStatusChange: function (e) {
     let num = e.detail.value;
     this.data.userInfo.maritalStatusStr = this.data.marriageList[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'maritalStatus': num
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
   bindWeddingPlanChange: function (e) {
     let num = e.detail.value;
     this.data.userInfo.WeddingPlanStr = this.data.marriagePlan[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'weddingPlan': num
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
   bindEducationChange: function (e) {
     let num = e.detail.value;
@@ -305,36 +324,66 @@ Page({
   bindHousePlanChange: function (e) {
     let num = e.detail.value;
     this.data.userInfo.buyHouseStr = this.data.housePlan[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'buyHouse': num
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
   bindCarPlanChange: function (e) {
     let num = e.detail.value;
     this.data.userInfo.buyCarStr = this.data.carPlan[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'buyCar': num
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
   bindRelationChange: function (e) {
     let num = e.detail.value;
     this.data.userInfo.relationStr = this.data.relationList[num];
-    this.setData({
-      userInfo: this.data.userInfo
-    })
+    updateUserData({
+      data: {
+        'id': this.data.userInfo.id,
+        'relation': num
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
   clickBar(e) {
     let title = e.detail;
     var phoneMask = false;
     var vertifiCodeMask = false;
-    var schoolMask = false;
+    var collegeMask = false;
+    var nameMask = false;
     var personalDescMask = false;
     var spouseDescMask = false;
     console.log(title);
     if (title == '电话') {
       phoneMask = true;
     } else if (title == '学校') {
-      schoolMask = true;
+      collegeMask = true;
+    } else if (title == '称谓') {
+      nameMask = true;
     } else if (title == '个人信息') {
       personalDescMask = true;
     } else if (title == '择偶标准') {
@@ -344,9 +393,10 @@ Page({
       hideMask: false,
       isPhoneMask: phoneMask,
       isVertifiCodeMask: vertifiCodeMask,
-      isSchoolMask: schoolMask,
-      isPersonalDescMask: personalDescMask,
-      isSpouseDescMask: spouseDescMask
+      isCollegeMask: collegeMask,
+      isNameMask:nameMask,
+      isPersonalInformationMask: personalDescMask,
+      isMateSelectionCriteriaMask: spouseDescMask
     })
   },
   closeMask() {
@@ -412,13 +462,15 @@ Page({
       hideMask: false,
       isPhoneMask: false,
       isVertifiCodeMask: true,
-      isSchoolMask: false,
-      isPersonalDescMask: false,
-      isSpouseDescMask: false
+      isCollegeMask: false,
+      isNameMask:false,
+      isPersonalInformationMask: false,
+      isMateSelectionCriteriaMask: false
     })
   },
   bindKeyInput: function (e) {
     let id = e.currentTarget.dataset.id;
+    console.log(e.detail.value)
     if (id == 'phone') {
       this.setData({
         inputPhone: e.detail.value
@@ -427,40 +479,60 @@ Page({
       this.setData({
         verifiCode: e.detail.value
       })
-    } else if (id == 'school') {
+    } else if (id == 'college') {
       this.setData({
-        inputSchool: e.detail.value
+        inputCollege: e.detail.value
       })
-    } else if (id == 'personalDesc') {
+    } else if (id == 'name') {
       this.setData({
-        inputPersonalDesc: e.detail.value
+        inputName: e.detail.value
       })
-    } else if (id == 'spouceDesc') {
+    } else if (id == 'personalInformation') {
       this.setData({
-        inputSpouseDesc: e.detail.value
+        inputPersonalInformation: e.detail.value
+      })
+    } else if (id == 'mateSelectionCriteria') {
+      this.setData({
+        inputMateSelectionCriteria: e.detail.value
       })
     }
 
   },
   finishChange: function (e) {
     let id = e.currentTarget.dataset.id;
-    if (id == 'code') {
-      this.data.userInfo.phone = this.data.inputPhone;
-    } else if (id == 'college') {
-      this.data.userInfo.school = this.data.inputSchool;
-    } else if (id == 'personalInformation') {
-      this.data.userInfo.personalDesc = this.data.inputPersonalDesc;
-    } else if (id == 'mateSelectionCriteria') {
-      this.data.userInfo.spouceDesc = this.data.inputSpouseDesc;
+    let requestData = {
+      'id': this.data.userInfo.id
     }
-    this.setData({
-      hideMask: true,
-      inputSchool: '',
-      inputPhone: '',
-      verifiCode: '',
-      inputPersonalDesc: '',
-      inputSpouseDesc: '',
-      userInfo: this.data.userInfo
-    })
+    if (id == 'code') {
+      this.data.userInfo.phoneNum = this.data.inputPhone;
+    } else if (id == 'college') {
+      this.data.userInfo.college = this.data.inputCollege;
+      requestData['college'] = this.data.userInfo.college;
+    } else if (id == 'name') {
+      this.data.userInfo.concatLastName = this.data.inputName;
+      requestData['concatLastName'] = this.data.userInfo.concatLastName;
+    } else if (id == 'personalInformation') {
+      this.data.userInfo.personalInformation = this.data.inputPersonalInformation;
+      requestData['personalInformation'] = this.data.userInfo.personalInformation;
+    } else if (id == 'mateSelectionCriteria') {
+      this.data.userInfo.mateSelectionCriteria = this.data.inputMateSelectionCriteria;
+      requestData['mateSelectionCriteria'] = this.data.userInfo.mateSelectionCriteria;
+    }
+
+    updateUserData({
+      data: requestData
+    }).then(
+      (res) => {
+        this.setData({
+          hideMask: true,
+          inputCollege: '',
+          inputPhone: '',
+          verifiCode: '',
+          inputPersonalInformation: '',
+          inputMateSelectionCriteria: '',
+          userInfo: this.data.userInfo
+        })
+      }
+    )
   },
 })

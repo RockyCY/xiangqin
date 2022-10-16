@@ -26,9 +26,10 @@ Page({
     }).then(
       (res) => {
         app.globalData.userInfoRes.userInfo = res.data.data.fateUserInfoResponse;
+        if(app.globalData.userInfoRes.userInfo.birth&&app.globalData.userInfoRes.userInfo.birth.length>0){
+          app.globalData.userInfoRes.userInfo.birthYear = app.globalData.userInfoRes.userInfo.birth.substring(2,4) + '年';
+        }
         app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
-        console.log('getuserdata')
-        console.log(res.data.data)
         this.setData({
           userInfo:res.data.data.fateUserInfoResponse
         })

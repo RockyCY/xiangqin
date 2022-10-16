@@ -41,8 +41,8 @@ Page({
         console.log('recommendData')
         console.log(res.data)
         for(var item of res.data.data){
-          if(item.birth.length>0){
-            item.birth = item.birth.substring(2,3);
+          if(item.birth&&item.birth.length>0){
+            item.birthYear = item.birth.substring(2,4);
           }
           
         }

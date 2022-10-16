@@ -9,12 +9,12 @@
       <image class="profileCardPic" src="{{userData.photo}}"></image>
       <view class="profileCardTextContainer">
         <view class="profileCardTitleArea">
-          <view class="profileCardTitle">{{userData.birth}}</view>
+          <view class="profileCardTitle">{{userData.birthYear}}</view>
           <view class="profileCardTitle1">{{userData.maritalStatusStr}}</view>
         </view>
         <view class="profileCardSubtitle">现居{{userData.address}}</view>
         <view class="profileCardSubtitle">家乡{{userData.hometown}}</view>
-        <view class="profileCardSubtitle">{{userData.educationStr}} {{userData.height + 'cm'}} {{userData.weight + 'kg'}}</view>
+        <view class="profileCardSubtitle">{{userData.educationStr}} {{userData.height + 'cm'}} {{userData.weight}}</view>
       </view>
     </view>
     <view class="profileCardLabelArea" style="margin-left: {{labelMargin}}px;">

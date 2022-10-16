@@ -61,7 +61,5 @@ App({
     loginData: null,
     userInfoRes: null,
     userPropDetail:null,
-    nickName: '微信用户',
-    avaterUrl: ''
   }
 })

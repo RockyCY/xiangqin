@@ -5,7 +5,7 @@
       <image class="dataCardPic" src="{{currentUserData.photo}}"></image>
       <view class="dataCardTextContainer">
         <view class="dataCardTitleArea">
-          <view class="dataCardTitle">{{currentUserData.birth}}年</view>
+          <view class="dataCardTitle">{{currentUserData.birthYear}}</view>
           <view class="dataCardTitle1">{{currentUserData.maritalStatus}}</view>
           <view class="moreBG" bindtap="clickMore">
             <image class="moreImg" src="../../images/more.png"></image>

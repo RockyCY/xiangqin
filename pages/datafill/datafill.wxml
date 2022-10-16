@@ -16,7 +16,7 @@
   <view class="datafillSubTitle">相亲者年龄</view>
   <view class="datafillSubTitleSelectedBG">
     <picker mode="date" value="{{date}}" start="1970-01-01" end="2022-01-01" bindchange="bindDateChange">
-      <selectedBtn btnWidth="285" btnHeigh="51" btnText="{{userBasicInfo.birthday}}" btnFontSize="20" selectedable="{{true}}" selected="{{false}}" buttonNum="{{index}}" borderWidth="2"></selectedBtn>
+      <selectedBtn btnWidth="285" btnHeigh="51" btnText="{{userBasicInfo.birth}}" btnFontSize="20" selectedable="{{true}}" selected="{{false}}" buttonNum="{{index}}" borderWidth="2"></selectedBtn>
     </picker>
   </view>
   <view class="datafillSubTitle">相亲者居住地</view>
