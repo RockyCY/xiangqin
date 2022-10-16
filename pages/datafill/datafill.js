@@ -1,5 +1,6 @@
 // pages/datafill/datafill.js
 import {
+  getCurrentUserData,
   updateUserData
 } from "../../service/index"
 Page({
@@ -20,7 +21,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    getCurrentUserData({
+      data:{}
+    }).then(
+      (res) => {
+        app.globalData.userInfoRes.userInfo = res.data.data.fateUserInfoResponse;
+        if(app.globalData.userInfoRes.userInfo.birth&&app.globalData.userInfoRes.userInfo.birth.length>0){
+          app.globalData.userInfoRes.userInfo.birthYear = app.globalData.userInfoRes.userInfo.birth.substring(2,4) + '年';
+        }
+        if(app.globalData.userInfoRes.userInfo.address&&app.globalData.userInfoRes.userInfo.address.length>0){
+          var addressArray = app.globalData.userInfoRes.userInfo.address.split('-');
+          app.globalData.userInfoRes.userInfo.addressShort = addressArray[1];
+        }
+        if(app.globalData.userInfoRes.userInfo.hometown&&app.globalData.userInfoRes.userInfo.hometown.length>0){
+          var hometownArray = app.globalData.userInfoRes.userInfo.hometown.split('-');
+          app.globalData.userInfoRes.userInfo.hometownShort = hometownArray[1];
+        }
+        app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
+        this.setData({
+          userInfo:res.data.data.fateUserInfoResponse
+        })
+      }
+    )
   },
 
   /**
@@ -79,11 +101,11 @@ Page({
     })
   },
   clickSex(e){
-     let currentGender = e.currentTarget.dataset.gender;
+     let currentGender = e.currentTarget.dataset.sex;
      if(currentGender == this.data.userBasicInfo.sex){
-      this.data.userBasicInfo.gender = -1;
+      this.data.userBasicInfo.sex = -1;
      }else {
-      this.data.userBasicInfo.gender = currentGender;
+      this.data.userBasicInfo.sex = currentGender;
      }
      this.setData({
       userBasicInfo: this.data.userBasicInfo

@@ -9,7 +9,6 @@ App({
     // 登录
     wx.login({
       success: res => {
-        console.log(res);
         if (res.code) {
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
           wx.cloud.init()
@@ -59,7 +58,7 @@ App({
   },
   globalData: {
     loginData: null,
-    userInfoRes: null,
+    userInfoRes: {},
     userPropDetail:null,
   }
 })

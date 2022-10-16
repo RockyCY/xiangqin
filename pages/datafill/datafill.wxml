@@ -4,8 +4,8 @@
   <view class="datafillTopTitle">请填写资料</view>
   <view class="datafillSubTitle">相亲者性别(选定后不可修改)</view>
   <view class="datafillGenderBG">
-    <view class="datafillGenderImageBG imageLeftMargin" bindtap="clickSex" data-gender="1">
-      <image class="datafillGenderImage" src="{{userBasicInfo.gender==1?'../../images/man_selected.png':'../../images/man_unselected.png'}}"></image>
+    <view class="datafillGenderImageBG imageLeftMargin" bindtap="clickSex" data-sex="1">
+      <image class="datafillGenderImage" src="{{userBasicInfo.sex==1?'../../images/man_selected.png':'../../images/man_unselected.png'}}"></image>
       <view class="datafillGenderTitle">男</view>
     </view>
     <view class="datafillGenderImageBG imageRightMargin" bindtap="clickSex" data-gender="0">
