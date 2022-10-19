@@ -33,8 +33,6 @@ Page({
 
   onLoad() {
     //test
-    wx.
-    
     if (!app.globalData.userInfoRes.userInfo) {
       getCurrentUserData({
         data: {}

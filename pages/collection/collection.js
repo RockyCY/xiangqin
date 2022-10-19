@@ -24,7 +24,6 @@ Page({
       }
     }).then(
       (res) => { 
-        console.log(res.data.data)
         for(var item of res.data.data){
           if(item.birth&&item.birth.length>0){
             item.birthYear = item.birth.substring(2,4) + '年';
@@ -94,8 +93,10 @@ Page({
 
   },
   clickData(e){
+    let userData = e.detail;
+    var userDataStr = JSON.stringify(userData);
     wx.navigateTo({
-      url: '../detail/detail',
+      url: '../detail/detail?userData='+userDataStr,
     })
   },
   clickShare(){

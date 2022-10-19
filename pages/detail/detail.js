@@ -1,4 +1,15 @@
 // pages/detail/detail.js
+
+import {
+  addFavorites,
+  cancelFavorites,
+  getNotLikeReason,
+  addNotLike,
+  getPhoneNumber,
+  getShareInfo
+} from "../../service/index"
+
+
 Page({
 
   /**
@@ -6,28 +17,9 @@ Page({
    */
   data: {
     userData:{
-      id:123456,
-      photo:'',
-      sex:'男',
-      birth:'1991-01-01',
-      height:'170cm',
-      weight:'55kg',
-      address:['广东省', '广州市', '海珠区'],
-      hometown:['广东省', '广州市', '海珠区'],
-      maritalStatus:'未婚',
-      education:'本科',
-      school:'清华大学',
-      income:'10-15W',
-      relation:'母子',
-      phoneNumber:'138*****1234',
-      marriagePlan:'',
-      car:'',
-      house:'',
-      personalInformation:'独生女，92年11月生，未婚,身高165，名校毕业，深圳福田国企会计，家住福田，女儿在深圳长大，父在央企做管理工作，母是医生已退休，全家深户，身体健康，无经济压力。',
-      mateSelectionCriteria:'要求男孩未婚，88年后生，身高170以上，身体健康，本科以上学历，工作稳定，积极上进，有责任心，感情专一的优秀男孩。'
-   },
-    reasons:["年龄偏大","年龄偏小","收入偏高","收入偏低","学历偏大","学历偏小","身高偏大","身高偏小","居住地不匹配","对方信息不全"],
-    selectedReasons:{"年龄偏大":false,"年龄偏小":false,"收入偏高":false,"收入偏低":false,"学历偏大":false,"学历偏小":false,"身高偏大":false,"身高偏小":false,"居住地不匹配":false,"对方信息不全":false},
+    },
+    reasons: [],
+    selectedReasons: {},
     buttonMargin:(wx.getSystemInfoSync().screenWidth - 300)/2,
     userInfo: {},
     hideMask:true,
@@ -41,7 +33,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var userDataStr = options.userData;
+    var userDataObject = JSON.parse(userDataStr);
+    this.setData({
+      userData:userDataObject
+    })
   },
 
   /**
