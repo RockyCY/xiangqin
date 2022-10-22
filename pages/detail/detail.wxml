@@ -8,7 +8,7 @@
         <view class="contactViewBG contactViewBG1">
           <view class="contactViewTopTitle contactViewTopTitle1">对方手机号</view>
           <view class="contactViewSubTitle contactViewSubTitle1">联系对方时请保护个人信息</view>
-          <view class="contactViewPhoneNumber contactViewPhoneNumber1">{{userData.phone}}</view>
+          <view class="contactViewPhoneNumber contactViewPhoneNumber1">{{userData.phoneNumber}}</view>
           <view class="redlineNumBG redlineNumBG1">
             <image class="redlineImg" src="../../images/redCard.png"></image>
             <view class="redlineText">x{{userData.redlineNum}}</view>
@@ -24,7 +24,7 @@
         <view class="contactViewBG">
           <view class="contactViewTopTitle">对方手机号</view>
           <view class="contactViewSubTitle">联系对方时请保护个人信息</view>
-          <view class="contactViewPhoneNumber">{{userData.phone}}</view>
+          <view class="contactViewPhoneNumber">{{userData.phoneNumber}}</view>
           <view class="redlineNumBG">
             <image class="redlineImg" src="../../images/redCard.png"></image>
             <view class="redlineText">数量不足</view>
@@ -53,6 +53,6 @@
     </block>
   </view>
   <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <dataCard bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="showMask" data-type="dislike" bind:clickMore=""></dataCard>
+    <dataCard currentUserData="{{userData}}"bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="showMask" data-type="dislike" bind:clickMore=""></dataCard>
   </scroll-view>
 </view>
