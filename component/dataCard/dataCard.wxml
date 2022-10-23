@@ -2,7 +2,7 @@
 <view class="dataCardBG" style="margin-left: {{cardMargin}}px; " bindlongpress="longPressHandle">
   <view class="dataCardTopBG">
     <view class="dataCardTopBG1">
-      <image class="dataCardPic" src="{{currentUserData.photo}}"></image>
+      <image class="dataCardPic" src="{{!currentUserData.photo?(currentUserData.sex==1?'../../images/icon_default_man.png':'../../images/icon_default_woman.png'):currentUserData.photo}}"></image>
       <view class="dataCardTextContainer">
         <view class="dataCardTitleArea">
           <view class="dataCardTitle">{{currentUserData.birthYear}}</view>

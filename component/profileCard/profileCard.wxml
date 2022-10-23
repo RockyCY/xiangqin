@@ -6,7 +6,7 @@
   </view>
   <view class="profileCardTopBG">
     <view class="profileCardTopBG1">
-      <image class="profileCardPic" src="{{userData.photo}}"></image>
+      <image class="profileCardPic" src="{{!userData.photo?(userData.sex==1?'../../images/icon_default_man.png':'../../images/icon_default_woman.png'):userData.photo}}"></image>
       <view class="profileCardTextContainer">
         <view class="profileCardTitleArea">
           <view class="profileCardTitle">{{userData.birthYear}}</view>

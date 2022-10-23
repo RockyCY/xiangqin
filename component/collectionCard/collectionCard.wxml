@@ -1,6 +1,6 @@
 <!--component/collectionCard/collectionCard.wxml-->
 <view class="cardBG" style="margin-left: {{cardMargin}}px; ">
-    <image class="cardPic" src="{{userData.photo}}"></image>
+    <image class="cardPic" src="{{!userData.photo?(userData.sex==1?'../../images/icon_default_man.png':'../../images/icon_default_woman.png'):userData.photo}}"></image>
     <view class="cardTextContainer">
        <view class="cardTitle">{{userData.birthYear}}/{{userData.addressShort}}/{{userData.height}}/{{userData.educationStr}}</view>
        <view class="cardSubtitle">{{userData.phoneNumber}}</view>
