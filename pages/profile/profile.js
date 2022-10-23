@@ -45,6 +45,10 @@ Page({
           })
         }
       )
+    }else {
+      this.setData({
+        userInfo:app.globalData.userInfoRes.userInfo
+      })
     }
   },
 
