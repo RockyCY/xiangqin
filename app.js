@@ -63,5 +63,6 @@ App({
     userInfoRes: null,
     currentUserData:null,
     userPropDetail:null,
+    shouldUpdateUserData:false,
   }
 })

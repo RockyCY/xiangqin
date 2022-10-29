@@ -21,8 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if(!app.globalData.userInfoRes)
+    if(!app.globalData.userInfoRes || app.globalData.shouldUpdateUserData == true )
     {
+      app.globalData.shouldUpdateUserData = false;
       getCurrentUserData({
         data:{}
       }).then(
