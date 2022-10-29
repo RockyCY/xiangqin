@@ -38,8 +38,9 @@ Page({
           app.globalData.currentUserData.hometownShort = hometownArray[1];
         }
         app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
+        app.globalData.currentUserData.redlineNum = res.data.data.userPropDetailDTO.invalidPropCount;
         this.setData({
-          userInfo:res.data.data.fateUserInfoResponse
+          userInfo:res.app.globalData.currentUserData
         })
       }
     )
