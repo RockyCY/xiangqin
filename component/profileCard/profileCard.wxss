@@ -121,14 +121,14 @@
 }
 
 .profileCardMainDesc {
-  font-size: 16px;
+  font-size: 18px;
   color: #ff3b43;
   margin-left: 6px;
 }
 
 .profileCardMainDesc1 {
   width: 90%;
-  font-size: 16px;
+  font-size: 18px;
   color: #1c1c1d;
   margin-left: 23.5px;
 }

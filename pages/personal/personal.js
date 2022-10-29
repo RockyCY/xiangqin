@@ -108,7 +108,7 @@ Page({
           itemArray.push(item);
         }
         this.setData({
-          relationListMan: itemArray
+          relationList: itemArray
         })
       }
     )
@@ -164,7 +164,8 @@ Page({
 
   bindSexChange: function (e) {
     let num = e.detail.value;
-    this.data.userInfo.sexStr = this.data.userInfo.sexList[num];
+    this.data.userInfo.sexStr = this.data.sexList[num];
+    console.log(this.data.userInfo.sexStr);
     updateUserData({
       data: {
         'id': this.data.userInfo.id,
