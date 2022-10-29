@@ -21,23 +21,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if(!app.globalData.userInfoRes.userInfo)
+    if(!app.globalData.userInfoRes)
     {
       getCurrentUserData({
         data:{}
       }).then(
         (res) => {
-          app.globalData.userInfoRes.userInfo = res.data.data.fateUserInfoResponse;
-          if(app.globalData.userInfoRes.userInfo.birth&&app.globalData.userInfoRes.userInfo.birth.length>0){
-            app.globalData.userInfoRes.userInfo.birthYear = app.globalData.userInfoRes.userInfo.birth.substring(2,4) + '年';
+          app.globalData.currentUserData = res.data.data.fateUserInfoResponse;
+          if(app.globalData.currentUserData.birth&&app.globalData.currentUserData.birth.length>0){
+            app.globalData.currentUserData.birthYear = app.globalData.currentUserData.birth.substring(2,4) + '年';
           }
-          if(app.globalData.userInfoRes.userInfo.address&&app.globalData.userInfoRes.userInfo.address.length>0){
-            var addressArray = app.globalData.userInfoRes.userInfo.address.split('-');
-            app.globalData.userInfoRes.userInfo.addressShort = addressArray[1];
+          if(app.globalData.currentUserData.address&&app.globalData.currentUserData.address.length>0){
+            var addressArray = app.globalData.currentUserData.address.split('-');
+            app.globalData.currentUserData.addressShort = addressArray[1];
           }
-          if(app.globalData.userInfoRes.userInfo.hometown&&app.globalData.userInfoRes.userInfo.hometown.length>0){
-            var hometownArray = app.globalData.userInfoRes.userInfo.hometown.split('-');
-            app.globalData.userInfoRes.userInfo.hometownShort = hometownArray[1];
+          if(app.globalData.currentUserData.hometown&&app.globalData.currentUserData.hometown.length>0){
+            var hometownArray = app.globalData.currentUserData.hometown.split('-');
+            app.globalData.currentUserData.hometownShort = hometownArray[1];
           }
           app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
           this.setData({
@@ -47,17 +47,16 @@ Page({
       )
     }else {
       this.setData({
-        userInfo:app.globalData.userInfoRes.userInfo
+        userInfo:app.globalData.currentUserData
       })
     }
   },
 
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    if(app.globalData.userInfoRes.userInfo != null){
-      console.log(app.globalData.userInfoRes.userInfo);
+    if(app.globalData.userInfoRes != null){
       this.setData({
-        userInfo: app.globalData.userInfoRes.userInfo,
+        userInfo: app.globalData.currentUserData,
         hasUserInfo: true
       })
       return;

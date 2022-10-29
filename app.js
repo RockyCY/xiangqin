@@ -60,7 +60,8 @@ App({
   },
   globalData: {
     loginData: null,
-    userInfoRes: {},
+    userInfoRes: null,
+    currentUserData:null,
     userPropDetail:null,
   }
 })

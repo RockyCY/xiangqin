@@ -50,7 +50,7 @@ Page({
    */
   onLoad(options) {
     this.setData({
-      userInfo: app.globalData.userInfoRes.userInfo
+      userInfo: app.globalData.currentUserData
     })
     getIncome({
       data: {}
@@ -512,6 +512,7 @@ Page({
     } else if (id == 'name') {
       this.data.userInfo.concatLastName = this.data.inputName;
       requestData['concatLastName'] = this.data.userInfo.concatLastName;
+      console.log(this.data.userInfo.concatLastName);
     } else if (id == 'personalInformation') {
       this.data.userInfo.personalInformation = this.data.inputPersonalInformation;
       requestData['personalInformation'] = this.data.userInfo.personalInformation;
