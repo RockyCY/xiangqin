@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    firstLoad:true,
     scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight,
     collectionList:[]
   },
@@ -18,6 +19,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({
+      firstLoad:false
+    })
     getFavoriteList({
       data:{
 
@@ -38,7 +42,7 @@ Page({
           }
         }
         this.setData({
-          collectionList:res.data.data
+          collectionList:res.data.data,
         })
       }
     )
@@ -55,7 +59,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    if(app.globalData.shouldUpdateColletion && !this.data.firstLoad){
+      console.log('updateCollection');
+      app.globalData.shouldUpdateColletion = false;
+      getFavoriteList({
+        data:{
+  
+        }
+      }).then(
+        (res) => { 
+          for(var item of res.data.data){
+            if(item.birth&&item.birth.length>0){
+              item.birthYear = item.birth.substring(2,4) + '年';
+            }
+            if(item.address&&item.address.length>0){
+              var addressArray = item.address.split('-');
+              item.addressShort = addressArray[1];
+            }
+            if(item.hometown&&item.hometown.length>0){
+              var hometownArray = item.hometown.split('-');
+              item.hometownShort = hometownArray[1];
+            }
+          }
+          this.setData({
+            collectionList:res.data.data
+          })
+        }
+      )
+    }
   },
 
   /**

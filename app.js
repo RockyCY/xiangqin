@@ -64,5 +64,6 @@ App({
     currentUserData:null,
     userPropDetail:null,
     shouldUpdateUserData:false,
+    shouldUpdateColletion:false,
   }
 })

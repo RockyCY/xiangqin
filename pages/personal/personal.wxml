@@ -124,14 +124,14 @@
       <text class="personalMainTitle otherMainTitle">其他信息</text>
     </view>
     <personalBar mainTitle="个人信息" subTitle="" hideArrow="{{false}}" hideBottomLine="{{true}}" isEditType="{{true}}" bind:clickBar="clickBar"></personalBar>
-    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userInfo.personalInformation}}
+    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userInfo.personalInformation.length>0?userInfo.personalInformation:'暂未填写'}}
     </view>
     <view class="bottomBar">
       <view class="bottomLine">
       </view>
     </view>
     <personalBar mainTitle="择偶标准" subTitle="" hideArrow="{{false}}" hideBottomLine="{{true}}" isEditType="{{true}}" bind:clickBar="clickBar"></personalBar>
-    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userInfo.mateSelectionCriteria}}
+    <view class="editSubtitle" style="width: {{descTitleWidth}}px;">{{userInfo.mateSelectionCriteria.length>0?userInfo.mateSelectionCriteria:'暂未填写'}}
     </view>
     <view class="bottomBar"></view>
   </scroll-view>

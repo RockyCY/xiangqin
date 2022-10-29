@@ -133,6 +133,7 @@ Page({
         (res) => {
           var toast = '收藏成功';
           if (res && res.data.code == 0) {
+            app.globalData.shouldUpdateColletion = true;
             for (var item of this.data.recommendDataArray) {
               if (item.id == user.id) {
                 item.favorite = true;

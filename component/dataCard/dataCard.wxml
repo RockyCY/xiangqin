@@ -12,9 +12,9 @@
             <view class="moreText">更多</view>
           </view>
         </view>
-        <view class="dataCardSubtitle">现居{{currentUserData.addressShort}}</view>
-        <view class="dataCardSubtitle">家乡{{currentUserData.hometownShort}}</view>
-        <view class="dataCardSubtitle">{{currentUserData.educationStr}} {{currentUserData.height+'cm'}} {{currentUserData.weight}}</view>
+        <view class="dataCardSubtitle">{{'现居' + currentUserData.addressShort}}</view>
+        <view class="dataCardSubtitle">{{'家乡' + currentUserData.hometownShort}}</view>
+        <view class="dataCardSubtitle">{{currentUserData.educationStr+' '+(currentUserData.height?currentUserData.height+'cm'+ ' ':'') + currentUserData.weight + 'kg'}}</view>
       </view>
     </view>
     <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
@@ -32,12 +32,12 @@
     <view class="dataCardMainDescDot"></view>
     <view class="dataCardMainDesc">个人情况补充</view>
   </view>
-  <view class="dataCardMainDesc1">{{currentUserData.personalInformation}}</view>
+  <view class="dataCardMainDesc1">{{currentUserData.personalInformation.length>0?currentUserData.personalInformation:'暂未填写'}}</view>
   <view class="dataCardMainDesBG">
     <view class="dataCardMainDescDot"></view>
     <view class="dataCardMainDesc">择偶标准</view>
   </view>
-  <view class="dataCardMainDesc1">{{currentUserData.mateSelectionCriteria}}</view>
+  <view class="dataCardMainDesc1">{{currentUserData.mateSelectionCriteria.length>0?currentUserData.mateSelectionCriteria:'暂未填写'}}</view>
   <view class="dataCardBottomButtonArea">
     <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16"></shareBtn>
     <button class="{{currentUserData.favorite?'dataCardCollectionButton favorite':'dataCardCollectionButton'}}" bind:tap="clickCollectHandle">{{currentUserData.favorite?'已收藏':'收藏'}}</button>
