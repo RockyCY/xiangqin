@@ -219,15 +219,29 @@ Page({
   },
 
   clickSubmit(e) {
+   var notLikeReasonsArray = [];
+   for(var item of this.data.reasons){
+        if(this.data.selectedReasons[item.name] == true){
+          notLikeReasonsArray.push(item.code);
+        }
+   }
     addNotLike({
       data: {
         'fateUserInfoId': this.data.currentUserData.id,
-        'notLIkeReasons': []
+        'notLIkeReasons': notLikeReasonsArray
       }
     }).then(
       (res) => {
-        console.log('addNotLike')
-        console.log(res.data)
+        this.setData({
+          hideMask: true,
+          hideActionSheet: true,
+          isDislikeMask: false,
+          isContactMask: false
+        })
+        wx.showToast({
+          title: '提交成功',
+          icon: 'none'
+        })
       }
     )
   },
