@@ -147,7 +147,7 @@ Page({
   },
   clickCopyNumber(){
     wx.setClipboardData({
-      data: this.data.userData.phone,
+      data: this.data.userData.phoneNumber,
       success: function (res) {
         wx.showToast({
            title: '复制成功',
@@ -159,7 +159,7 @@ Page({
   },
   callPhone(){
     wx.makePhoneCall({
-      phoneNumber: this.data.userData.phone,
+      phoneNumber: this.data.userData.phoneNumber,
     })
   },
   platformHelp(){

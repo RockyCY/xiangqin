@@ -14,14 +14,14 @@
   <view class="floatViewBG" hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
     <view class="coverViewBG" bindtap="closeMask"></view>
     <block wx:if="{{isContactMask}}">
-      <block wx:if="{{userData.redlineNum>2}}">
+      <block wx:if="{{userInfo.redlineNum>2}}">
         <view class="contactViewBG contactViewBG1">
           <view class="contactViewTopTitle contactViewTopTitle1">对方手机号</view>
           <view class="contactViewSubTitle contactViewSubTitle1">联系对方时请保护个人信息</view>
-          <view class="contactViewPhoneNumber contactViewPhoneNumber1">{{userData.phone}}</view>
+          <view class="contactViewPhoneNumber contactViewPhoneNumber1">{{currentRecommendUserData.phoneNumber}}</view>
           <view class="redlineNumBG redlineNumBG1">
             <image class="redlineImg" src="../../images/redCard.png"></image>
-            <view class="redlineText">x{{userData.redlineNum}}</view>
+            <view class="redlineText">x{{userInfo.redlineNum}}</view>
           </view>
           <view class="contactViewButtonBG contactViewButtonBG1">
             <selectedBtn btnWidth="300" btnHeigh="52" btnText="复制号码" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="clickCopyNumber"></selectedBtn>
@@ -34,7 +34,7 @@
         <view class="contactViewBG">
           <view class="contactViewTopTitle">对方手机号</view>
           <view class="contactViewSubTitle">联系对方时请保护个人信息</view>
-          <view class="contactViewPhoneNumber">{{userData.phoneNumber}}</view>
+          <view class="contactViewPhoneNumber">{{currentRecommendUserData.phoneNumber}}</view>
           <view class="redlineNumBG">
             <image class="redlineImg" src="../../images/redCard.png"></image>
             <view class="redlineText">数量不足</view>

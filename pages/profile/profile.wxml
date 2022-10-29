@@ -8,7 +8,7 @@
         <view class="redlineNumBG" bindtap="clickGetMoreRedline">
           <image class="redlineImg" src="../../images/redCard.png"></image>
           <view class="redlineText">{{'x'+userInfo.redlineNum}}</view>
-          <view class="redlineMore">获取更多></view>
+          <!-- <view class="redlineMore">获取更多></view> -->
         </view>
     </view>
     <view class="userinfo">

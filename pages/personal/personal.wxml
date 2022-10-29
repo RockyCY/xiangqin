@@ -119,7 +119,7 @@
       <personalBar mainTitle="您与相亲者的关系" subTitle="{{userInfo.relationStr}}" hideArrow="{{false}}" hideBottomLine="{{false}}"></personalBar>
     </picker>
     <personalBar mainTitle="称谓" subTitle="{{userInfo.concatLastName}}" hideArrow="{{false}}" hideBottomLine="{{false}}"bind:clickBar="clickBar"></personalBar>
-    <!-- <personalBar mainTitle="电话" subTitle="{{userInfo.phone}}" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar> -->
+    <!-- <personalBar mainTitle="电话" subTitle="{{userInfo.phoneNumber}}" hideArrow="{{false}}" hideBottomLine="{{true}}" bind:clickBar="clickBar"></personalBar> -->
     <view class="personalMainTitleBG otherMainTitleBG">
       <text class="personalMainTitle otherMainTitle">其他信息</text>
     </view>

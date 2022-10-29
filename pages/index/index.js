@@ -16,11 +16,11 @@ const app = getApp()
 Page({
   data: {
     recommendDataArray: [],
-    currentUserData: {},
+    currentRecommendUserData: {},//当前推荐的用户信息
     reasons: [],
     selectedReasons: {},
     buttonMargin: (wx.getSystemInfoSync().screenWidth - 300) / 2,
-    userInfo: {},
+    userInfo: {},//使用者用户信息
     hideMask: true,
     hideActionSheet: true,
     isContactMask: false,
@@ -52,6 +52,9 @@ Page({
           }
           app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
           app.globalData.currentUserData.redlineNum = res.data.data.userPropDetailDTO.invalidPropCount;
+          this.setData({
+            userInfo:app.globalData.currentUserData
+          })
         }
       )
     }
@@ -105,7 +108,7 @@ Page({
   onShareAppMessage: function (res) {
     const promise = getShareInfo({
       data: {
-        'fateUserInfoId': this.data.currentUserData.id
+        'fateUserInfoId': this.data.currentRecommendUserData.id
       }
     }).then(
       (res) => {
@@ -185,14 +188,16 @@ Page({
   },
   clickCall(e) {
     let detail = e.detail;
+    console.log(detail);
+    this.setData({
+      currentRecommendUserData: detail
+    })
     getPhoneNumber({
       data: {
         'fateUserInfoId': detail.id,
       }
     }).then(
       (res) => {
-        console.log('getPhoneNumber')
-        console.log(res)
         this.setData({
           hideMask: false,
           hideActionSheet: true,
@@ -209,7 +214,7 @@ Page({
   },
   clickMore(e) {
     this.setData({
-      currentUserData: e.detail
+      currentRecommendUserData: e.detail
     })
     this.setData({
       hideMask: true,
@@ -228,7 +233,7 @@ Page({
    }
     addNotLike({
       data: {
-        'fateUserInfoId': this.data.currentUserData.id,
+        'fateUserInfoId': this.data.currentRecommendUserData.id,
         'notLIkeReasons': notLikeReasonsArray
       }
     }).then(
@@ -247,6 +252,11 @@ Page({
     )
   },
   showMask(e) {
+    console.log('showMask');
+    console.log(e.detail);
+    this.setData({
+      currentRecommendUserData: e.detail
+    })
     this.setData({
       hideMask: false,
       hideActionSheet: true,
@@ -278,7 +288,7 @@ Page({
   },
   clickCopyNumber() {
     wx.setClipboardData({
-      data: this.data.userData.phone,
+      data: this.data.currentRecommendUserData.phoneNumber,
       success: function (res) {
         wx.showToast({
           title: '复制成功',
@@ -296,7 +306,7 @@ Page({
   },
   callPhone() {
     wx.makePhoneCall({
-      phoneNumber: this.data.userData.phone,
+      phoneNumber: this.data.currentRecommendUserData.phoneNumber,
     })
   }
 })
