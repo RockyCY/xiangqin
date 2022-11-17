@@ -1,22 +1,32 @@
 <!--pages/detail/detail.wxml-->
 <view class="container" style="background: #efefef;">
   <navigation title="我的收藏" hideBackBtn="{{false}}"></navigation>
+  <view class="floatViewBG" hidden="{{hideActionSheet}}" catchtouchmove="preventTouchMove">
+    <view class="coverViewBG coverViewBGActionSheet" bindtap="closeMask"></view>
+    <view class="actionSheetBG">
+      <view class="actionSheetButton" bindtap="showMask">不喜欢</view>
+      <view style="position: absolute;top: 57px;left: 31px;right: 31px;height: 1px;background: #979797;"></view>
+      <view class="actionSheetButton actionSheetButton1" bindtap="report">举报</view>
+      <view style="position: absolute;top: 114px;left: 0;right: 0;height: 7px;background: #efefef;"></view>
+      <view class="actionSheetButton actionSheetButtonCancel" bindtap="closeMask">取消</view>
+    </view>
+  </view>
   <view class="floatViewBG" hidden="{{hideMask}}" catchtouchmove="preventTouchMove">
     <view class="coverViewBG" bindtap="closeMask"></view>
     <block wx:if="{{isContactMask}}">
-      <block wx:if="{{userData.redlineNum>2}}">
+      <block wx:if="{{userInfo.redlineNum>2}}">
         <view class="contactViewBG contactViewBG1">
           <view class="contactViewTopTitle contactViewTopTitle1">对方手机号</view>
           <view class="contactViewSubTitle contactViewSubTitle1">联系对方时请保护个人信息</view>
-          <view class="contactViewPhoneNumber contactViewPhoneNumber1">{{userData.phoneNumber}}</view>
+          <view class="contactViewPhoneNumber contactViewPhoneNumber1">{{currentRecommendUserData.phoneNumber}}</view>
           <view class="redlineNumBG redlineNumBG1">
             <image class="redlineImg" src="../../images/redCard.png"></image>
-            <view class="redlineText">x{{userData.redlineNum}}</view>
+            <view class="redlineText">x{{userInfo.redlineNum}}</view>
           </view>
           <view class="contactViewButtonBG contactViewButtonBG1">
             <selectedBtn btnWidth="300" btnHeigh="52" btnText="复制号码" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="clickCopyNumber"></selectedBtn>
             <selectedBtn btnWidth="300" btnHeigh="52" btnText="立即拨打" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="callPhone" style="margin-top: 29.5px;"></selectedBtn>
-            <selectedBtn btnWidth="300" btnHeigh="52" btnText="请红娘帮忙联系" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="platformHelp"style="margin-top: 29.5px;"></selectedBtn>
+            <selectedBtn btnWidth="300" btnHeigh="52" btnText="请红娘帮忙联系" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="platformHelp" style="margin-top: 29.5px;"></selectedBtn>
           </view>
         </view>
       </block>
@@ -24,7 +34,7 @@
         <view class="contactViewBG">
           <view class="contactViewTopTitle">对方手机号</view>
           <view class="contactViewSubTitle">联系对方时请保护个人信息</view>
-          <view class="contactViewPhoneNumber">{{userData.phoneNumber}}</view>
+          <view class="contactViewPhoneNumber">{{currentRecommendUserData.phoneNumber}}</view>
           <view class="redlineNumBG">
             <image class="redlineImg" src="../../images/redCard.png"></image>
             <view class="redlineText">数量不足</view>
@@ -35,7 +45,8 @@
               <image class="redlineImg redlineImageLeftMargin" src="../../images/redCard.png"></image>
               <view class="inviteSubTitle">x3</view>
             </view>
-            <selectedBtn btnWidth="300" btnHeigh="52" btnText="联系客服" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="platformHelp"style="margin-top: 29.5px;"></selectedBtn>
+            <button class="contactPlatformButton" style="width: 300px; height: 52px; line-height: 52px;" open-type="contact" bindcontact="handleContact">联系客服</button>
+            <!-- <selectedBtn btnWidth="300" btnHeigh="52" btnText="联系客服" btnFontSize="24" selectedable="{{false}}" selected="{{false}}" borderWidth="2" bind:clickHandle="platformHelp" style="margin-top: 29.5px;"></selectedBtn> -->
           </view>
         </view>
       </block>
@@ -53,6 +64,6 @@
     </block>
   </view>
   <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <dataCard currentUserData="{{userData}}"bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="showMask" data-type="dislike" bind:clickMore=""></dataCard>
+    <dataCard currentUserData="{{currentCollectUserData}}" bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
   </scroll-view>
 </view>

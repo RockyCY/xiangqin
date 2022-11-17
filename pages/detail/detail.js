@@ -1,5 +1,4 @@
 // pages/detail/detail.js
-
 import {
   addFavorites,
   cancelFavorites,
@@ -9,22 +8,22 @@ import {
   getShareInfo
 } from "../../service/index"
 
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userData:{
-    },
+    recommendDataArray: [],
+    currentCollectUserData: {},//当前推荐的用户信息
     reasons: [],
     selectedReasons: {},
     buttonMargin:(wx.getSystemInfoSync().screenWidth - 300)/2,
     userInfo: {},
-    hideMask:true,
-    isContactMask:false,
-    isDislikeMask:false,
+    hideMask: true,
+    hideActionSheet: true,
+    isContactMask: false,
+    isDislikeMask: false,
     hasUserInfo: false,
     scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight - 44
   },
@@ -36,8 +35,25 @@ Page({
     var userDataStr = options.userData;
     var userDataObject = JSON.parse(userDataStr);
     this.setData({
-      userData:userDataObject
+      currentCollectUserData:userDataObject
     })
+
+    getNotLikeReason({
+      data: {
+
+      }
+    }).then(
+      (res) => {
+        var reasonsDict = {};
+        for (var reasonItem of res.data.data) {
+          reasonsDict[reasonItem.name] = false;
+        }
+        this.setData({
+          reasons: res.data.data,
+          selectedReasons: reasonsDict
+        })
+      }
+    )
   },
 
   /**
@@ -89,80 +105,188 @@ Page({
 
   },
 
-  clickShare(){
-    wx.showToast({
-      title: 'clickShare',
-    })
+  clickCollect(e) {
+    let user = e.detail;
+    console.log(user);
+    if (user.favorite == false) {
+      addFavorites({
+        data: {
+          'fateUserInfoId': user.id
+        }
+      }).then(
+        (res) => {
+          var toast = '收藏成功';
+          if (res && res.data.code == 0) {
+            app.globalData.shouldUpdateColletion = true;
+            for (var item of this.data.recommendDataArray) {
+              if (item.id == user.id) {
+                item.favorite = true;
+                break;
+              }
+            }
+          } else {
+            toast = '收藏失败';
+          }
+          this.setData({
+            recommendDataArray: this.data.recommendDataArray
+          })
+          wx.showToast({
+            title: toast,
+            icon: 'none'
+          })
+        }
+      )
+    } else {
+      cancelFavorites({
+        data: {
+          'fateUserInfoId': user.id
+        }
+      }).then(
+        (res) => {
+          var toast = '取消收藏成功';
+          if (res && res.data.code == 0) {
+            for (var item of this.data.recommendDataArray) {
+              if (item.id == user.id) {
+                item.favorite = false;
+                break;
+              }
+            }
+          } else {
+            toast = '取消收藏失败';
+          }
+          this.setData({
+            recommendDataArray: this.data.recommendDataArray
+          })
+          wx.showToast({
+            title: toast,
+            icon: 'none'
+          })
+        }
+      )
+    }
+
   },
-  clickCollect(){
-    wx.showToast({
-      title: 'clickCollect',
-    })
-  },
-  clickCall(){
+  clickCall(e) {
+    let detail = e.detail;
+    console.log(detail);
     this.setData({
-      hideMask:false,
-      isDislikeMask:false,
-      isContactMask:true
+      currentCollectUserData: detail
     })
+    getPhoneNumber({
+      data: {
+        'fateUserInfoId': detail.id,
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          hideMask: false,
+          hideActionSheet: true,
+          isDislikeMask: false,
+          isContactMask: true
+        })
+      }
+    )
   },
-  clickFill(){
+  clickFill() {
     wx.navigateTo({
       url: '../personal/personal',
     })
   },
-  clickSubmit(){
-    wx.showToast({
-      title: 'clickSubmit',
-    })
-  },
-  showMask(e){
+  clickMore(e) {
     this.setData({
-      hideMask:false,
-      isDislikeMask:true,
-      isContactMask:false
+      currentCollectUserData: e.detail
     })
-  },
-  closeMask(e){
     this.setData({
-      hideMask:true
+      hideMask: true,
+      hideActionSheet: false,
+      isDislikeMask: false,
+      isContactMask: false
     })
   },
-  clickReasonButton(e){
+
+  clickSubmit(e) {
+   var notLikeReasonsArray = [];
+   for(var item of this.data.reasons){
+        if(this.data.selectedReasons[item.name] == true){
+          notLikeReasonsArray.push(item.code);
+        }
+   }
+    addNotLike({
+      data: {
+        'fateUserInfoId': this.data.currentCollectUserData.id,
+        'notLIkeReasons': notLikeReasonsArray
+      }
+    }).then(
+      (res) => {
+        this.setData({
+          hideMask: true,
+          hideActionSheet: true,
+          isDislikeMask: false,
+          isContactMask: false
+        })
+        wx.showToast({
+          title: '提交成功',
+          icon: 'none'
+        })
+      }
+    )
+  },
+  showMask(e) {
+    console.log('showMask');
+    console.log(e.detail);
+    this.setData({
+      currentCollectUserData: e.detail
+    })
+    this.setData({
+      hideMask: false,
+      hideActionSheet: true,
+      isDislikeMask: true,
+      isContactMask: false
+    })
+  },
+  closeMask(e) {
+    this.setData({
+      hideMask: true,
+      hideActionSheet: true
+    })
+  },
+  clickReasonButton(e) {
     let num = e.detail;
     var reason = this.data.reasons[num];
-    console.log(reason);
-    var selectedStatus = this.data.selectedReasons[reason];
-    if(selectedStatus == false){
-      this.data.selectedReasons[reason] = true;
-    }else {
-      this.data.selectedReasons[reason] = false;
+    var selectedStatus = this.data.selectedReasons[reason.name];
+    if (selectedStatus == false) {
+      this.data.selectedReasons[reason.name] = true;
+    } else {
+      this.data.selectedReasons[reason.name] = false;
     }
     this.setData({
-      selectedReasons:this.data.selectedReasons
+      selectedReasons: this.data.selectedReasons
     })
   },
-  preventTouchMove(){
+  preventTouchMove() {
     return
   },
-  clickCopyNumber(){
+  clickCopyNumber() {
     wx.setClipboardData({
-      data: this.data.userData.phoneNumber,
+      data: this.data.currentCollectUserData.phoneNumber,
       success: function (res) {
         wx.showToast({
-           title: '复制成功',
-           icon: 'none',
-           mask: 'true'
+          title: '复制成功',
+          icon: 'none',
+          mask: 'true'
         })
-     }
+      }
     })
   },
-  callPhone(){
-    wx.makePhoneCall({
-      phoneNumber: this.data.userData.phoneNumber,
-    })
-  },
-  platformHelp(){
 
+  report() {
+    wx.navigateTo({
+      url: '../report/report',
+    })
+  },
+  callPhone() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.currentCollectUserData.phoneNumber,
+    })
   }
 })

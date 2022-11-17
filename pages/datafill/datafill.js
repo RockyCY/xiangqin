@@ -3,8 +3,9 @@ import {
   getCurrentUserData,
   updateUserData
 } from "../../service/index"
-Page({
 
+
+Page({
   /**
    * 页面的初始数据
    */

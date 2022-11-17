@@ -429,22 +429,20 @@ Page({
           }
         }).then(res => {
           console.log(res.fileID)
-          this.data.userInfo.avatarUrl = res.tempFiles[0].tempFilePath;
           updateUserData({
             data: {
-              'id': this.data.userInfo.id,
+              'id': picId,
               'photo': res.fileID
             }
           }).then(
             (res) => {
-              this.setData({
-                userInfo: this.data.userInfo
-              })
+              // this.setData({
+              //   userInfo: this.data.userInfo
+              // })
             }
           )
         }).catch(error => {
-          console.log('testFailed')
-          console.error(err)
+          console.error(error)
         })
       }
     })

@@ -4,6 +4,8 @@ import{
   getFavoriteList
 } from "../../service/index"
 
+const app = getApp()
+
 Page({
 
   /**
@@ -41,6 +43,8 @@ Page({
             item.hometownShort = hometownArray[1];
           }
         }
+        console.log('favoriteList')
+        console.log(res.data.data)
         this.setData({
           collectionList:res.data.data,
         })
@@ -81,6 +85,8 @@ Page({
               item.hometownShort = hometownArray[1];
             }
           }
+          console.log('favoriteList')
+          console.log(res.data.data)
           this.setData({
             collectionList:res.data.data
           })
