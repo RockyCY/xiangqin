@@ -3,7 +3,7 @@
   <navigation title="我的资料"></navigation>
   <view class="userinfoBG">
     <view class="userinfoDescBG">
-        <view class="userinfo-nickname">{{userInfo.nickName?userInfo.nickName:'微信用户'}}</view>
+        <view class="userinfo-nickname">{{userInfo.concatLastName?userInfo.concatLastName:'微信用户'}}</view>
         <view class="userinfo-id">{{'缘分号'+userInfo.id}}</view>
         <view class="redlineNumBG" bindtap="clickGetMoreRedline">
           <image class="redlineImg" src="../../images/redCard.png"></image>

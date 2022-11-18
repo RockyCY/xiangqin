@@ -238,7 +238,16 @@ Page({
       }
     }).then(
       (res) => {
+        //重置不喜欢的选择
+        for(var item of this.data.reasons){
+          this.data.selectedReasons[item.name] == false;
+        }
+        //去除不喜欢的推荐
+        var removeIndex = this.data.recommendDataArray.indexOf(this.data.currentRecommendUserData);
+        this.data.recommendDataArray.splice(removeIndex,1);
+        
         this.setData({
+          selectedReasons:this.data.selectedReasons,
           hideMask: true,
           hideActionSheet: true,
           isDislikeMask: false,

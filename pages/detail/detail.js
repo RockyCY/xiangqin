@@ -15,17 +15,17 @@ Page({
    */
   data: {
     recommendDataArray: [],
-    currentCollectUserData: {},//当前推荐的用户信息
+    currentCollectUserData: {}, //当前推荐的用户信息
     reasons: [],
     selectedReasons: {},
-    buttonMargin:(wx.getSystemInfoSync().screenWidth - 300)/2,
+    buttonMargin: (wx.getSystemInfoSync().screenWidth - 300) / 2,
     userInfo: {},
     hideMask: true,
     hideActionSheet: true,
     isContactMask: false,
     isDislikeMask: false,
     hasUserInfo: false,
-    scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight - 44
+    scrollHeight: wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight - 44
   },
 
   /**
@@ -35,7 +35,7 @@ Page({
     var userDataStr = options.userData;
     var userDataObject = JSON.parse(userDataStr);
     this.setData({
-      currentCollectUserData:userDataObject
+      currentCollectUserData: userDataObject
     })
 
     getNotLikeReason({
@@ -205,12 +205,12 @@ Page({
   },
 
   clickSubmit(e) {
-   var notLikeReasonsArray = [];
-   for(var item of this.data.reasons){
-        if(this.data.selectedReasons[item.name] == true){
-          notLikeReasonsArray.push(item.code);
-        }
-   }
+    var notLikeReasonsArray = [];
+    for (var item of this.data.reasons) {
+      if (this.data.selectedReasons[item.name] == true) {
+        notLikeReasonsArray.push(item.code);
+      }
+    }
     addNotLike({
       data: {
         'fateUserInfoId': this.data.currentCollectUserData.id,
@@ -218,7 +218,12 @@ Page({
       }
     }).then(
       (res) => {
+        //重置
+        for (var item of this.data.reasons) {
+          this.data.selectedReasons[item.name] == false;
+        }
         this.setData({
+          selectedReasons: this.data.selectedReasons,
           hideMask: true,
           hideActionSheet: true,
           isDislikeMask: false,

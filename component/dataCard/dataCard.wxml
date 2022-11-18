@@ -5,8 +5,8 @@
       <image class="dataCardPic" src="{{!currentUserData.photo?(currentUserData.sex==1?'../../images/icon_default_man.png':'../../images/icon_default_woman.png'):currentUserData.photo}}"></image>
       <view class="dataCardTextContainer">
         <view class="dataCardTitleArea">
-          <view class="dataCardTitle">{{currentUserData.birthYear}}</view>
-          <view class="dataCardTitle1">{{currentUserData.maritalStatusStr}}</view>
+          <view class="dataCardTitle">{{currentUserData.birthYear?currentUserData.birthYear:'保密'}}</view>
+          <view class="dataCardTitle1">{{currentUserData.maritalStatusStr?currentUserData.maritalStatusStr:'保密'}}</view>
           <view class="moreBG" bindtap="clickMore">
             <image class="moreImg" src="../../images/more.png"></image>
             <view class="moreText">更多</view>
