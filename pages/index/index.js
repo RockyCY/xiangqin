@@ -238,11 +238,8 @@ Page({
     }).then(
       (res) => {
         //重置不喜欢的选择
-        console.log(this.data.reasons)
-        console.log(this.data.selectedReasons)
         for(var item of this.data.reasons){
-          console.log(item.name);
-          this.data.selectedReasons[item.name] == false;
+          this.data.selectedReasons[item.name] = false;
         }
         //去除不喜欢的推荐
         console.log(this.data.recommendDataArray)

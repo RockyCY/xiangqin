@@ -21,37 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    if(!app.globalData.userInfoRes || app.globalData.shouldUpdateUserData == true)
-    {
-      app.globalData.shouldUpdateUserData = false;
-      getCurrentUserData({
-        data:{}
-      }).then(
-        (res) => {
-          app.globalData.currentUserData = res.data.data.fateUserInfoResponse;
-          if(app.globalData.currentUserData.birth&&app.globalData.currentUserData.birth.length>0){
-            app.globalData.currentUserData.birthYear = app.globalData.currentUserData.birth.substring(2,4) + '年';
-          }
-          if(app.globalData.currentUserData.address&&app.globalData.currentUserData.address.length>0){
-            var addressArray = app.globalData.currentUserData.address.split('-');
-            app.globalData.currentUserData.addressShort = addressArray[1];
-          }
-          if(app.globalData.currentUserData.hometown&&app.globalData.currentUserData.hometown.length>0){
-            var hometownArray = app.globalData.currentUserData.hometown.split('-');
-            app.globalData.currentUserData.hometownShort = hometownArray[1];
-          }
-          app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
-          app.globalData.currentUserData.redlineNum = res.data.data.userPropDetailDTO.invalidPropCount;
-          this.setData({
-            userInfo:app.globalData.currentUserData
-          })
-        }
-      )
-    }else {
-      this.setData({
-        userInfo:app.globalData.currentUserData
-      })
-    }
+    
   },
 
   getUserProfile(e) {
@@ -95,7 +65,38 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    if(!app.globalData.userInfoRes || app.globalData.shouldUpdateUserData == true)
+    {
+      app.globalData.shouldUpdateUserData = false;
+      getCurrentUserData({
+        data:{}
+      }).then(
+        (res) => {
+          console.log(res.data.data.fateUserInfoResponse)
+          app.globalData.currentUserData = res.data.data.fateUserInfoResponse;
+          if(app.globalData.currentUserData.birth&&app.globalData.currentUserData.birth.length>0){
+            app.globalData.currentUserData.birthYear = app.globalData.currentUserData.birth.substring(2,4) + '年';
+          }
+          if(app.globalData.currentUserData.address&&app.globalData.currentUserData.address.length>0){
+            var addressArray = app.globalData.currentUserData.address.split('-');
+            app.globalData.currentUserData.addressShort = addressArray[1];
+          }
+          if(app.globalData.currentUserData.hometown&&app.globalData.currentUserData.hometown.length>0){
+            var hometownArray = app.globalData.currentUserData.hometown.split('-');
+            app.globalData.currentUserData.hometownShort = hometownArray[1];
+          }
+          app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
+          app.globalData.currentUserData.redlineNum = res.data.data.userPropDetailDTO.invalidPropCount;
+          this.setData({
+            userInfo:app.globalData.currentUserData
+          })
+        }
+      )
+    }else {
+      this.setData({
+        userInfo:app.globalData.currentUserData
+      })
+    }
   },
 
   /**

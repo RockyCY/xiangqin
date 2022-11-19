@@ -49,10 +49,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    app.globalData.shouldUpdateUserData = true;
-    this.setData({
-      userInfo: app.globalData.currentUserData
-    })
     getIncome({
       data: {}
     }).then(
@@ -125,7 +121,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    app.globalData.shouldUpdateUserData = true;
+    this.setData({
+      userInfo: app.globalData.currentUserData
+    })
   },
 
   /**
