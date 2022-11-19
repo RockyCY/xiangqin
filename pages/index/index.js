@@ -213,10 +213,9 @@ Page({
     })
   },
   clickMore(e) {
+    console.log(e.detail)
     this.setData({
-      currentRecommendUserData: e.detail
-    })
-    this.setData({
+      currentRecommendUserData: e.detail,
       hideMask: true,
       hideActionSheet: false,
       isDislikeMask: false,
@@ -239,14 +238,27 @@ Page({
     }).then(
       (res) => {
         //重置不喜欢的选择
+        console.log(this.data.reasons)
+        console.log(this.data.selectedReasons)
         for(var item of this.data.reasons){
+          console.log(item.name);
           this.data.selectedReasons[item.name] == false;
         }
         //去除不喜欢的推荐
-        var removeIndex = this.data.recommendDataArray.indexOf(this.data.currentRecommendUserData);
+        console.log(this.data.recommendDataArray)
+        console.log(this.data.currentRecommendUserData)
+        var removeIndex = -1;
+        for(var i = 0;i<this.data.recommendDataArray.length;i++){
+          if(this.data.currentRecommendUserData.id == this.data.recommendDataArray[i].id){
+            removeIndex = i;
+            break;
+          }
+        }
         this.data.recommendDataArray.splice(removeIndex,1);
-        
+        console.log(removeIndex)
+        console.log(this.data.recommendDataArray)
         this.setData({
+          recommendDataArray:this.data.recommendDataArray,
           selectedReasons:this.data.selectedReasons,
           hideMask: true,
           hideActionSheet: true,
@@ -261,11 +273,6 @@ Page({
     )
   },
   showMask(e) {
-    console.log('showMask');
-    console.log(e.detail);
-    this.setData({
-      currentRecommendUserData: e.detail
-    })
     this.setData({
       hideMask: false,
       hideActionSheet: true,
