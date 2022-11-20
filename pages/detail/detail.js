@@ -14,7 +14,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    recommendDataArray: [],
     currentCollectUserData: {}, //当前推荐的用户信息
     reasons: [],
     selectedReasons: {},
@@ -132,17 +131,12 @@ Page({
           var toast = '收藏成功';
           if (res && res.data.code == 0) {
             app.globalData.shouldUpdateColletion = true;
-            for (var item of this.data.recommendDataArray) {
-              if (item.id == user.id) {
-                item.favorite = true;
-                break;
-              }
-            }
+            this.data.currentCollectUserData.favorite = true
           } else {
             toast = '收藏失败';
           }
           this.setData({
-            recommendDataArray: this.data.recommendDataArray
+            currentCollectUserData: this.data.currentCollectUserData
           })
           wx.showToast({
             title: toast,
@@ -159,17 +153,12 @@ Page({
         (res) => {
           var toast = '取消收藏成功';
           if (res && res.data.code == 0) {
-            for (var item of this.data.recommendDataArray) {
-              if (item.id == user.id) {
-                item.favorite = false;
-                break;
-              }
-            }
+            this.data.currentCollectUserData.favorite = false;
           } else {
             toast = '取消收藏失败';
           }
           this.setData({
-            recommendDataArray: this.data.recommendDataArray
+            currentCollectUserData: this.data.currentCollectUserData
           })
           wx.showToast({
             title: toast,

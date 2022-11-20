@@ -31,6 +31,9 @@ Page({
       }
     }).then(
       (res) => { 
+        if(!res.data.data){
+          return;
+        }
         for(var item of res.data.data){
           if(item.birth&&item.birth.length>0){
             item.birthYear = item.birth.substring(2,4) + '年';
@@ -44,8 +47,6 @@ Page({
             item.hometownShort = hometownArray[1];
           }
         }
-        console.log('favoriteList')
-        console.log(res.data.data)
         this.setData({
           collectionList:res.data.data,
         })

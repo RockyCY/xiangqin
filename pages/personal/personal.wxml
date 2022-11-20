@@ -56,7 +56,7 @@
       <view class="personalImage" bindtap="chooseImage">
         <view class="personalImageMask"></view>
         <block wx:if="{{userInfo}}">
-          <image class="avater" src="{{userInfo.avatarUrl}}"></image>
+          <image class="avater" src="{{userInfo.photo}}"></image>
         </block>
         <block wx:else>
           <open-data type="userAvatarUrl"></open-data>
