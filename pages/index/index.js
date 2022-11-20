@@ -333,8 +333,9 @@ Page({
   },
 
   report() {
+    var userDataStr = JSON.stringify(this.data.currentRecommendUserData);
     wx.navigateTo({
-      url: '../report/report',
+      url: '../report/report?userData='+userDataStr,
     })
   },
   callPhone() {

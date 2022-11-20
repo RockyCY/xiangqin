@@ -290,8 +290,9 @@ Page({
   },
 
   report() {
+    var userDataStr = JSON.stringify(this.data.currentCollectUserData);
     wx.navigateTo({
-      url: '../report/report',
+      url: '../report/report?userData='+userDataStr,
     })
   },
   callPhone() {

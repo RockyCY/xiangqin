@@ -10,16 +10,24 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userData:{},
     reasons:['假信息','骚扰我','发广告','其他'],
     selectedReasons:{'假信息':false,'骚扰我':false,'发广告':false,'其他':false},
-    leftReportMargin:(wx.getSystemInfoSync().screenWidth - 316)/2
+    leftReportMargin:(wx.getSystemInfoSync().screenWidth - 316)/2,
+    picUrl:[],
+    reason:'',
+    content:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var userDataStr = options.userData;
+    var userDataObject = JSON.parse(userDataStr);
+    this.setData({
+      userData: userDataObject
+    })
   },
 
   /**
@@ -75,11 +83,15 @@ Page({
     var reason = this.data.reasons[num];
     var selectedStatus = this.data.selectedReasons[reason];
     if(selectedStatus == false){
+      for(var reasonItem of this.data.reasons){
+        this.data.selectedReasons[reasonItem] = false;
+      }
       this.data.selectedReasons[reason] = true;
     }else {
       this.data.selectedReasons[reason] = false;
     }
     this.setData({
+      reason:reason,
       selectedReasons:this.data.selectedReasons
     })
   },
@@ -87,17 +99,26 @@ Page({
 
     report({
       data:{
-        // 'fateUserInfoId':3,
+        'reportedInfoId':this.data.userData.id,
+        'reason':this.data.reason,
+        'content':this.data.content,
+        'picUrl':this.data.picUrl
       }
     }).then(
       (res) => {
-        console.log('report')
-        console.log(res)
+        console.log('举报成功')
+        wx.navigateBack({
+          delta: 0,
+        })
       }
     )
   },
   bindKeyInput: function (e) {
     let value = e.detail.value;
+    console.log(value)
+    this.setData({
+      content:value
+    })
   },
   addPic: function (e) {
     wx.chooseMedia({
