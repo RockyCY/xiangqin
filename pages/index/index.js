@@ -33,8 +33,27 @@ Page({
   },
 
   onLoad() {
+    getNotLikeReason({
+      data: {
 
-    if (!app.globalData.userInfoRes) {
+      }
+    }).then(
+      (res) => {
+        var reasonsDict = {};
+        for (var reasonItem of res.data.data) {
+          reasonsDict[reasonItem.name] = false;
+        }
+        this.setData({
+          reasons: res.data.data,
+          selectedReasons: reasonsDict
+        })
+      }
+    )
+  },
+
+  getUserData(){
+    if (!app.globalData.userInfoRes || app.globalData.shouldUpdateUserData) {
+      app.globalData.shouldUpdateUserData = false;
       getCurrentUserData({
         data: {}
       }).then(
@@ -59,14 +78,15 @@ Page({
         }
       )
     }
+  },
 
+  getRecommendList(){
     getRecommendData({
       data: {
 
       }
     }).then(
       (res) => {
-        console.log(res)
         if(!res.data.data){
           return
         }
@@ -89,37 +109,32 @@ Page({
         })
       }
     )
-
-    getNotLikeReason({
-      data: {
-
-      }
-    }).then(
-      (res) => {
-        var reasonsDict = {};
-        for (var reasonItem of res.data.data) {
-          reasonsDict[reasonItem.name] = false;
-        }
-        this.setData({
-          reasons: res.data.data,
-          selectedReasons: reasonsDict
-        })
-      }
-    )
   },
 
   onShow() {
     app.firstLoginCallback = res => {
       this.goDataFill();
     }
+
+    this.getUserData();
+    this.getRecommendList();
+
   },
   onShareAppMessage: function (res) {
+    var clickUserData = res.target.dataset.userData;
+    if(clickUserData){
+      this.setData({
+        currentRecommendUserData: clickUserData
+      })
+    }
     const promise = getShareInfo({
       data: {
         'fateUserInfoId': this.data.currentRecommendUserData.id
       }
     }).then(
       (res) => {
+        console.log('getShareInfo')
+        console.log(res);
         return {
           title: res.data.data.title
         }

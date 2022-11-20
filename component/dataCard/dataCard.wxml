@@ -39,7 +39,7 @@
   </view>
   <view class="dataCardMainDesc1">{{currentUserData.mateSelectionCriteria.length>0?currentUserData.mateSelectionCriteria:'暂未填写'}}</view>
   <view class="dataCardBottomButtonArea">
-    <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16"></shareBtn>
+    <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16" userData = "{{currentUserData}}"></shareBtn>
     <button class="{{currentUserData.favorite?'dataCardCollectionButton favorite':'dataCardCollectionButton'}}" bind:tap="clickCollectHandle">{{currentUserData.favorite?'已收藏':'收藏'}}</button>
     <customBtn btnWidth="124" btnHeigh="35" btnText="联系对方家长" btnFontSize="16" bind:clickHandle="clickCallHandle"></customBtn>
   </view>

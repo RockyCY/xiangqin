@@ -3,6 +3,5 @@
   text-align:center;
   background:-webkit-linear-gradient(left,#E852A4,#FF313A);
   color: #fff;
-  /* font-size: 18pt; */
   padding: 0px;
 }

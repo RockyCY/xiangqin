@@ -7,7 +7,7 @@
        <view class="cardBtnArea">
         <customBtn btnWidth="101" btnHeigh="30" btnText="查看资料" btnFontSize="18"
         bind:clickHandle="clickDataHandle"></customBtn>
-        <button class="cardShareButton" open-type="share">分享到群
+        <button class="cardShareButton" open-type="share" data-userData="{{userData}}">分享到群
         </button>
         <!-- <customBtn btnWidth="101" btnHeigh="30" btnText="分享到群" btnFontSize="18" style="margin-left: 10px;" bind:clickHandle="clickShareHandle"></customBtn> -->
        </view>

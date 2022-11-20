@@ -49,7 +49,7 @@
 }
 
 .cardShareButton {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   width: 101px;
   height: 30px;
   border-radius: 15px;

@@ -8,6 +8,8 @@ import {
   getShareInfo
 } from "../../service/index"
 
+const app = getApp()
+
 Page({
 
   /**
@@ -36,7 +38,7 @@ Page({
     this.setData({
       currentCollectUserData: userDataObject
     })
-
+    app.globalData.shouldUpdateColletion = true;
     getNotLikeReason({
       data: {
 

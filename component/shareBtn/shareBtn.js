@@ -15,7 +15,11 @@ Component({
     btnFontSize:{
       type:String,
       value:''
-    }
+    },
+    userData:{
+      type:Object,
+      value:null
+    },
   },
 
   /**
@@ -30,7 +34,7 @@ Component({
    */
   methods: {
     clickHandle(){
-      this.triggerEvent('clickHandle');
+      this.triggerEvent('clickHandle',this.properties.userData);
     }
   }
 })

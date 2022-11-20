@@ -4,18 +4,14 @@ import {
   updateUserData
 } from "../../service/index"
 
+const app = getApp()
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    userBasicInfo:{
-      sex:-1, //-1 未选择 0 女 1 男
-      birth:'选择出生日期',
-      address:'',
-      maritalStatus:-1 // 0 未婚 1 离异 2 丧偶
-    },
+    userBasicInfo:{},
   },
 
   /**
@@ -41,7 +37,7 @@ Page({
         app.globalData.userPropDetail = res.data.data.userPropDetailDTO;
         app.globalData.currentUserData.redlineNum = res.data.data.userPropDetailDTO.invalidPropCount;
         this.setData({
-          userInfo:res.app.globalData.currentUserData
+          userBasicInfo:res.app.globalData.currentUserData
         })
       }
     )
@@ -95,12 +91,23 @@ Page({
   onShareAppMessage() {
 
   },
-
   clickFillOver(){
+    updateUserData({
+      data: {
+        'id': this.data.userBasicInfo.id,
+        'birth': this.data.userBasicInfo.birth,
+        'address': this.data.userBasicInfo.address,
+        'maritalStatus':this.data.userBasicInfo.maritalStatus
+      }
+    }).then(
+      (res) => {
+        app.globalData.shouldUpdateUserData = true;
+        wx.navigateBack({
+          delta: 0,
+        })
+      }
+    )
 
-    wx.navigateBack({
-      delta: 0,
-    })
   },
   clickSex(e){
      let currentGender = e.currentTarget.dataset.sex;
@@ -121,7 +128,7 @@ Page({
     })
   },
   bindAddressChange: function (e) {
-    this.data.userBasicInfo.addres = e.detail.value;
+    this.data.userBasicInfo.address = e.detail.value;
     this.setData({
       userBasicInfo: this.data.userBasicInfo
     })

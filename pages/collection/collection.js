@@ -15,7 +15,8 @@ Page({
   data: {
     firstLoad:true,
     scrollHeight:wx.getSystemInfoSync().screenHeight - wx.getSystemInfoSync().statusBarHeight,
-    collectionList:[]
+    collectionList:[],
+    currentCollectionItem:{}
   },
 
   /**
@@ -25,6 +26,10 @@ Page({
     this.setData({
       firstLoad:false
     })
+    this.getFavoriteListItem();
+  },
+
+  getFavoriteListItem() {
     getFavoriteList({
       data:{
 
@@ -66,34 +71,8 @@ Page({
    */
   onShow() {
     if(app.globalData.shouldUpdateColletion && !this.data.firstLoad){
-      console.log('updateCollection');
       app.globalData.shouldUpdateColletion = false;
-      getFavoriteList({
-        data:{
-  
-        }
-      }).then(
-        (res) => { 
-          for(var item of res.data.data){
-            if(item.birth&&item.birth.length>0){
-              item.birthYear = item.birth.substring(2,4) + '年';
-            }
-            if(item.address&&item.address.length>0){
-              var addressArray = item.address.split('-');
-              item.addressShort = addressArray[1];
-            }
-            if(item.hometown&&item.hometown.length>0){
-              var hometownArray = item.hometown.split('-');
-              item.hometownShort = hometownArray[1];
-            }
-          }
-          console.log('favoriteList')
-          console.log(res.data.data)
-          this.setData({
-            collectionList:res.data.data
-          })
-        }
-      )
+      this.getFavoriteListItem();
     }
   },
 
@@ -128,10 +107,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
+  onShareAppMessage: function (res) {
+    var shareItem = res.target.dataset.userdata;
+    this.setData({
+      currentCollectionItem:shareItem
+    })
     const promise = getShareInfo({
       data: {
-        'fateUserInfoId': this.data.currentRecommendUserData.id
+        'fateUserInfoId': this.data.currentCollectionItem.id
       }
     }).then(
       (res) => {
