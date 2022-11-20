@@ -102,7 +102,21 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
+    const promise = getShareInfo({
+      data: {
+        'fateUserInfoId': this.data.currentCollectUserData.id
+      }
+    }).then(
+      (res) => {
+        return {
+          title: res.data.data.title
+        }
+      }
+    )
 
+    return {
+      promise
+    }
   },
 
   clickCollect(e) {

@@ -1,7 +1,8 @@
 // pages/collection/collection.js
 
 import{
-  getFavoriteList
+  getFavoriteList,
+  getShareInfo
 } from "../../service/index"
 
 const app = getApp()
@@ -127,7 +128,21 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
+    const promise = getShareInfo({
+      data: {
+        'fateUserInfoId': this.data.currentRecommendUserData.id
+      }
+    }).then(
+      (res) => {
+        return {
+          title: res.data.data.title
+        }
+      }
+    )
 
+    return {
+      promise
+    }
   },
   clickData(e){
     let userData = e.detail;

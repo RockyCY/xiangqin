@@ -1,6 +1,7 @@
 // pages/profile/profile.js
 import{
-  getCurrentUserData
+  getCurrentUserData,
+  getShareInfo
 } from "../../service/index"
 
 const app = getApp()
@@ -131,7 +132,21 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {
+    const promise = getShareInfo({
+      data: {
+        'fateUserInfoId': this.data.userInfo.id
+      }
+    }).then(
+      (res) => {
+        return {
+          title: res.data.data.title
+        }
+      }
+    )
 
+    return {
+      promise
+    }
   },
   clickFill(){
     wx.navigateTo({

@@ -27,9 +27,14 @@ App({
               code: res.code
             },
             // dataType:'text', // 默认不填是以 JSON 形式解析返回结果，若不想让 SDK 自己解析，可以填text
-          })
-          console.log('登录成功')
-          console.log(res)
+          }).then(
+            (result) => {
+              this.globalData.isFirstLogin = result.data.data.firstLogin;
+              if (this.firstLoginCallback) {
+                this.firstLoginCallback(result.data.data)
+              }
+            }
+          )
         } else {
           console.log('登录失败')
         }
@@ -63,6 +68,7 @@ App({
     userInfoRes: null,
     currentUserData:null,
     userPropDetail:null,
+    isFirstLogin:true,
     shouldUpdateUserData:false,
     shouldUpdateColletion:false,
   }

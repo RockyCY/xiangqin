@@ -5,16 +5,16 @@
       <image class="dataCardPic" src="{{!currentUserData.photo?(currentUserData.sex==1?'../../images/icon_default_man.png':'../../images/icon_default_woman.png'):currentUserData.photo}}"></image>
       <view class="dataCardTextContainer">
         <view class="dataCardTitleArea">
-          <view class="dataCardTitle">{{currentUserData.birthYear?currentUserData.birthYear:'保密'}}</view>
-          <view class="dataCardTitle1">{{currentUserData.maritalStatusStr?currentUserData.maritalStatusStr:'保密'}}</view>
+          <view class="dataCardTitle">{{currentUserData.birthYear?currentUserData.birthYear:'**年'}}</view>
+          <view class="dataCardTitle1">{{currentUserData.maritalStatusStr?(currentUserData.maritalStatusStr == '未填写'?'保密':currentUserData.maritalStatusStr):'保密'}}</view>
           <view class="moreBG" bindtap="clickMore">
             <image class="moreImg" src="../../images/more.png"></image>
             <view class="moreText">更多</view>
           </view>
         </view>
-        <view class="dataCardSubtitle">{{'现居' + currentUserData.addressShort}}</view>
-        <view class="dataCardSubtitle">{{'家乡' + currentUserData.hometownShort}}</view>
-        <view class="dataCardSubtitle">{{currentUserData.educationStr+' '+(currentUserData.height?currentUserData.height+'cm'+ ' ':'') + currentUserData.weight + 'kg'}}</view>
+        <view class="dataCardSubtitle">{{currentUserData.addressShort?'现居' + currentUserData.addressShort:'未填写'}}</view>
+        <view class="dataCardSubtitle">{{currentUserData.hometownShort?'家乡' + currentUserData.hometownShort:'未填写'}}</view>
+        <view class="dataCardSubtitle">{{(currentUserData.educationStr?currentUserData.educationStr:'未填写')+' '+(currentUserData.height?currentUserData.height+'cm'+ ' ':'') + (currentUserData.weight?currentUserData.weight + 'kg':'')}}</view>
       </view>
     </view>
     <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">

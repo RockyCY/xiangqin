@@ -32,7 +32,7 @@ Page({
   },
 
   onLoad() {
-    //test
+
     if (!app.globalData.userInfoRes) {
       getCurrentUserData({
         data: {}
@@ -103,7 +103,9 @@ Page({
   },
 
   onShow() {
-
+    app.firstLoginCallback = res => {
+      this.goDataFill();
+    }
   },
   onShareAppMessage: function (res) {
     const promise = getShareInfo({
@@ -115,9 +117,6 @@ Page({
         return {
           title: res.data.data.title
         }
-        // console.log('res.data')
-        // console.log(res.data.data.title)
-        // shareInfo = res;
       }
     )
 
@@ -321,5 +320,13 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.currentRecommendUserData.phoneNumber,
     })
+  },
+  goDataFill() {
+    if(app.globalData.isFirstLogin){
+      wx.navigateTo({
+        url: '../datafill/datafill',
+      })
+      return;
+    }
   }
 })

@@ -73,7 +73,7 @@
 }
 
 .profileCardSubtitle {
-  font-size: 16px;
+  font-size: 18px;
   color: #383838;
   margin-top: 4px;
   margin-left: 12px;

@@ -85,6 +85,7 @@ Page({
       (res) => {
         var itemArray = [];
         var itemList = res.data.data;
+        console.log(itemList)
         for (var key in itemList) {
           var item = itemList[key];
           itemArray.push(item);
@@ -261,10 +262,11 @@ Page({
   bindMaritalStatusChange: function (e) {
     let num = e.detail.value;
     this.data.userInfo.maritalStatusStr = this.data.marriageList[num];
+  
     updateUserData({
       data: {
         'id': this.data.userInfo.id,
-        'maritalStatus': num
+        'maritalStatus': num + 1
       }
     }).then(
       (res) => {
