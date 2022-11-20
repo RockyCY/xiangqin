@@ -15,6 +15,7 @@ const app = getApp()
 
 Page({
   data: {
+    nextUpdateTime:0,
     recommendDataArray: [],
     currentRecommendUserData: {},//当前推荐的用户信息
     reasons: [],
@@ -65,7 +66,11 @@ Page({
       }
     }).then(
       (res) => {
-        for (var item of res.data.data) {
+        console.log(res)
+        if(!res.data.data){
+          return
+        }
+        for (var item of res.data.data.fateUserInfoResponses) {
           if (item.birth && item.birth.length > 0) {
             item.birthYear = item.birth.substring(2, 4) + '年';
           }
@@ -79,7 +84,8 @@ Page({
           }
         }
         this.setData({
-          recommendDataArray: res.data.data
+          nextUpdateTime:res.data.data.nextUpdateTime,
+          recommendDataArray: res.data.data.fateUserInfoResponses
         })
       }
     )

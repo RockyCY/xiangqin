@@ -66,7 +66,7 @@
   <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;">
     <view class="countDownBG">
       <view class="countDownTopTitle">{{userInfo?'今日推荐':'暂无推荐'}}</view>
-      <countDown countSecond="40000000"></countDown>
+      <countDown countSecond="{{nextUpdateTime}}"></countDown>
     </view>
     <block wx:if="{{userInfo}}">
       <block wx:for="{{recommendDataArray}}" wx:for-item="userRecommendData" wx:key="index" wx:data-index="{{index}}">
