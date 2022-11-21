@@ -4,16 +4,21 @@
   <view class="reportTitleBG" style="margin-top: 16px;">请选择举报原因</view>
   <view class="reportReasonSelectedBG" style="left: {{leftReportMargin}}px;">
     <block wx:for="{{reasons}}" wx:for-item="reason" wx:key="index" wx:data-index="{{index}}">
-      <selectedBtn btnWidth="137.5" btnHeigh="37.5" btnText="{{reason}}" btnFontSize="20" selectedable="{{true}}" selected="{{selectedReasons[reason]}}" buttonNum="{{index}}"borderWidth="2" bind:clickHandle="clickReasonButton"></selectedBtn>
+      <selectedBtn btnWidth="137.5" btnHeigh="37.5" btnText="{{reason}}" btnFontSize="20" selectedable="{{true}}" selected="{{selectedReasons[reason]}}" buttonNum="{{index}}" borderWidth="2" bind:clickHandle="clickReasonButton"></selectedBtn>
     </block>
   </view>
   <view class="reportTitleBG" style="margin-top: 35.5px;">图片证据(最多3张)</view>
   <view class="reportPicSelectedBG">
     <view class="reportPic" bindtap="addPic">
+      <block wx:if="{{picUrl.length>0}}">
+        <block wx:for="{{picUrl}}" wx:for-item="pic" wx:key="index" wx:data-index="{{index}}">
+          <image src="{{pic}}"></image>
+        </block>
+      </block>
       <view class="reportAdd">+</view>
     </view>
   </view>
   <view class="reportTitleBG" style="margin-top: 42px;">文字描述(最多150字)</view>
-  <textarea auto-focus="true" class="reportTextArea" bindinput="bindKeyInput"placeholder="请具体描述对方的问题" placeholder-style="font-size:15px;color:#B2B2B2;" maxlength="150"/>
+  <textarea auto-focus="true" class="reportTextArea" bindinput="bindKeyInput" placeholder="请具体描述对方的问题" placeholder-style="font-size:15px;color:#B2B2B2;" maxlength="150" />
   <customBtn btnWidth="300" btnHeigh="52" btnText="提交举报" btnFontSize="22" bind:clickHandle="clickReport" style="margin-top:19px;"></customBtn>
 </view>

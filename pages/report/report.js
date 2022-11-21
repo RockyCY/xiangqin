@@ -115,7 +115,6 @@ Page({
   },
   bindKeyInput: function (e) {
     let value = e.detail.value;
-    console.log(value)
     this.setData({
       content:value
     })
@@ -124,14 +123,14 @@ Page({
     wx.chooseMedia({
       count: 3,
       mediaType: ['image'],
-      sourceType: ['album', 'camera'],
+      sourceType: ['album'],
       maxDuration: 30,
       camera: 'back',
       success(res) {
         console.log(res.tempFiles.tempFilePath)
         console.log(res.tempFiles.size)
         wx.cloud.uploadFile({
-          cloudPath: '7072-prod-9ggc7xkmfcc18237-1313078534/avatar/'+this.data.userInfo.id+'.png', // 对象存储路径，根路径直接填文件名，文件夹例子 test/文件名，不要 / 开头
+          cloudPath: '7072-prod-9ggc7xkmfcc18237-1313078534/report/'+this.data.userData.id+'.png', // 对象存储路径，根路径直接填文件名，文件夹例子 test/文件名，不要 / 开头
           filePath: res.tempFiles.tempFilePath, // 微信本地文件，通过选择图片，聊天文件等接口获取
           config: {
             env: 'prod-9ggc7xkmfcc18237' // 需要替换成自己的微信云托管环境ID
