@@ -34,7 +34,7 @@
         <view class="contactViewBG">
           <view class="contactViewTopTitle">对方手机号</view>
           <view class="contactViewSubTitle">联系对方时请保护个人信息</view>
-          <view class="contactViewPhoneNumber">{{currentRecommendUserData.phoneNumber}}</view>
+          <!-- <view class="contactViewPhoneNumber">{{currentRecommendUserData.phoneNumber}}</view> -->
           <view class="redlineNumBG">
             <image class="redlineImg" src="../../images/redCard.png"></image>
             <view class="redlineText">数量不足</view>
