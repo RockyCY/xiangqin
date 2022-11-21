@@ -218,7 +218,9 @@ Page({
       }
     }).then(
       (res) => {
+        this.data.currentRecommendUserData.phoneNumber = res.data.data;
         this.setData({
+          currentRecommendUserData:this.data.currentRecommendUserData,
           hideMask: false,
           hideActionSheet: true,
           isDislikeMask: false,

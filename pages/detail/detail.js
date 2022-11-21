@@ -183,7 +183,9 @@ Page({
       }
     }).then(
       (res) => {
+        this.data.currentCollectUserData.phoneNumber = res.data.data;
         this.setData({
+          currentCollectUserData:this.data.currentCollectUserData,
           hideMask: false,
           hideActionSheet: true,
           isDislikeMask: false,
