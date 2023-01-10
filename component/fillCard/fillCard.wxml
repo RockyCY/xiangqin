@@ -1,5 +1,5 @@
 <!--component/fillCard/fillCard.wxml-->
 <view class="fillCardBG" style="margin-left: {{cardMargin}}px;">
-  <view class="fillCardDesc">完善资料，让更多人看到我</view>
-  <customBtn btnWidth="300" btnHeigh="52" btnText="立即填写" btnFontSize="24" bind:clickHandle="clickFillHandle" style="margin-top: 23px;"></customBtn>
+  <view class="fillCardDesc">{{ifAudit?'和美咨询电话':'完善资料，让更多人看到我'}}</view>
+  <customBtn btnWidth="300" btnHeigh="52" btnText="{{ifAudit?'17786561884':'立即填写'}}" btnFontSize="24" bind:clickHandle="clickFillHandle" style="margin-top: 23px;"></customBtn>
 </view>

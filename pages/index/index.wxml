@@ -40,7 +40,7 @@
             <view class="redlineText">数量不足</view>
           </view>
           <view class="contactViewButtonBG">
-            <button class="inviteFriendsFillDataButton"  style="width: 300px; height: 52px; line-height: 52px;" open-type="share">
+            <button class="inviteFriendsFillDataButton" style="width: 300px; height: 52px; line-height: 52px;" open-type="share">
               <view class="inviteMainTitle">邀请别人填写信息</view>
               <image class="redlineImg redlineImageLeftMargin" src="../../images/redCard.png"></image>
               <view class="inviteSubTitle">x3</view>
@@ -65,14 +65,20 @@
   </view>
   <scroll-view enhanced="{{true}}" show-scrollbar="{{false}}" scroll-y="{{true}}" scroll-x="{{false}}" style="margin-top: -12px; height:{{scrollHeight}}px;">
     <view class="countDownBG">
-      <view class="countDownTopTitle">{{userInfo?'今日推荐':'暂无推荐'}}</view>
-      <countDown countSecond="{{nextUpdateTime}}"></countDown>
+      <block wx:if="{{ifAudit}}">
+        <view class="countDownTopTitle">专业推荐</view>
+        <view class="countDownSubTitle">和美电话:17786561884</view>
+      </block>
+      <block wx:else>
+          <view class="countDownTopTitle">{{userInfo?'今日推荐':'暂无推荐'}}</view>
+          <countDown countSecond="{{nextUpdateTime}}"></countDown>
+      </block>
     </view>
     <block wx:if="{{userInfo}}">
       <block wx:for="{{recommendDataArray}}" wx:for-item="userRecommendData" wx:key="index" wx:data-index="{{index}}">
-        <dataCard currentUserData="{{userRecommendData}}" bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
+        <dataCard ifAudit="{{ifAudit}}" currentUserData="{{userRecommendData}}" bind:clickShareHandle="clickShare" bind:clickCollectHandle="clickCollect" bind:clickCallHandle="clickCall" bind:longPressHandle="clickMore" data-type="dislike" bind:clickMore="clickMore"></dataCard>
       </block>
     </block>
-    <fillCard bind:clickFillHandle="clickFill"></fillCard>
+    <fillCard ifAudit="{{true}}" bind:clickFillHandle="clickFill"></fillCard>
   </scroll-view>
 </view>

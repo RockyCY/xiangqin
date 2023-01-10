@@ -8,13 +8,15 @@ import {
   addNotLike,
   getPhoneNumber,
   getShareInfo,
-  getCurrentUserData
+  getCurrentUserData,
+  getAuditUserInfo
 } from "../../service/index"
 
 const app = getApp()
 
 Page({
   data: {
+    ifAudit:false,
     nextUpdateTime:0,
     recommendDataArray: [],
     currentRecommendUserData: {},//当前推荐的用户信息
@@ -33,6 +35,12 @@ Page({
   },
 
   onLoad() {
+    if(app.globalData.ifAudit){
+      wx.hideTabBar({
+        animation: false,
+      })
+      return;
+    }
     getNotLikeReason({
       data: {
 
@@ -111,11 +119,46 @@ Page({
     )
   },
 
-  onShow() {
-    app.firstLoginCallback = res => {
-      this.goDataFill();
-    }
+  getAuditUserInfoList(){
+    getAuditUserInfo({
+      data: {
 
+      }
+    }).then(
+      (res) => {
+        console.log(res)
+        this.setData({
+          recommendDataArray: res.data.data
+        })
+      }
+    )
+  },
+
+  onShow() {
+    if(app.globalData.ifAudit){
+      wx.hideTabBar({
+        animation: false,
+      })
+      this.getAuditUserInfoList();
+      this.setData({
+          ifAudit:app.globalData.ifAudit
+      });
+      return;
+    }
+    app.firstLoginCallback = res => {
+      if(app.globalData.ifAudit){
+        wx.hideTabBar({
+          animation: false,
+        })
+        this.getAuditUserInfoList();
+        this.setData({
+            ifAudit:app.globalData.ifAudit
+        });
+      }else{
+        this.goDataFill();
+      }
+      return;
+    }
     this.getUserData();
     this.getRecommendList();
 
@@ -230,12 +273,20 @@ Page({
     )
   },
   clickFill() {
-    wx.navigateTo({
-      url: '../personal/personal',
-    })
+    if(this.data.ifAudit){
+      wx.makePhoneCall({
+        phoneNumber: '17786561884',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../personal/personal',
+      })
+    }
   },
   clickMore(e) {
-    console.log(e.detail)
+    if(this.data.ifAudit){
+      return;
+    }
     this.setData({
       currentRecommendUserData: e.detail,
       hideMask: true,
@@ -292,6 +343,9 @@ Page({
     )
   },
   showMask(e) {
+    if(this.data.ifAudit){
+      return;
+    }
     this.setData({
       hideMask: false,
       hideActionSheet: true,

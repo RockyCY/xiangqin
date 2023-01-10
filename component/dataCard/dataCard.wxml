@@ -3,29 +3,60 @@
   <view class="dataCardTopBG">
     <view class="dataCardTopBG1">
       <image class="dataCardPic" src="{{!currentUserData.photo?(currentUserData.sex==1?'../../images/icon_default_man.png':'../../images/icon_default_woman.png'):currentUserData.photo}}"></image>
-      <view class="dataCardTextContainer">
-        <view class="dataCardTitleArea">
-          <view class="dataCardTitle">{{currentUserData.birthYear?currentUserData.birthYear:'**年'}}</view>
-          <view class="dataCardTitle1">{{currentUserData.maritalStatusStr?(currentUserData.maritalStatusStr == '未填写'?'保密':currentUserData.maritalStatusStr):'保密'}}</view>
-          <view class="moreBG" bindtap="clickMore">
-            <image class="moreImg" src="../../images/more.png"></image>
-            <view class="moreText">更多</view>
+      <block wx:if="{{ifAudit}}">
+        <view class="dataCardTextContainer">
+          <view class="dataCardTitleArea">
+            <view class="dataCardTitle">{{currentUserData.name}}</view>
+            <view class="dataCardTitle1">{{currentUserData.job}}</view>
           </view>
+          <view class="dataCardSubtitle">{{'工作范围:'+currentUserData.jobArea}}</view>
+          <view class="dataCardSubtitle">{{'工作经验:'+currentUserData.jobExperience}}</view>
+          <view class="dataCardSubtitle">{{'工作时间:'+currentUserData.jobTime}}</view>
         </view>
-        <view class="dataCardSubtitle">{{currentUserData.addressShort?'现居' + currentUserData.addressShort:'未填写'}}</view>
-        <view class="dataCardSubtitle">{{currentUserData.hometownShort?'家乡' + currentUserData.hometownShort:'未填写'}}</view>
-        <view class="dataCardSubtitle">{{(currentUserData.educationStr?currentUserData.educationStr:'未填写')+' '+(currentUserData.height?currentUserData.height+'cm'+ ' ':'') + (currentUserData.weight?currentUserData.weight + 'kg':'')}}</view>
-      </view>
-    </view>
-    <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
-      <view class="dataCardLabel">{{currentUserData.weddingPlanStr}}</view>
-      <view class="dataCardLabel">{{currentUserData.buyCarStr}}</view>
-      <view class="dataCardLabel">{{currentUserData.buyHouseStr}}</view>
-      <view class="dataCardLabel">{{currentUserData.incomeStr}}</view>
-      <block wx:if="{{userData.college}}">
-        <view class="dataCardLabel">{{currentUserData.college}}</view>
+      </block>
+      <block wx:else>
+        <view class="dataCardTextContainer">
+          <view class="dataCardTitleArea">
+            <view class="dataCardTitle">{{currentUserData.birthYear?currentUserData.birthYear:'**年'}}</view>
+            <view class="dataCardTitle1">{{currentUserData.maritalStatusStr?(currentUserData.maritalStatusStr == '未填写'?'保密':currentUserData.maritalStatusStr):'保密'}}</view>
+            <view class="moreBG" bindtap="clickMore">
+              <image class="moreImg" src="../../images/more.png"></image>
+              <view class="moreText">更多</view>
+            </view>
+          </view>
+          <view class="dataCardSubtitle">{{currentUserData.addressShort?'现居' + currentUserData.addressShort:'未填写'}}</view>
+          <view class="dataCardSubtitle">{{currentUserData.hometownShort?'家乡' + currentUserData.hometownShort:'未填写'}}</view>
+          <view class="dataCardSubtitle">{{(currentUserData.educationStr?currentUserData.educationStr:'未填写')+' '+(currentUserData.height?currentUserData.height+'cm'+ ' ':'') + (currentUserData.weight?currentUserData.weight + 'kg':'')}}</view>
+        </view>
       </block>
     </view>
+    <block wx:if="{{ifAudit}}">
+      <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
+        <block wx:if="{{currentUserData.label1.length>0}}">
+          <view class="dataCardLabel">{{currentUserData.label1}}</view>
+        </block>
+        <block wx:if="{{currentUserData.label2.length>0}}">
+          <view class="dataCardLabel">{{currentUserData.label2}}</view>
+        </block>
+        <block wx:if="{{currentUserData.label3.length>0}}">
+          <view class="dataCardLabel">{{currentUserData.label3}}</view>
+        </block>
+        <block wx:if="{{currentUserData.label4.length>0}}">
+          <view class="dataCardLabel">{{currentUserData.label4}}</view>
+        </block>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="dataCardLabelArea" style="margin-left: {{labelMargin}}px;">
+        <view class="dataCardLabel">{{currentUserData.weddingPlanStr}}</view>
+        <view class="dataCardLabel">{{currentUserData.buyCarStr}}</view>
+        <view class="dataCardLabel">{{currentUserData.buyHouseStr}}</view>
+        <view class="dataCardLabel">{{currentUserData.incomeStr}}</view>
+        <block wx:if="{{userData.college}}">
+          <view class="dataCardLabel">{{currentUserData.college}}</view>
+        </block>
+      </view>
+    </block>
   </view>
   <view class="seperateLine" style="margin-left: {{seperateMargin}}px;"> </view>
   <view class="dataCardMainDesBG">
@@ -33,15 +64,19 @@
     <view class="dataCardMainDesc">个人情况补充</view>
   </view>
   <view class="dataCardMainDesc1">{{currentUserData.personalInformation.length>0?currentUserData.personalInformation:'暂未填写'}}</view>
-  <view class="dataCardMainDesBG">
-    <view class="dataCardMainDescDot"></view>
-    <view class="dataCardMainDesc">择偶标准</view>
-  </view>
-  <view class="dataCardMainDesc1">{{currentUserData.mateSelectionCriteria.length>0?currentUserData.mateSelectionCriteria:'暂未填写'}}</view>
-  <view class="dataCardBottomButtonArea">
-    <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16" userData = "{{currentUserData}}"></shareBtn>
-    <button class="{{currentUserData.favorite?'dataCardCollectionButton favorite':'dataCardCollectionButton'}}" bind:tap="clickCollectHandle">{{currentUserData.favorite?'已收藏':'收藏'}}</button>
-    <customBtn btnWidth="124" btnHeigh="35" btnText="联系对方家长" btnFontSize="16" bind:clickHandle="clickCallHandle"></customBtn>
-  </view>
+  <block wx:if="{{ifAudit}}">
+  </block>
+  <block wx:else>
+    <view class="dataCardMainDesBG">
+      <view class="dataCardMainDescDot"></view>
+      <view class="dataCardMainDesc">择偶标准</view>
+    </view>
+    <view class="dataCardMainDesc1">{{currentUserData.mateSelectionCriteria.length>0?currentUserData.mateSelectionCriteria:'暂未填写'}}</view>
+    <view class="dataCardBottomButtonArea">
+      <shareBtn btnWidth="106" btnHeigh="35" btnFontSize="16" userData="{{currentUserData}}"></shareBtn>
+      <button class="{{currentUserData.favorite?'dataCardCollectionButton favorite':'dataCardCollectionButton'}}" bind:tap="clickCollectHandle">{{currentUserData.favorite?'已收藏':'收藏'}}</button>
+      <customBtn btnWidth="124" btnHeigh="35" btnText="联系对方家长" btnFontSize="16" bind:clickHandle="clickCallHandle"></customBtn>
+    </view>
+  </block>
   <view style="height: 20px;"></view>
 </view>

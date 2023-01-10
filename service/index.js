@@ -106,3 +106,9 @@ export const getShareInfo = (params) => {
   params.method = "POST"
   return cloudRequest('/api/share/getShareInfo',params)
 }
+
+//获取婚庆用户资料
+export const getAuditUserInfo = (params) => {
+  params.method = "POST"
+  return cloudRequest('/api/getAuditUserInfo',params)
+}

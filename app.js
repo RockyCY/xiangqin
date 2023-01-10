@@ -29,7 +29,11 @@ App({
             // dataType:'text', // 默认不填是以 JSON 形式解析返回结果，若不想让 SDK 自己解析，可以填text
           }).then(
             (result) => {
+              
               this.globalData.isFirstLogin = result.data.data.firstLogin;
+              this.globalData.ifAudit = result.data.data.ifAudit;
+              // this.globalData.ifAudit = true;
+              console.log( this.globalData)
               if (this.firstLoginCallback) {
                 this.firstLoginCallback(result.data.data)
               }
@@ -67,6 +71,7 @@ App({
     currentUserData:null,
     userPropDetail:null,
     isFirstLogin:true,
+    ifAudit:false,
     shouldUpdateUserData:false,
     shouldUpdateColletion:false,
   }

@@ -8,6 +8,10 @@ Component({
       type:Object,
       value:null
     },
+    ifAudit:{
+      type:Boolean,
+      value:false
+    },
   },
   /**
    * 组件的初始数据
